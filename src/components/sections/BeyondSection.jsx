@@ -1,147 +1,214 @@
-import { useRef } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { useInView } from "../hooks/useInView";
 
 const cards = {
-  en: [
-    {
-      eyebrow: "Music",
-      title: "Soloist & guitarist",
-      body: "Three solo performances. Each one a lesson in vulnerability and presence. Music isn't separate from my work in tech — it taught me that the best systems, like the best songs, have rhythm, tension, and release.",
-      visual: "music",
-    },
-    {
-      eyebrow: "Psychology",
-      title: "Reading the unspoken",
-      body: "Passionate about the science of human behavior — body language, cognitive biases, social dynamics. This lens makes me a better engineer and a better founder.",
-      visual: "psy",
-    },
-    {
-      eyebrow: "Philosophy",
-      title: "The 15-minute theory",
-      body: "I believe that 15 genuine minutes of conversation reveals more about a person than months of observation. Curiosity, not judgment, is the key.",
-      visual: "clock",
-    },
-  ],
-  tr: [
-    {
-      eyebrow: "Müzik",
-      title: "Solist & gitarist",
-      body: "Üç solo performans. Her biri kırılganlık ve varoluş üzerine bir ders. Müzik, teknik çalışmamdan ayrı değil — en iyi sistemlerin, en iyi şarkılar gibi ritim, gerilim ve çözüme sahip olduğunu bana öğretti.",
-      visual: "music",
-    },
-    {
-      eyebrow: "Psikoloji",
-      title: "Söylenmeyeni okumak",
-      body: "İnsan davranışı bilimine — beden dili, bilişsel önyargılar, sosyal dinamikler — tutkuluyum. Bu perspektif beni hem daha iyi bir mühendis hem de daha iyi bir kurucu yapıyor.",
-      visual: "psy",
-    },
-    {
-      eyebrow: "Felsefe",
-      title: "15 dakika teorisi",
-      body: "15 dakikalık samimi bir konuşmanın, aylarca gözlemden daha fazlasını ortaya çıkardığına inanıyorum. Merak, yargı değil, anahtar.",
-      visual: "clock",
-    },
-  ],
+  en: {
+    sectionNum: "04 // HUMAN DIMENSION",
+    title: "BEYOND CODE",
+    subtitle: "Music, human psychology, and the 15-minute connection philosophy.",
+    items: [
+      {
+        bg: "var(--neo-yellow)",
+        tag: "MUSIC & GUITAR",
+        title: "Soloist & Guitarist",
+        text: "3 solo performances on stage. Music taught me that great code, like great songs, requires rhythm, tension, and resolution.",
+        visual: "cassette"
+      },
+      {
+        bg: "var(--neo-pink)",
+        textColor: "#fff",
+        tag: "HUMAN PSYCHOLOGY",
+        title: "Reading the Unspoken",
+        text: "Passionate about body language, cognitive dynamics, and social signals. Understanding people makes better engineers.",
+        visual: "radar"
+      },
+      {
+        bg: "var(--neo-cyan)",
+        tag: "PHILOSOPHY",
+        title: "The 15-Minute Rule",
+        text: "15 genuine minutes of listening and observation can reveal more than months of surface-level small talk.",
+        visual: "clock"
+      }
+    ]
+  },
+  tr: {
+    sectionNum: "04 // İNSAN BOYUTU",
+    title: "KODUN ÖTESİ",
+    subtitle: "Müzik, insan psikolojisi ve 15 dakikalık bağ kurma felsefesi.",
+    items: [
+      {
+        bg: "var(--neo-yellow)",
+        tag: "MÜZİK & GİTAR",
+        title: "Solist & Gitarist",
+        text: "Sahnede 3 solo performans. Müzik bana en iyi yazılımların tıpkı şarkılar gibi ritim ve çözüme ihtiyaç duyduğunu öğretti.",
+        visual: "cassette"
+      },
+      {
+        bg: "var(--neo-pink)",
+        textColor: "#fff",
+        tag: "İNSAN PSİKOLOJİSİ",
+        title: "Söylenmeyeni Okumak",
+        text: "Beden dili, bilişsel önyargılar ve sosyal sinyallere tutkuluyum. İnsanları anlamak daha iyi mühendisler yetiştirir.",
+        visual: "radar"
+      },
+      {
+        bg: "var(--neo-cyan)",
+        tag: "FELSEFE",
+        title: "15 Dakika Kuralı",
+        text: "15 dakikalık samimi bir dinleme ve gözlem, aylarca süren yüzeysel sohbetten daha derin bir bağ kurabilir.",
+        visual: "clock"
+      }
+    ]
+  }
 };
 
-/* Music equalizer bars */
-const MusicVisual = () => (
-  <div style={{ display: "flex", alignItems: "flex-end", gap: "4px", height: "46px", width: "80px", background: "var(--bg3)", padding: "4px 6px", borderRadius: "6px", boxShadow: "inset 0 2px 5px rgba(0,0,0,0.85)", border: "1px solid rgba(255,255,255,0.03)" }}>
-    {[55, 80, 38, 95, 60, 75, 35, 90, 48].map((h, i) => (
-      <div key={i} style={{
-        flex: 1,
-        background: i % 3 === 0 ? "var(--red)" : "rgba(255,255,255,0.12)",
-        height: `${h}%`,
-        boxShadow: i % 3 === 0 ? "0 0 6px var(--red)" : "none",
-        animation: `musicBar ${0.7 + i * 0.1}s ${i * 0.07}s ease-in-out infinite alternate`,
-        borderRadius: "1px"
-      }} />
-    ))}
-  </div>
-);
+function CassetteVisual() {
+  const [isPlaying, setIsPlaying] = useState(true);
+  return (
+    <div 
+      className="neo-box"
+      style={{
+        padding: "12px 18px",
+        background: "var(--neo-black)",
+        color: "var(--neo-yellow)",
+        display: "flex",
+        alignItems: "center",
+        gap: "14px",
+        borderRadius: "10px",
+        cursor: "pointer"
+      }}
+      onClick={() => setIsPlaying(!isPlaying)}
+    >
+      <div style={{ display: "flex", gap: "10px" }}>
+        <div className={`neo-reel ${isPlaying ? "neo-reel-spin" : ""}`}>
+          <div style={{ width: "8px", height: "8px", background: "var(--neo-yellow)", borderRadius: "50%" }} />
+        </div>
+        <div className={`neo-reel ${isPlaying ? "neo-reel-spin" : ""}`}>
+          <div style={{ width: "8px", height: "8px", background: "var(--neo-yellow)", borderRadius: "50%" }} />
+        </div>
+      </div>
+      <div style={{ fontFamily: "var(--font-mono)", fontSize: "0.75rem", fontWeight: 800 }}>
+        {isPlaying ? "▶ PLAYING // 44.1kHz" : "⏸ PAUSED"}
+      </div>
+    </div>
+  );
+}
 
-/* Concentric circle visual */
-const PsyVisual = () => (
-  <div style={{ position: "relative", width: 48, height: 48, display: "flex", alignItems: "center", justifyContent: "center", background: "#08090b", borderRadius: "50%", border: "2px solid #1c1d24", boxShadow: "inset 0 2px 4px rgba(0,0,0,0.9)", overflow: "hidden" }} className="crt-display">
-    {[38, 26, 14].map((s, i) => (
-      <div key={i} style={{
-        position: "absolute",
-        width: s, height: s,
-        border: `1px solid ${i === 0 ? "var(--red)" : "rgba(255,255,255,0.06)"}`,
-        borderRadius: "50%",
-        opacity: i === 0 ? 0.7 : 0.25,
-        boxShadow: i === 0 ? "0 0 4px var(--red-glow)" : "none"
-      }} />
-    ))}
-    <div style={{ width: 4, height: 4, background: "var(--red)", borderRadius: "50%", position: "relative", zIndex: 1, boxShadow: "0 0 6px var(--red)" }} />
-  </div>
-);
+function RadarVisual() {
+  return (
+    <div 
+      className="neo-box"
+      style={{
+        padding: "12px 18px",
+        background: "var(--neo-white)",
+        color: "var(--neo-black)",
+        display: "flex",
+        alignItems: "center",
+        gap: "10px",
+        borderRadius: "10px"
+      }}
+    >
+      <div 
+        style={{
+          width: "24px",
+          height: "24px",
+          borderRadius: "50%",
+          border: "3px solid var(--neo-pink)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          animation: "pulseBlink 1.2s infinite ease-in-out"
+        }}
+      >
+        <div style={{ width: "8px", height: "8px", background: "var(--neo-pink)", borderRadius: "50%" }} />
+      </div>
+      <span style={{ fontFamily: "var(--font-mono)", fontWeight: 800, fontSize: "0.85rem" }}>
+        SIGNAL DETECTED // 100%
+      </span>
+    </div>
+  );
+}
 
-/* Clock / 15 visual */
-const ClockVisual = () => (
-  <div style={{ display: "flex", alignItems: "center", gap: "6px", background: "var(--bg3)", padding: "6px 12px", borderRadius: "6px", border: "1.5px solid #1c1d24", boxShadow: "inset 0 2px 5px rgba(0,0,0,0.85)" }} className="crt-display">
-    <span style={{ fontFamily: "var(--font-serif)", fontSize: "2rem", fontWeight: 900, color: "var(--red)", textShadow: "0 0 8px var(--red)", lineHeight: 1, letterSpacing: "-0.04em" }}>15</span>
-    <span style={{ fontSize: "0.6rem", color: "var(--text-muted)", letterSpacing: "0.1em", textTransform: "uppercase", fontWeight: 700 }}>min</span>
-  </div>
-);
-
-const visuals = { music: <MusicVisual />, psy: <PsyVisual />, clock: <ClockVisual /> };
+function ClockVisual() {
+  return (
+    <div 
+      className="neo-box"
+      style={{
+        padding: "10px 16px",
+        background: "var(--neo-black)",
+        color: "var(--neo-lime)",
+        display: "flex",
+        alignItems: "center",
+        gap: "8px",
+        borderRadius: "10px"
+      }}
+    >
+      <span style={{ fontFamily: "var(--font-syne)", fontWeight: 900, fontSize: "1.8rem", lineHeight: 1 }}>
+        15
+      </span>
+      <span style={{ fontFamily: "var(--font-mono)", fontWeight: 800, fontSize: "0.8rem" }}>
+        MIN / CONVERSATION
+      </span>
+    </div>
+  );
+}
 
 export default function BeyondSection({ lang }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-  const items = cards[lang];
+  const t = cards[lang];
 
   return (
-    <section id="beyond">
-      {/* Header row */}
-      <motion.div
-        ref={ref}
-        className="beyond-header"
-        initial={{ opacity: 0, y: 20 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.7 }}
-      >
-        <div className="beyond-title-block">
-          <div className="section-label" style={{ marginBottom: "1.2rem" }}>
-            {lang === "en" ? "Beyond Code" : "Kodun Ötesi"}
-          </div>
-          <h2 className="beyond-section-title">
-            {lang === "en" ? <>The <em>human</em> side</> : <>İnsan <em>tarafı</em></>}
-          </h2>
-        </div>
-        <div className="beyond-section-count">— 3 {lang === "en" ? "dimensions" : "boyut"}</div>
-      </motion.div>
+    <section id="beyond" className="neo-section">
+      {/* Section Header */}
+      <div className="neo-section-header">
+        <div className="neo-section-num">{t.sectionNum}</div>
+        <h2 className="neo-section-title">{t.title}</h2>
+      </div>
 
-      {/* Stacked horizontal cards */}
-      <div className="beyond-stack">
-        {items.map((card, i) => (
+      {/* Stacked Brutalist Cards */}
+      <div className="neo-bento-grid">
+        {t.items.map((item, idx) => (
           <motion.div
-            key={i}
-            className="beyond-card"
+            key={idx}
+            className="neo-box neo-box-interactive neo-col-4"
+            style={{
+              backgroundColor: item.bg,
+              color: item.textColor || "var(--neo-black)",
+              padding: "28px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              gap: "20px"
+            }}
             initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.1 + i * 0.15, ease: [0.25, 1, 0.5, 1] }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ type: "spring", stiffness: 300, damping: 24, delay: idx * 0.15 }}
           >
-            {/* Left strip: eyebrow + visual */}
-            <div className="beyond-card-left">
-              <div className="hardware-screw" style={{ position: "absolute", top: "12px", left: "12px", opacity: 0.4 }} />
-              <div className="hardware-screw" style={{ position: "absolute", top: "12px", right: "12px", opacity: 0.4 }} />
-              
-              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                <span className="led-light red-on" />
-                <div className="beyond-card-eyebrow">{card.eyebrow}</div>
+            <div>
+              <div 
+                className="neo-badge" 
+                style={{ 
+                  background: "var(--neo-white)", 
+                  color: "#000",
+                  marginBottom: "16px"
+                }}
+              >
+                //{item.tag}
               </div>
-              <div className="beyond-card-visual">{visuals[card.visual]}</div>
-              
-              <div className="hardware-screw" style={{ position: "absolute", bottom: "12px", left: "12px", opacity: 0.4 }} />
-              <div className="hardware-screw" style={{ position: "absolute", bottom: "12px", right: "12px", opacity: 0.4 }} />
+
+              <h3 style={{ fontSize: "1.5rem", fontWeight: 800, marginBottom: "10px" }}>
+                {item.title}
+              </h3>
+
+              <p style={{ opacity: 0.9, fontSize: "1.05rem", lineHeight: 1.5 }}>
+                {item.text}
+              </p>
             </div>
-            {/* Right: title + body */}
-            <div className="beyond-card-right">
-              <div className="beyond-card-title">{card.title}</div>
-              <p className="beyond-card-body">{card.body}</p>
+
+            <div>
+              {item.visual === "cassette" && <CassetteVisual />}
+              {item.visual === "radar" && <RadarVisual />}
+              {item.visual === "clock" && <ClockVisual />}
             </div>
           </motion.div>
         ))}

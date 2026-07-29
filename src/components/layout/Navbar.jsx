@@ -20,6 +20,17 @@ const navItems = {
 
 export default function Navbar({ lang, setLang }) {
   const [activeSection, setActiveSection] = useState("hero");
+  const [time, setTime] = useState("");
+
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      setTime(now.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" }));
+    };
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const sections = ["hero", "about", "expertise", "zorus", "beyond", "contact"];
@@ -32,7 +43,7 @@ export default function Navbar({ lang, setLang }) {
             setActiveSection(id);
           }
         },
-        { threshold: 0.15, rootMargin: "-25% 0px -55% 0px" }
+        { threshold: 0.15, rootMargin: "-20% 0px -50% 0px" }
       );
       observer.observe(el);
       return { el, observer };
@@ -46,46 +57,69 @@ export default function Navbar({ lang, setLang }) {
   }, []);
 
   return (
-    <motion.nav
-      id="navbar"
-      initial={{ y: -20, opacity: 0 }}
+    <motion.header
+      className="neo-navbar"
+      initial={{ y: -60, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ type: "spring", stiffness: 300, damping: 24 }}
     >
-      <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-        <div className="hardware-screw" style={{ opacity: 0.5 }} />
-        <a href="#" className="nav-logo" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}>
-          Y<span>.</span>M<span>.</span>K
+      <div className="neo-navbar-inner">
+        {/* Brand Logo */}
+        <a 
+          href="#" 
+          className="neo-logo" 
+          onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+        >
+          <div className="neo-logo-icon">Y</div>
+          <span>MUHSIN // 26</span>
         </a>
-      </div>
 
-      <div className="nav-links">
-        {navItems[lang].map((item) => {
-          const isActive = activeSection === item.href.slice(1);
-          return (
-            <a
-              key={item.href}
-              href={item.href}
-              className={isActive ? "active" : ""}
-              onClick={(e) => {
-                e.preventDefault();
-                document.querySelector(item.href)?.scrollIntoView({ behavior: "smooth" });
-              }}
-            >
-              <span className={`led-light ${isActive ? "red-on" : ""}`} />
-              {item.label}
-            </a>
-          );
-        })}
-        
-        <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-          <div className="lang-toggle">
-            <button className={`lang-btn ${lang === "en" ? "active" : ""}`} onClick={() => setLang("en")}>EN</button>
-            <button className={`lang-btn ${lang === "tr" ? "active" : ""}`} onClick={() => setLang("tr")}>TR</button>
-          </div>
-          <div className="hardware-screw" style={{ opacity: 0.5 }} />
+        {/* Live Status Pill (Desktop) */}
+        <div className="neo-status-badge" style={{ display: "flex" }}>
+          <span className="neo-pulse-dot" />
+          <span>TR // {time || "19:45"}</span>
+        </div>
+
+        {/* Nav Links */}
+        <nav>
+          <ul className="neo-nav-links">
+            {navItems[lang].map((item) => {
+              const isActive = activeSection === item.href.slice(1);
+              return (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    className={`neo-nav-link ${isActive ? "active" : ""}`}
+                    style={isActive ? { background: "var(--neo-yellow)", border: "2.5px solid #0D0D11", boxShadow: "2px 2px 0px #0D0D11" } : {}}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document.querySelector(item.href)?.scrollIntoView({ behavior: "smooth" });
+                    }}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+
+        {/* Language Switcher */}
+        <div className="neo-lang-switch">
+          <button 
+            className={`neo-lang-btn ${lang === "en" ? "active" : ""}`} 
+            onClick={() => setLang("en")}
+          >
+            EN
+          </button>
+          <button 
+            className={`neo-lang-btn ${lang === "tr" ? "active" : ""}`} 
+            onClick={() => setLang("tr")}
+          >
+            TR
+          </button>
         </div>
       </div>
-    </motion.nav>
+    </motion.header>
   );
 }

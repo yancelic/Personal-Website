@@ -1,12 +1,13 @@
 import { useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
-const ITEM_SIZE = 50;
-const MAGNIFY_SIZE = 70;
+const ITEM_SIZE = 52;
+const MAGNIFY_SIZE = 68;
 const MAGNIFY_DIST = 100;
 
 function DockItem({ item, mouseX }) {
   const ref = useRef(null);
+  const [hovered, setHovered] = useState(false);
 
   const distance = useTransform(mouseX, (val) => {
     const bounds = ref.current?.getBoundingClientRect();
@@ -20,53 +21,84 @@ function DockItem({ item, mouseX }) {
     [0, MAGNIFY_DIST],
     [MAGNIFY_SIZE, ITEM_SIZE]
   );
-  const springSize = useSpring(size, { stiffness: 300, damping: 28 });
+  const springSize = useSpring(size, { stiffness: 350, damping: 25 });
 
   return (
-    <motion.button
-      ref={ref}
-      title={item.label}
-      onClick={item.onClick}
-      style={{
-        width: springSize,
-        height: springSize,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        borderRadius: "8px",
-        background: "linear-gradient(to bottom, #24252c, #131418)",
-        border: "1px solid #0b0c0e",
-        boxShadow: "0 3px 0 #0b0c0e, 0 4px 6px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1)",
-        cursor: "pointer",
-        flexShrink: 0,
-        color: "var(--red)",
-        fontSize: "1.25rem",
-        transition: "color 0.2s, background 0.2s, transform 0.05s, box-shadow 0.05s",
-        outline: "none"
-      }}
-      whileHover={{ 
-        background: "linear-gradient(to bottom, #2b2c35, #191a20)",
-        color: "#fff",
-        textShadow: "0 0 6px var(--red)"
-      }}
-      whileTap={{
-        transform: "translateY(2px)",
-        boxShadow: "0 1px 0 #0b0c0e, 0 1px 2px rgba(0,0,0,0.5)",
-      }}
-    >
-      {item.icon}
-    </motion.button>
+    <div style={{ position: "relative" }}>
+      {hovered && (
+        <motion.div
+          initial={{ opacity: 0, y: 10, scale: 0.8 }}
+          animate={{ opacity: 1, y: -45, scale: 1 }}
+          exit={{ opacity: 0, y: 10, scale: 0.8 }}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: "50%",
+            transform: "translateX(-50%)",
+            whiteSpace: "nowrap",
+            background: "var(--neo-yellow)",
+            color: "var(--neo-black)",
+            border: "2.5px solid #0D0D11",
+            boxShadow: "2.5px 2.5px 0px #0D0D11",
+            borderRadius: "6px",
+            padding: "3px 8px",
+            fontFamily: "var(--font-mono)",
+            fontWeight: 800,
+            fontSize: "0.75rem",
+            textTransform: "uppercase",
+            zIndex: 10,
+            pointerEvents: "none"
+          }}
+        >
+          {item.label}
+        </motion.div>
+      )}
+
+      <motion.button
+        ref={ref}
+        onClick={item.onClick}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        style={{
+          width: springSize,
+          height: springSize,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          borderRadius: "10px",
+          background: hovered ? "var(--neo-yellow)" : "var(--neo-white)",
+          border: "3px solid #0D0D11",
+          boxShadow: hovered ? "4px 4px 0px #0D0D11" : "3px 3px 0px #0D0D11",
+          cursor: "pointer",
+          color: "var(--neo-black)",
+          fontWeight: 800,
+          fontSize: "1.2rem",
+          outline: "none"
+        }}
+        whileHover={{
+          y: -4,
+        }}
+        whileTap={{
+          y: 2,
+          boxShadow: "1px 1px 0px #0D0D11"
+        }}
+      >
+        {item.icon}
+      </motion.button>
+    </div>
   );
 }
 
-export default function Dock({ items = [] }) {
+export default function Dock({ items = [], lang, setLang }) {
   const mouseX = useMotionValue(Infinity);
 
   return (
     <motion.div
       onMouseMove={(e) => mouseX.set(e.clientX)}
       onMouseLeave={() => mouseX.set(Infinity)}
-      className="panel-raised"
+      initial={{ y: 80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ type: "spring", stiffness: 300, damping: 22, delay: 0.6 }}
       style={{
         position: "fixed",
         bottom: "1.5rem",
@@ -75,17 +107,58 @@ export default function Dock({ items = [] }) {
         display: "flex",
         alignItems: "center",
         gap: "10px",
-        padding: "8px 16px",
+        padding: "10px 18px",
         zIndex: 500,
-        boxShadow: "0 15px 30px rgba(0,0,0,0.7)",
-        borderRadius: "14px",
+        background: "var(--neo-white)",
+        border: "3.5px solid #0D0D11",
+        boxShadow: "6px 6px 0px #0D0D11",
+        borderRadius: "16px",
       }}
     >
-      <div className="hardware-screw" style={{ opacity: 0.5 }} />
+      <div 
+        style={{
+          width: "12px",
+          height: "12px",
+          borderRadius: "50%",
+          background: "var(--neo-pink)",
+          border: "2px solid #0D0D11"
+        }} 
+      />
+
       {items.map((item, i) => (
         <DockItem key={i} item={item} mouseX={mouseX} />
       ))}
-      <div className="hardware-screw" style={{ opacity: 0.5 }} />
+
+      {/* Embedded Arcade Language Switcher */}
+      {setLang && (
+        <div 
+          className="neo-lang-switch" 
+          style={{ marginLeft: "4px" }}
+        >
+          <button 
+            className={`neo-lang-btn ${lang === "en" ? "active" : ""}`} 
+            onClick={() => setLang("en")}
+          >
+            EN
+          </button>
+          <button 
+            className={`neo-lang-btn ${lang === "tr" ? "active" : ""}`} 
+            onClick={() => setLang("tr")}
+          >
+            TR
+          </button>
+        </div>
+      )}
+
+      <div 
+        style={{
+          width: "12px",
+          height: "12px",
+          borderRadius: "50%",
+          background: "var(--neo-lime)",
+          border: "2px solid #0D0D11"
+        }} 
+      />
     </motion.div>
   );
 }

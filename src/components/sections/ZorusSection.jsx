@@ -1,127 +1,176 @@
-import { useRef } from "react";
-import { motion } from "framer-motion";
-import { useInView } from "../hooks/useInView";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-const pillars = {
-  en: [
-    { num: "01", title: "Intelligence", desc: "ML-powered solutions for complex problems" },
-    { num: "02", title: "Experience",   desc: "Interfaces that feel natural and effortless" },
-    { num: "03", title: "Impact",       desc: "Products built around measurable real-world value" },
-  ],
-  tr: [
-    { num: "01", title: "Zeka",    desc: "Karmaşık sorunlara yapay zeka destekli çözümler" },
-    { num: "02", title: "Deneyim", desc: "Doğal ve zahmetsiz hissettiren arayüzler" },
-    { num: "03", title: "Etki",    desc: "Ölçülebilir gerçek dünya değeri etrafında inşa edilen ürünler" },
-  ],
+const content = {
+  en: {
+    sectionNum: "03 // FLAGSHIP VENTURE",
+    badge: "CO-FOUNDER & LEAD ENGINEER",
+    title: "ZORUS",
+    tagline: "Intelligent systems built to augment human productivity without friction.",
+    desc: "Zorus is the startup I co-founded. We develop habit-building ecosystems, productivity tools, and intelligent software that seamlessly integrates into daily lives.",
+    pillars: [
+      { num: "01", title: "INTELLIGENCE", desc: "AI & ML-powered habit tracking algorithms", bg: "var(--neo-yellow)" },
+      { num: "02", title: "EXPERIENCE", desc: "Zahmetsiz & zero-friction user interfaces", bg: "var(--neo-cyan)" },
+      { num: "03", title: "REAL IMPACT", desc: "Measurable growth & behavior science", bg: "var(--neo-pink)", textColor: "#fff" }
+    ],
+    cta: "EXPLORE VENTURE DETAILS ⚡",
+    modalTitle: "Zorus Venture Overview",
+    modalText: "Zorus is built on the philosophy that the best technology is invisible — it amplifies your capabilities while respecting your focus. Designed with precision UX and robust software architecture.",
+    closeModal: "CLOSE MODAL ✕"
+  },
+  tr: {
+    sectionNum: "03 // AMİRAL GEMİSİ GİRİŞİM",
+    badge: "KURUCU ORTAK & LİDER MÜHENDİS",
+    title: "ZORUS",
+    tagline: "Sürtünmesiz insan verimliliğini güçlendirmek için inşa edilen akıllı sistemler.",
+    desc: "Zorus, kurucu ortağı olduğum girişim. Alışkanlık kazanımı ekosistemleri, verimlilik araçları ve günlük hayata entegre olan akıllı yazılımlar geliştiriyoruz.",
+    pillars: [
+      { num: "01", title: "ZEKA", desc: "YZ & MÖ destekli alışkanlık algoritmaları", bg: "var(--neo-yellow)" },
+      { num: "02", title: "DENEYİM", desc: "Zahmetsiz ve yüksek hızlı kullanıcı arayüzleri", bg: "var(--neo-cyan)" },
+      { num: "03", title: "GERÇEK ETKİ", desc: "Ölçülebilir gelişim & davranış bilimi", bg: "var(--neo-pink)", textColor: "#fff" }
+    ],
+    cta: "GİRİŞİM DETAYLARINI KEŞFET ⚡",
+    modalTitle: "Zorus Girişim Özeti",
+    modalText: "Zorus, en iyi teknolojinin görünmez olduğu felsefesi üzerine kuruludur — odağınıza saygı duyarak yeteneklerinizi artırır. Hassas UX ve güçlü yazılım mimarisiyle tasarlanmıştır.",
+    closeModal: "MODALI KAPAT ✕"
+  }
 };
 
 export default function ZorusSection({ lang }) {
-  const leftRef = useRef(null);
-  const rightRef = useRef(null);
-  const leftInView = useInView(leftRef, { once: true });
-  const rightInView = useInView(rightRef, { once: true });
-  const items = pillars[lang];
+  const t = content[lang];
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
-    <section id="zorus" style={{ padding: 0 }}>
-      {/* LEFT — Dark panel */}
-      <div className="zorus-left" style={{ position: "relative" }}>
-        {/* Hardware mounting screws */}
-        <div className="hardware-screw" style={{ position: "absolute", top: "20px", left: "20px", opacity: 0.5 }} />
-        <div className="hardware-screw" style={{ position: "absolute", top: "20px", right: "20px", opacity: 0.5 }} />
-        <div className="hardware-screw" style={{ position: "absolute", bottom: "20px", left: "20px", opacity: 0.5 }} />
-        <div className="hardware-screw" style={{ position: "absolute", bottom: "20px", right: "20px", opacity: 0.5 }} />
+    <section id="zorus" className="neo-section">
+      {/* Section Header */}
+      <div className="neo-section-header">
+        <div className="neo-section-num">{t.sectionNum}</div>
+        <h2 className="neo-section-title">THE VENTURE: ZORUS</h2>
+      </div>
 
-        <div className="zorus-left-top" ref={leftRef}>
-          <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "2.5rem" }}>
-            <span className="led-light red-on" />
-            <div className="section-label" style={{ marginBottom: 0 }}>
-              {lang === "en" ? "The Venture" : "Girişim"}
-            </div>
+      {/* Main Cyber Lime Spotlight Card */}
+      <motion.div
+        className="neo-zorus-hero"
+        initial={{ opacity: 0, scale: 0.96 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ type: "spring", stiffness: 300, damping: 25 }}
+      >
+        {/* Left Side: Venture Description & CTAs */}
+        <div>
+          <div className="neo-zorus-badge">{t.badge}</div>
+          <h3 
+            style={{ 
+              fontFamily: "var(--font-syne)", 
+              fontWeight: 900, 
+              fontSize: "clamp(3rem, 6vw, 5.5rem)",
+              lineHeight: 0.95,
+              marginBottom: "16px"
+            }}
+          >
+            {t.title}
+          </h3>
+          <p 
+            style={{ 
+              fontSize: "1.3rem", 
+              fontWeight: 700, 
+              lineHeight: 1.4,
+              marginBottom: "16px",
+              color: "var(--neo-black)" 
+            }}
+          >
+            {t.tagline}
+          </p>
+          <p style={{ fontSize: "1.05rem", opacity: 0.9, marginBottom: "28px", lineHeight: 1.6 }}>
+            {t.desc}
+          </p>
+
+          <motion.button
+            className="neo-btn neo-btn-black"
+            onClick={() => setModalOpen(true)}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            {t.cta}
+          </motion.button>
+        </div>
+
+        {/* Right Side: Pillars Preview Box */}
+        <div className="neo-zorus-preview-box">
+          <div className="neo-badge neo-pink" style={{ alignSelf: "flex-start" }}>
+            // CORE PILLARS
           </div>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={leftInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
-          >
-            <h2 className="zorus-venture-title">
-              Co-founding<br /><em>Zorus</em>
-            </h2>
-          </motion.div>
+
+          <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
+            {t.pillars.map((pillar, idx) => (
+              <motion.div
+                key={idx}
+                className="neo-box neo-box-interactive"
+                style={{
+                  padding: "16px",
+                  backgroundColor: pillar.bg,
+                  color: pillar.textColor || "var(--neo-black)",
+                  borderRadius: "10px"
+                }}
+                whileHover={{ x: -4 }}
+              >
+                <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "4px" }}>
+                  <span className="neo-badge" style={{ background: "#000", color: "#fff", padding: "2px 6px" }}>
+                    {pillar.num}
+                  </span>
+                  <span style={{ fontWeight: 800, fontSize: "1.1rem" }}>{pillar.title}</span>
+                </div>
+                <p style={{ fontSize: "0.9rem", opacity: 0.95 }}>{pillar.desc}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
-        <div className="zorus-left-bottom">
+      </motion.div>
+
+      {/* Modal Drawer Overview */}
+      <AnimatePresence>
+        {modalOpen && (
           <motion.div
+            className="neo-modal-overlay"
             initial={{ opacity: 0 }}
-            animate={leftInView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setModalOpen(false)}
           >
-            <p className="zorus-tagline">
-              {lang === "en"
-                ? "Technology that serves people without getting in the way."
-                : "İnsanlara göze batmadan hizmet eden teknoloji."}
-            </p>
-            <a
-              href="#contact"
-              className="btn-primary"
-              onClick={(e) => { e.preventDefault(); document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }); }}
-            >
-              {lang === "en" ? "Work with us" : "Birlikte çalışalım"}
-            </a>
-          </motion.div>
-        </div>
-        {/* Giant Z */}
-        <div className="zorus-giant-z">Z</div>
-      </div>
-
-      {/* RIGHT — Content panel */}
-      <div className="zorus-right" ref={rightRef} style={{ position: "relative" }}>
-        {/* Hardware mounting screws */}
-        <div className="hardware-screw" style={{ position: "absolute", top: "20px", left: "20px", opacity: 0.5 }} />
-        <div className="hardware-screw" style={{ position: "absolute", top: "20px", right: "20px", opacity: 0.5 }} />
-        <div className="hardware-screw" style={{ position: "absolute", bottom: "20px", left: "20px", opacity: 0.5 }} />
-        <div className="hardware-screw" style={{ position: "absolute", bottom: "20px", right: "20px", opacity: 0.5 }} />
-
-        <motion.div
-          className="zorus-body"
-          initial={{ opacity: 0, x: 30 }}
-          animate={rightInView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
-        >
-          {lang === "en" ? (
-            <>
-              <p>Zorus is the startup I co-founded, built at the crossroads of technology and human ambition. We're working to create tools and systems that don't just automate — they augment.</p>
-              <p>Every decision at Zorus is grounded in the belief that the best technology is invisible — it serves people without getting in the way.</p>
-            </>
-          ) : (
-            <>
-              <p>Zorus, teknoloji ve insan hırsının kesişiminde kurduğumuz girişim. Sadece otomasyon sağlamayan — gerçek anlamda güçlendiren araçlar ve sistemler yaratmak için çalışıyoruz.</p>
-              <p>Zorus'taki her karar, en iyi teknolojinin görünmez olduğuna duyduğumuz inanca dayanıyor.</p>
-            </>
-          )}
-        </motion.div>
-
-        <div className="zorus-pillars">
-          {items.map((p, i) => (
             <motion.div
-              key={i}
-              className="zorus-pillar"
-              initial={{ opacity: 0, x: 20 }}
-              animate={rightInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 + i * 0.12 }}
+              className="neo-modal-content"
+              initial={{ scale: 0.85, y: 30 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.85, y: 30 }}
+              transition={{ type: "spring", stiffness: 350, damping: 25 }}
+              onClick={(e) => e.stopPropagation()}
             >
-              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                <span className="led-light red-on" />
-                <span className="pillar-num">{p.num}</span>
+              <div className="neo-badge neo-yellow" style={{ marginBottom: "12px" }}>
+                ZORUS // INSIGHTS
               </div>
-              <div className="pillar-content" style={{ flex: 1 }}>
-                <div className="pillar-title">{p.title}</div>
-                <div className="pillar-desc">{p.desc}</div>
+              <h3 style={{ fontFamily: "var(--font-syne)", fontSize: "2rem", fontWeight: 800, marginBottom: "16px" }}>
+                {t.modalTitle}
+              </h3>
+              <p style={{ fontSize: "1.1rem", lineHeight: 1.6, marginBottom: "24px" }}>
+                {t.modalText}
+              </p>
+              <div style={{ display: "flex", gap: "12px", marginBottom: "24px" }}>
+                <div className="neo-badge neo-cyan">⚡ 15-MIN ECOSYSTEM</div>
+                <div className="neo-badge neo-lime">🧠 HABIT LOOPS</div>
               </div>
-              <div className="hardware-screw" style={{ opacity: 0.25 }} />
+
+              <motion.button
+                className="neo-btn neo-btn-pink"
+                onClick={() => setModalOpen(false)}
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {t.closeModal}
+              </motion.button>
             </motion.div>
-          ))}
-        </div>
-      </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

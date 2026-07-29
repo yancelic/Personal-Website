@@ -1,108 +1,207 @@
 import { useRef } from "react";
 import { motion } from "framer-motion";
-import { useInView } from "../hooks/useInView";
 import DecryptedText from "../ReactBits/DecryptedText";
 
 const content = {
   en: {
-    label: "Who I Am",
-    title: <>Engineer <em>by training,</em><br />explorer by nature</>,
-    p1: <>I'm <strong>Yankı Muhsin Kılıç</strong>, a Computer Engineering student at Selçuk University and co-founder of <strong>Zorus</strong> — a venture built at the intersection of intelligent systems and real-world problem solving.</>,
-    p2: <>My technical interests span <strong>Machine Learning</strong>, <strong>Game Development</strong>, and <strong>App Development</strong>. But I believe great engineers understand people, not just systems.</>,
-    p3: <>That's why I'm equally passionate about <strong>Psychology</strong> and <strong>body language</strong>. I've performed as a soloist three times, and I play guitar. I'm outgoing, I love deep conversations, and I'm a firm believer that you can understand almost anyone in just 15 minutes — if you listen right.</>,
-    stats: [
-      { num: "3",  sup: "×", label: "Solo\nPerformances" },
-      { num: "1",  sup: "✦", label: "Startup\nCo-founded" },
-      { num: "15", sup: "′", label: "Minutes\nto connect" },
+    sectionNum: "01 // BIO",
+    title: "ENGINEER BY TRAINING, EXPLORER BY NATURE",
+    subtitle: "Merging computer science, entrepreneurial vision, and human psychology.",
+    cards: [
+      {
+        bg: "var(--neo-white)",
+        col: "neo-col-8",
+        icon: "🎓",
+        title: "Selçuk University Computer Engineering '24",
+        text: "Co-founder of Zorus — a venture built at the intersection of intelligent systems, productivity, and real-world impact.",
+        tag: "EDUCATION & VENTURES",
+        tagColor: "var(--neo-yellow)"
+      },
+      {
+        bg: "var(--neo-pink)",
+        textColor: "#fff",
+        col: "neo-col-4",
+        icon: "⚡",
+        title: "The 15-Minute Rule",
+        text: "I believe you can deeply connect with almost anyone in just 15 minutes of genuine listening and observation.",
+        tag: "PHILOSOPHY",
+        tagColor: "#000",
+        tagText: "#fff"
+      },
+      {
+        bg: "var(--neo-cyan)",
+        col: "neo-col-4",
+        icon: "🧠",
+        title: "Psychology & Body Language",
+        text: "Great engineers understand people, not just algorithms. Deeply fascinated by non-verbal communication.",
+        tag: "PASSION",
+        tagColor: "var(--neo-yellow)"
+      },
+      {
+        bg: "var(--neo-lime)",
+        col: "neo-col-8",
+        icon: "🎸",
+        title: "Artist & Soloist",
+        text: "Performed 3 times as a soloist. Guitar player, music enthusiast, and lover of deep, meaningful conversations.",
+        tag: "CREATIVE SIDE",
+        tagColor: "var(--neo-pink)",
+        tagText: "#fff"
+      }
     ],
+    stats: [
+      { num: "3",  sup: "×", label: "SOLO PERFORMANCES" },
+      { num: "1",  sup: "✦", label: "STARTUP CO-FOUNDED" },
+      { num: "15", sup: "MIN", label: "TO CONNECT WITH PEOPLE" },
+    ]
   },
   tr: {
-    label: "Ben Kimim",
-    title: <>Eğitimle <em>mühendis,</em><br />doğayla kaşif</>,
-    p1: <>Ben <strong>Yankı Muhsin Kılıç</strong>, Selçuk Üniversitesi'nde Bilgisayar Mühendisliği öğrencisi ve <strong>Zorus</strong>'un kurucu ortağıyım — zeka sistemleri ile gerçek dünya problem çözümünün kesişiminde inşa edilmiş bir girişim.</>,
-    p2: <>Teknik ilgi alanlarım <strong>Makine Öğrenmesi</strong>, <strong>Oyun Geliştirme</strong> ve <strong>Uygulama Geliştirme</strong>'yi kapsıyor. Ama büyük mühendislerin yalnızca sistemleri değil, insanları da anladığına inanıyorum.</>,
-    p3: <>Bu yüzden <strong>Psikoloji</strong> ve <strong>beden diline</strong> de eşit derecede tutkuyla bağlıyım. Solist olarak üç kez sahne aldım, gitar çalıyorum. Dışa dönük biriyim, derin sohbetleri seviyorum.</>,
-    stats: [
-      { num: "3",  sup: "×", label: "Solo\nPerformans" },
-      { num: "1",  sup: "✦", label: "Kurulan\nStartup" },
-      { num: "15", sup: "Dakikada\nbağ" },
+    sectionNum: "01 // BİYOGRAFİ",
+    title: "EĞİTİMLE MÜHENDİS, DOĞAYLA KAŞİF",
+    subtitle: "Bilgisayar bilimini, girişimci vizyonu ve insan psikolojisini bir araya getiriyorum.",
+    cards: [
+      {
+        bg: "var(--neo-white)",
+        col: "neo-col-8",
+        icon: "🎓",
+        title: "Selçuk Üniversitesi Bilgisayar Mühendisliği '24",
+        text: "Akıllı sistemler, verimlilik ve gerçek dünya etkisi üzerine kurulan Zorus girişiminin kurucu ortağı.",
+        tag: "EĞİTİM & GİRİŞİM",
+        tagColor: "var(--neo-yellow)"
+      },
+      {
+        bg: "var(--neo-pink)",
+        textColor: "#fff",
+        col: "neo-col-4",
+        icon: "⚡",
+        title: "15 Dakika Kuralı",
+        text: "Gerçek bir dinleme ve gözlemle, herkesle 15 dakikada derin bir bağ kurulabileceğine inanıyorum.",
+        tag: "FELSEFE",
+        tagColor: "#000",
+        tagText: "#fff"
+      },
+      {
+        bg: "var(--neo-cyan)",
+        col: "neo-col-4",
+        icon: "🧠",
+        title: "Psikoloji & Beden Dili",
+        text: "İyi mühendisler sadece algoritmaları değil, insanları da anlar. Beden diline ve iletişime tutkuluyum.",
+        tag: "TUTKU",
+        tagColor: "var(--neo-yellow)"
+      },
+      {
+        bg: "var(--neo-lime)",
+        col: "neo-col-8",
+        icon: "🎸",
+        title: "Sanatçı & Solist",
+        text: "Solist olarak 3 kez sahne aldım. Gitarist, müzik sevdalısı ve derin sohbetlerin tutkunuyum.",
+        tag: "YARATICI YÖN",
+        tagColor: "var(--neo-pink)",
+        tagText: "#fff"
+      }
     ],
-  },
+    stats: [
+      { num: "3",  sup: "×", label: "SOLO PERFORMANS" },
+      { num: "1",  sup: "✦", label: "KURULAN STARTUP" },
+      { num: "15", sup: "DK", label: "İNSANLARLA BAĞ KURMA" },
+    ]
+  }
 };
-
-function Reveal({ children, delay = 0, y = 24 }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-  return (
-    <motion.div ref={ref}
-      initial={{ opacity: 0, y }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.8, delay, ease: [0.25, 1, 0.5, 1] }}
-    >{children}</motion.div>
-  );
-}
 
 export default function AboutSection({ lang }) {
   const t = content[lang];
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
 
   return (
-    <section id="about">
-      {/* Large decorative number + title row */}
-      <div className="about-header">
-        <motion.div
-          ref={ref}
-          className="about-number"
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 0.08 } : {}}
-          transition={{ duration: 1.2 }}
-        >01</motion.div>
-        <div className="about-header-right">
-          <div className="section-label" style={{ marginBottom: "1.5rem" }}>{t.label}</div>
-          <motion.h2
-            className="about-section-title"
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.15, ease: [0.25, 1, 0.5, 1] }}
-          >{t.title}</motion.h2>
-        </div>
+    <section id="about" className="neo-section">
+      {/* Section Header */}
+      <div className="neo-section-header">
+        <div className="neo-section-num">{t.sectionNum}</div>
+        <h2 className="neo-section-title">{t.title}</h2>
       </div>
 
-      {/* Content: text left, stats right */}
-      <div className="about-content">
-        <Reveal delay={0.2}>
-          <div className="about-text">
-            <p>{t.p1}</p>
-            <p>{t.p2}</p>
-            <p>{t.p3}</p>
-          </div>
-        </Reveal>
-
-        <Reveal delay={0.35}>
-          <div className="about-stats">
-            {t.stats.map((s, i) => (
-              <div className="about-stat-row" key={i}>
-                <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                  <div className="hardware-screw" style={{ opacity: 0.35 }} />
-                  <div className="stat-num crt-display" style={{ 
-                    padding: "8px 18px", 
-                    borderRadius: "6px", 
-                    border: "2px solid #1a1a22",
-                    fontSize: "2.4rem"
-                  }}>
-                    <DecryptedText text={s.num} speed={60} />
-                    <span style={{ color: "var(--red)", fontSize: "1.5rem", marginLeft: "2px" }}>{s.sup}</span>
-                  </div>
-                </div>
-                <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                  <div className="stat-label" style={{ whiteSpace: "pre-line" }}>{s.label}</div>
-                  <div className="hardware-screw" style={{ opacity: 0.35 }} />
-                </div>
+      {/* Bento Grid Layout */}
+      <div className="neo-bento-grid" style={{ marginBottom: "36px" }}>
+        {t.cards.map((card, idx) => (
+          <motion.div
+            key={idx}
+            className={`neo-box neo-box-interactive neo-bento-card ${card.col}`}
+            style={{
+              backgroundColor: card.bg,
+              color: card.textColor || "var(--neo-black)"
+            }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ type: "spring", stiffness: 300, damping: 24, delay: idx * 0.1 }}
+          >
+            <div>
+              <div className="neo-bento-icon">{card.icon}</div>
+              <div
+                className="neo-badge"
+                style={{
+                  backgroundColor: card.tagColor,
+                  color: card.tagText || "var(--neo-black)",
+                  marginBottom: "14px"
+                }}
+              >
+                {card.tag}
               </div>
-            ))}
-          </div>
-        </Reveal>
+              <h3 style={{ fontSize: "1.4rem", fontWeight: 800, marginBottom: "8px" }}>
+                {card.title}
+              </h3>
+              <p style={{ opacity: 0.9, fontSize: "1.05rem", lineHeight: 1.5 }}>
+                {card.text}
+              </p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Stats Cards Row */}
+      <div className="neo-bento-grid">
+        {t.stats.map((stat, i) => (
+          <motion.div
+            key={i}
+            className="neo-box neo-col-4"
+            style={{
+              padding: "24px",
+              display: "flex",
+              alignItems: "center",
+              gap: "20px",
+              background: "var(--neo-yellow)"
+            }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ type: "spring", stiffness: 300, damping: 20, delay: i * 0.1 }}
+          >
+            <div
+              style={{
+                fontFamily: "var(--font-syne)",
+                fontWeight: 900,
+                fontSize: "3.2rem",
+                lineHeight: 1,
+                display: "flex",
+                alignItems: "baseline"
+              }}
+            >
+              <DecryptedText text={stat.num} speed={50} />
+              <span style={{ color: "var(--neo-pink)", fontSize: "2rem", marginLeft: "4px" }}>
+                {stat.sup}
+              </span>
+            </div>
+            <div
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontWeight: 800,
+                fontSize: "0.85rem",
+                textTransform: "uppercase",
+                lineHeight: 1.3
+              }}
+            >
+              {stat.label}
+            </div>
+          </motion.div>
+        ))}
       </div>
     </section>
   );

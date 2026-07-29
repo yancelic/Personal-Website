@@ -1,8 +1,6 @@
 import { useState } from "react";
-import LineWaves from "./components/ReactBits/LineWaves";
-import ParticleCursor from "./components/ReactBits/ParticleCursor";
+import NeoCursor from "./components/ReactBits/NeoCursor";
 import Dock from "./components/ReactBits/Dock";
-import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import HeroSection from "./components/sections/HeroSection";
 import AboutSection from "./components/sections/AboutSection";
@@ -12,27 +10,28 @@ import BeyondSection from "./components/sections/BeyondSection";
 import ContactSection from "./components/sections/ContactSection";
 
 const marqueeItems = {
-  en: ["Machine Learning", "App Development", "Game Development", "Psychology", "Music", "Zorus", "15 Minutes", "Body Language", "Guitar", "React", "Python", "Unreal Engine"],
-  tr: ["Makine Öğrenmesi", "Uygulama Geliştirme", "Oyun Geliştirme", "Psikoloji", "Müzik", "Zorus", "15 Dakika", "Beden Dili", "Gitar", "React", "Python", "Unreal Engine"],
+  en: ["MACHINE LEARNING", "APP DEVELOPMENT", "GAME DEVELOPMENT", "PSYCHOLOGY", "MUSIC & GUITAR", "ZORUS VENTURE", "15-MINUTE METHOD", "UNREAL ENGINE", "REACT 19", "PYTHON"],
+  tr: ["MAKİNE ÖĞRENMESİ", "UYGULAMA GELİŞTİRME", "OYUN GELİŞTİRME", "PSİKOLOJİ", "MÜZİK & GİTAR", "ZORUS GİRİŞİMİ", "15 DAKİKA METODU", "UNREAL ENGINE", "REACT 19", "PYTHON"],
 };
 
 const dockItems = (lang) => [
-  { label: lang === "en" ? "About"     : "Hakkımda", icon: "◉", onClick: () => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" }) },
-  { label: lang === "en" ? "Expertise" : "Uzmanlık", icon: "◈", onClick: () => document.getElementById("expertise")?.scrollIntoView({ behavior: "smooth" }) },
-  { label: "Zorus",                                   icon: "Z", onClick: () => document.getElementById("zorus")?.scrollIntoView({ behavior: "smooth" }) },
-  { label: lang === "en" ? "Beyond"    : "Ötesi",    icon: "♪", onClick: () => document.getElementById("beyond")?.scrollIntoView({ behavior: "smooth" }) },
+  { label: lang === "en" ? "Hero"      : "Giriş",    icon: "⚡", onClick: () => window.scrollTo({ top: 0, behavior: "smooth" }) },
+  { label: lang === "en" ? "About"     : "Hakkımda", icon: "👤", onClick: () => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" }) },
+  { label: lang === "en" ? "Expertise" : "Uzmanlık", icon: "🛠", onClick: () => document.getElementById("expertise")?.scrollIntoView({ behavior: "smooth" }) },
+  { label: "Zorus",                                   icon: "🚀", onClick: () => document.getElementById("zorus")?.scrollIntoView({ behavior: "smooth" }) },
+  { label: lang === "en" ? "Beyond"    : "Ötesi",    icon: "🎸", onClick: () => document.getElementById("beyond")?.scrollIntoView({ behavior: "smooth" }) },
   { label: lang === "en" ? "Contact"   : "İletişim", icon: "✉", onClick: () => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }) },
 ];
 
-function MarqueeStrip({ lang }) {
+function NeoMarquee({ lang, pinkMode = false }) {
   const items = marqueeItems[lang];
-  const doubled = [...items, ...items];
+  const doubled = [...items, ...items, ...items];
   return (
-    <div className="marquee-strip">
-      <div className="marquee-inner">
+    <div className={`neo-marquee-wrap ${pinkMode ? "pink-mode" : ""}`}>
+      <div className="neo-marquee-track">
         {doubled.map((item, i) => (
-          <span key={i} className="marquee-item">
-            <span className="marquee-dot glowing-led" />
+          <span key={i} className="neo-marquee-item">
+            <span className="neo-marquee-star">★</span>
             {item}
           </span>
         ))}
@@ -46,14 +45,13 @@ export default function App() {
 
   return (
     <>
-      <LineWaves lineColor="rgba(225,29,72,0.05)" waveCount={5} amplitude={45} speed={0.28} />
-      <ParticleCursor />
-      <Navbar lang={lang} setLang={setLang} />
+      <NeoCursor />
 
-      <main>
+      <main style={{ paddingTop: "20px" }}>
         <HeroSection lang={lang} />
-        <MarqueeStrip lang={lang} />
+        <NeoMarquee lang={lang} />
         <AboutSection lang={lang} />
+        <NeoMarquee lang={lang} pinkMode={true} />
         <ExpertiseSection lang={lang} />
         <ZorusSection lang={lang} />
         <BeyondSection lang={lang} />
@@ -61,7 +59,7 @@ export default function App() {
       </main>
 
       <Footer lang={lang} />
-      <Dock items={dockItems(lang)} />
+      <Dock items={dockItems(lang)} lang={lang} setLang={setLang} />
     </>
   );
 }

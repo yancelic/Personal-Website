@@ -1,24 +1,37 @@
 import { motion } from "framer-motion";
-import { useEffect, useRef } from "react";
 import RotatingText from "../ReactBits/RotatingText";
 import TextType from "../ReactBits/TextType";
 
 const content = {
   en: {
-    label: "Computer Engineer · Entrepreneur · Artist",
-    subtitle: "Building things that matter — with code, music, and the quiet power of 15 minutes.",
-    cta1: "Explore Zorus",
-    cta2: "Let's Talk",
-    scroll: "Scroll",
-    roles: ["Engineer", "Entrepreneur", "Artist"],
+    badge: "CS ENGINEER '24 // ENTREPRENEUR // ARTIST",
+    subtitle: "Building high-impact software, habit ecosystems & creative ventures — driven by code, music, and the 15-minute methodology.",
+    cta1: "EXPLORE ZORUS 🚀",
+    cta2: "LET'S TALK ✉",
+    statusTitle: "CURRENT STATUS",
+    statusText: "Building Zorus & Exploring AI Agent Architectures",
+    roles: ["COMPUTER ENGINEER", "ENTREPRENEUR", "CREATIVE ARTIST"],
+    stickers: [
+      { text: "⚡ 15-MIN METHOD", color: "var(--neo-yellow)", rotate: "-4deg" },
+      { text: "🎯 SELÇUK CS '24", color: "var(--neo-pink)", colorText: "#fff", rotate: "3deg" },
+      { text: "🎸 MUSIC & GEAR", color: "var(--neo-cyan)", rotate: "-2deg" },
+      { text: "🧠 PSYCHOLOGY", color: "var(--neo-lime)", rotate: "5deg" },
+    ]
   },
   tr: {
-    label: "Bilgisayar Mühendisi · Girişimci · Sanatçı",
-    subtitle: "Kodun, müziğin ve 15 dakikanın sessiz gücüyle; fark yaratan değerler inşa etmek.",
-    cta1: "Zorus'u Keşfet",
-    cta2: "Konuşalım",
-    scroll: "Kaydır",
-    roles: ["Mühendis", "Girişimci", "Sanatçı"],
+    badge: "BİLGİSAYAR MÜHENDİSİ '24 // GİRİŞİMCİ // SANATÇI",
+    subtitle: "Kodun, müziğin ve 15 dakikanın sessiz gücüyle; yüksek etki yaratan yazılımlar ve girişimler inşa etmek.",
+    cta1: "ZORUS'U KEŞFET 🚀",
+    cta2: "KONUŞALIM ✉",
+    statusTitle: "GÜNCEL DURUM",
+    statusText: "Zorus Uygulamasını & Yapay Zeka Mimarilerini Geliştiriyor",
+    roles: ["BİLGİSAYAR MÜHENDİSİ", "GİRİŞİMCİ", "YARATICI SANATÇI"],
+    stickers: [
+      { text: "⚡ 15-DAKİKA METODU", color: "var(--neo-yellow)", rotate: "-4deg" },
+      { text: "🎯 SELÇUK BİLG '24", color: "var(--neo-pink)", colorText: "#fff", rotate: "3deg" },
+      { text: "🎸 MÜZİK & EKİPMAN", color: "var(--neo-cyan)", rotate: "-2deg" },
+      { text: "🧠 PSİKOLOJİ", color: "var(--neo-lime)", rotate: "5deg" },
+    ]
   },
 };
 
@@ -26,97 +39,154 @@ export default function HeroSection({ lang }) {
   const t = content[lang];
 
   return (
-    <section id="hero">
-      {/* Faint grid */}
-      <div className="hero-bg-grid" />
-
-      {/* Top bar — role badge + index */}
+    <section id="hero" className="neo-hero">
+      {/* Top Badge & Sticker Bar */}
       <motion.div
-        className="hero-topbar"
-        initial={{ opacity: 0, y: -10 }}
+        className="neo-hero-top"
+        initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.4 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <div className="hardware-screw" />
-          <div className="hero-role-badge crt-display" style={{ border: "2px solid #1a1a20", borderRadius: "6px" }}>
-            <RotatingText texts={t.roles} interval={3500} />
-          </div>
+        <div className="neo-badge neo-yellow" style={{ fontSize: "0.85rem", padding: "8px 16px" }}>
+          <span>🚀</span>
+          <span>{t.badge}</span>
         </div>
-        <div className="hero-index" style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <span>Selçuk University · 2024</span>
-          <div className="hardware-screw" />
+
+        {/* Rotating Roles Badge */}
+        <div className="neo-badge neo-pink" style={{ fontSize: "0.85rem", padding: "8px 16px" }}>
+          <RotatingText texts={t.roles} interval={3000} />
         </div>
       </motion.div>
 
-      {/* Giant typographic name */}
-      <div className="hero-name-block">
-        <motion.span
-          className="hero-name-line italic"
-          initial={{ opacity: 0, x: -40 }}
+      {/* Main Name & Title Block */}
+      <div className="neo-hero-title-wrap">
+        <motion.h1
+          className="neo-hero-name"
+          initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ type: "spring", stiffness: 300, damping: 25, delay: 0.2 }}
         >
-          Yankı
-        </motion.span>
-        <motion.span
-          className="hero-name-line"
-          initial={{ opacity: 0, x: -40 }}
+          YANKI
+        </motion.h1>
+
+        <motion.h1
+          className="neo-hero-name highlight-yellow"
+          initial={{ opacity: 0, scale: 0.9, rotate: -3 }}
+          animate={{ opacity: 1, scale: 1, rotate: -1 }}
+          transition={{ type: "spring", stiffness: 350, damping: 22, delay: 0.35 }}
+        >
+          MUHSIN
+        </motion.h1>
+
+        <motion.h1
+          className="neo-hero-name outline-text"
+          initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.9, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ type: "spring", stiffness: 300, damping: 25, delay: 0.5 }}
         >
-          Muhsin
-        </motion.span>
-        <motion.span
-          className="hero-name-line outline"
-          initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.9, delay: 0.34, ease: [0.22, 1, 0.36, 1] }}
-        >
-          Kılıç
-        </motion.span>
+          KILIÇ
+        </motion.h1>
       </div>
 
-      {/* Bottom bar — subtitle + CTA */}
-      <motion.div
-        className="hero-bottom"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.8 }}
-      >
-        <p className="hero-subtitle">
-          <TextType text={t.subtitle} speed={28} />
-        </p>
-        <div className="hero-cta">
-          <a
-            href="#zorus"
-            className="btn-primary"
-            onClick={(e) => { e.preventDefault(); document.getElementById("zorus")?.scrollIntoView({ behavior: "smooth" }); }}
-          >{t.cta1}</a>
-          <a
-            href="#contact"
-            className="btn-outline"
-            onClick={(e) => { e.preventDefault(); document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }); }}
-          >{t.cta2}</a>
-        </div>
-      </motion.div>
+      {/* Hero Grid - Cards & Interactive Elements */}
+      <div className="neo-hero-grid">
+        {/* Main Subtitle & CTA Card */}
+        <motion.div
+          className="neo-box neo-hero-card-main"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ type: "spring", stiffness: 280, damping: 24, delay: 0.6 }}
+        >
+          <div>
+            <div 
+              className="neo-badge neo-cyan" 
+              style={{ marginBottom: "16px", display: "inline-flex" }}
+            >
+              // ABOUT ME
+            </div>
+            <p className="neo-hero-subtitle">
+              <TextType text={t.subtitle} speed={22} />
+            </p>
+          </div>
 
-      {/* Scroll hint slider */}
-      <motion.div
-        className="hero-scroll-hint"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.6, duration: 0.8 }}
-      >
-        <div className="scroll-slider-well">
-          <motion.div 
-            className="scroll-slider-handle"
-            animate={{ y: [2, 16, 2] }}
-            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-          />
-        </div>
-        <span>{t.scroll}</span>
-      </motion.div>
+          <div className="neo-hero-cta-group">
+            <motion.a
+              href="#zorus"
+              className="neo-btn"
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("zorus")?.scrollIntoView({ behavior: "smooth" });
+              }}
+            >
+              {t.cta1}
+            </motion.a>
+
+            <motion.a
+              href="#contact"
+              className="neo-btn neo-btn-pink"
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+              }}
+            >
+              {t.cta2}
+            </motion.a>
+          </div>
+        </motion.div>
+
+        {/* Sidebar Status & Interactive Drag Stickers Card */}
+        <motion.div
+          className="neo-hero-sidebar"
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ type: "spring", stiffness: 280, damping: 24, delay: 0.75 }}
+        >
+          {/* Status Box */}
+          <div className="neo-box neo-sidebar-card neo-lime">
+            <div style={{ display: "flex", alignItems: "center", justifyBetween: "space-between", gap: "8px" }}>
+              <span className="neo-pulse-dot" style={{ background: "#000" }} />
+              <span className="neo-label" style={{ color: "#000" }}>{t.statusTitle}</span>
+            </div>
+            <p style={{ fontWeight: 800, fontSize: "1.05rem", lineHeight: 1.4 }}>
+              {t.statusText}
+            </p>
+          </div>
+
+          {/* Draggable Interactive Stickers */}
+          <div 
+            className="neo-box neo-sidebar-card"
+            style={{ position: "relative", minHeight: "160px", background: "var(--neo-bg-alt)", overflow: "hidden" }}
+          >
+            <span className="neo-label" style={{ fontSize: "0.75rem", marginBottom: "8px" }}>
+              ⚡ DRAG & EXPLORE TAGS:
+            </span>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
+              {t.stickers.map((stk, i) => (
+                <motion.div
+                  key={i}
+                  drag
+                  dragConstraints={{ left: -10, right: 10, top: -10, bottom: 10 }}
+                  className="neo-sticker"
+                  style={{
+                    backgroundColor: stk.color,
+                    color: stk.colorText || "var(--neo-black)",
+                    transform: `rotate(${stk.rotate})`,
+                    cursor: "grab",
+                  }}
+                  whileHover={{ scale: 1.1, rotate: 0 }}
+                  whileTap={{ cursor: "grabbing", scale: 0.95 }}
+                >
+                  {stk.text}
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+      </div>
     </section>
   );
 }
