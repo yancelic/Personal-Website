@@ -62,19 +62,19 @@ export default function HeroSection({ lang }) {
       {/* Main Name & Title Block */}
       <div className="neo-hero-title-wrap">
         <motion.h1
-          className="neo-hero-name"
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ type: "spring", stiffness: 300, damping: 25, delay: 0.2 }}
+          className="neo-hero-name highlight-yellow"
+          initial={{ opacity: 0, scale: 0.9, rotate: -3 }}
+          animate={{ opacity: 1, scale: 1, rotate: -1 }}
+          transition={{ type: "spring", stiffness: 350, damping: 22, delay: 0.2 }}
         >
           YANKI
         </motion.h1>
 
         <motion.h1
-          className="neo-hero-name highlight-yellow"
-          initial={{ opacity: 0, scale: 0.9, rotate: -3 }}
-          animate={{ opacity: 1, scale: 1, rotate: -1 }}
-          transition={{ type: "spring", stiffness: 350, damping: 22, delay: 0.35 }}
+          className="neo-hero-name"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ type: "spring", stiffness: 300, damping: 25, delay: 0.35 }}
         >
           MUHSIN
         </motion.h1>
