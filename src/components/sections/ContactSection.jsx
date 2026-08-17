@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { GithubIcon, LinkedinIcon, InstagramIcon, CopyIcon, SparkIcon, MailIcon } from "../common/Icons";
 
 const socials = [
-  { label: "GITHUB", href: "https://github.com/EchoKatana", icon: "🐙", color: "var(--neo-yellow)" },
-  { label: "LINKEDIN", href: "https://www.linkedin.com/in/myankilic/", icon: "💼", color: "var(--neo-cyan)" },
-  { label: "INSTAGRAM", href: "https://instagram.com/yankeelic", icon: "📸", color: "var(--neo-pink)", textColor: "#fff" },
+  { label: "GITHUB", href: "https://github.com/yancelic", icon: <GithubIcon size={18} color="#0D0D11" />, color: "var(--neo-yellow)" },
+  { label: "LINKEDIN", href: "https://www.linkedin.com/in/myankilic/", icon: <LinkedinIcon size={18} color="#0D0D11" />, color: "var(--neo-cyan)" },
+  { label: "INSTAGRAM", href: "https://instagram.com/yankeelic", icon: <InstagramIcon size={18} color="#fff" />, color: "var(--neo-pink)", textColor: "#fff" },
 ];
 
 const content = {
@@ -13,27 +14,27 @@ const content = {
     title: "LET'S BUILD SOMETHING REMARKABLE",
     quote: "I'm always open to ambitious projects, startup ventures, and ideas that don't quite fit in a box.",
     emailText: "myanki.work@gmail.com",
-    copyBtn: "COPY EMAIL 📋",
-    copiedText: "COPIED TO CLIPBOARD! ⚡",
+    copyBtn: "COPY EMAIL",
+    copiedText: "COPIED TO CLIPBOARD!",
     formTitle: "DIRECT MESSAGE // HIT ME UP",
     nameLabel: "YOUR NAME",
     emailLabel: "YOUR EMAIL",
     msgLabel: "YOUR MESSAGE",
-    submitBtn: "SEND MESSAGE 🚀",
+    submitBtn: "SEND MESSAGE",
     submittedMsg: "MESSAGE SENT! THANK YOU!"
   },
   tr: {
     sectionNum: "05 // İLETİŞİME GEÇ",
     title: "BİRLİKTE OLAĞANÜSTÜ BİR ŞEY İNŞA EDELİM",
-    quote: "Her zaman iddalı projelere, girişimlere ve bir kutuya tam sığmayan fikirlere açığım.",
+    quote: "Her zaman iddialı projelere, girişimlere ve bir kutuya tam sığmayan fikirlere açığım.",
     emailText: "myanki.work@gmail.com",
-    copyBtn: "E-POSTAYI KOPYALA 📋",
-    copiedText: "PANOTE KOPYALANDI! ⚡",
+    copyBtn: "E-POSTAYI KOPYALA",
+    copiedText: "PANOTE KOPYALANDI!",
     formTitle: "DİREKT MESAJ // BANA ULAŞIN",
     nameLabel: "ADINIZ",
     emailLabel: "E-POSTA ADRESİNİZ",
     msgLabel: "MESAJINIZ",
-    submitBtn: "MESAJI GÖNDER 🚀",
+    submitBtn: "MESAJI GÖNDER",
     submittedMsg: "MESAJ GÖNDERİLDİ! TEŞEKKÜRLER!"
   }
 };
@@ -94,8 +95,10 @@ export default function ContactSection({ lang }) {
               onClick={handleCopy}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}
             >
-              {copied ? t.copiedText : t.copyBtn}
+              <CopyIcon size={18} color="#fff" />
+              <span>{copied ? t.copiedText : t.copyBtn}</span>
             </motion.button>
           </div>
 
@@ -111,10 +114,13 @@ export default function ContactSection({ lang }) {
                 target="_blank"
                 rel="noreferrer"
                 className="neo-social-btn"
-                style={{ background: s.color, color: s.textColor || "var(--neo-black)" }}
+                style={{ background: s.color, color: s.textColor || "var(--neo-black)", display: "flex", alignItems: "center", justifyContent: "space-between" }}
                 whileHover={{ x: 6 }}
               >
-                <span>{s.icon} {s.label}</span>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: "10px" }}>
+                  {s.icon}
+                  <span>{s.label}</span>
+                </span>
                 <span>↗</span>
               </motion.a>
             ))}
@@ -174,11 +180,12 @@ export default function ContactSection({ lang }) {
           <motion.button
             type="submit"
             className="neo-btn"
-            style={{ width: "100%", background: "var(--neo-lime)" }}
+            style={{ width: "100%", background: "var(--neo-lime)", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "8px" }}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.96 }}
           >
-            {submitted ? t.submittedMsg : t.submitBtn}
+            <MailIcon size={18} />
+            <span>{submitted ? t.submittedMsg : t.submitBtn}</span>
           </motion.button>
         </motion.form>
       </div>
@@ -191,8 +198,10 @@ export default function ContactSection({ lang }) {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 50 }}
+            style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}
           >
-            ⚡ {t.copiedText}
+            <SparkIcon size={16} />
+            <span>{t.copiedText}</span>
           </motion.div>
         )}
       </AnimatePresence>

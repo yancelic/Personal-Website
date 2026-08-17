@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { SparkIcon, RocketIcon, BrainIcon } from "../common/Icons";
 
 const content = {
   en: {
@@ -10,10 +11,10 @@ const content = {
     desc: "Zorus is the startup I co-founded. We develop habit-building ecosystems, productivity tools, and intelligent software that seamlessly integrates into daily lives.",
     pillars: [
       { num: "01", title: "INTELLIGENCE", desc: "AI & ML-powered habit tracking algorithms", bg: "var(--neo-yellow)" },
-      { num: "02", title: "EXPERIENCE", desc: "Zahmetsiz & zero-friction user interfaces", bg: "var(--neo-cyan)" },
+      { num: "02", title: "EXPERIENCE", desc: "Fast & zero-friction user interfaces", bg: "var(--neo-cyan)" },
       { num: "03", title: "REAL IMPACT", desc: "Measurable growth & behavior science", bg: "var(--neo-pink)", textColor: "#fff" }
     ],
-    cta: "EXPLORE VENTURE DETAILS ⚡",
+    cta: "EXPLORE VENTURE DETAILS",
     modalTitle: "Zorus Venture Overview",
     modalText: "Zorus is built on the philosophy that the best technology is invisible — it amplifies your capabilities while respecting your focus. Designed with precision UX and robust software architecture.",
     closeModal: "CLOSE MODAL ✕"
@@ -29,7 +30,7 @@ const content = {
       { num: "02", title: "DENEYİM", desc: "Zahmetsiz ve yüksek hızlı kullanıcı arayüzleri", bg: "var(--neo-cyan)" },
       { num: "03", title: "GERÇEK ETKİ", desc: "Ölçülebilir gelişim & davranış bilimi", bg: "var(--neo-pink)", textColor: "#fff" }
     ],
-    cta: "GİRİŞİM DETAYLARINI KEŞFET ⚡",
+    cta: "GİRİŞİM DETAYLARINI KEŞFET",
     modalTitle: "Zorus Girişim Özeti",
     modalText: "Zorus, en iyi teknolojinin görünmez olduğu felsefesi üzerine kuruludur — odağınıza saygı duyarak yeteneklerinizi artırır. Hassas UX ve güçlü yazılım mimarisiyle tasarlanmıştır.",
     closeModal: "MODALI KAPAT ✕"
@@ -90,8 +91,10 @@ export default function ZorusSection({ lang }) {
             onClick={() => setModalOpen(true)}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}
           >
-            {t.cta}
+            <SparkIcon size={18} />
+            <span>{t.cta}</span>
           </motion.button>
         </div>
 
@@ -154,9 +157,15 @@ export default function ZorusSection({ lang }) {
               <p style={{ fontSize: "1.1rem", lineHeight: 1.6, marginBottom: "24px" }}>
                 {t.modalText}
               </p>
-              <div style={{ display: "flex", gap: "12px", marginBottom: "24px" }}>
-                <div className="neo-badge neo-cyan">⚡ 15-MIN ECOSYSTEM</div>
-                <div className="neo-badge neo-lime">🧠 HABIT LOOPS</div>
+              <div style={{ display: "flex", gap: "12px", marginBottom: "24px", flexWrap: "wrap" }}>
+                <div className="neo-badge neo-cyan" style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}>
+                  <SparkIcon size={14} />
+                  <span>15-MIN ECOSYSTEM</span>
+                </div>
+                <div className="neo-badge neo-lime" style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}>
+                  <BrainIcon size={14} />
+                  <span>HABIT LOOPS</span>
+                </div>
               </div>
 
               <motion.button

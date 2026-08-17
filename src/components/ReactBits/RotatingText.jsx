@@ -3,12 +3,11 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function RotatingText({
   texts = [],
-  interval = 4500,
+  interval = 3000,
   className = "",
   style = {},
 }) {
   const [index, setIndex] = useState(0);
-  // Use a ref to store texts so the interval doesn't restart on every re-render
   const textsRef = useRef(texts);
   textsRef.current = texts;
 
@@ -18,17 +17,16 @@ export default function RotatingText({
       setIndex((i) => (i + 1) % textsRef.current.length);
     }, interval);
     return () => clearInterval(t);
-    // Only depend on interval, not texts array reference
   }, [interval]);
 
   return (
     <span
       style={{
-        display: "inline-block",
+        display: "inline-flex",
+        alignItems: "center",
         position: "relative",
         overflow: "hidden",
-        minWidth: "6em",
-        verticalAlign: "bottom",
+        verticalAlign: "middle",
         ...style,
       }}
       className={className}
@@ -36,11 +34,11 @@ export default function RotatingText({
       <AnimatePresence mode="wait">
         <motion.span
           key={index}
-          style={{ display: "inline-block" }}
+          style={{ display: "inline-block", color: "inherit", fontWeight: "inherit" }}
           initial={{ y: "100%", opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: "-100%", opacity: 0 }}
-          transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
         >
           {textsRef.current[index]}
         </motion.span>

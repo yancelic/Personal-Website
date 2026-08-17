@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { motion } from "framer-motion";
 import DecryptedText from "../ReactBits/DecryptedText";
+import { AcademicIcon, SparkIcon, BrainIcon, MusicIcon } from "../common/Icons";
 
 const content = {
   en: {
@@ -11,7 +12,7 @@ const content = {
       {
         bg: "var(--neo-white)",
         col: "neo-col-8",
-        icon: "🎓",
+        icon: <AcademicIcon size={26} />,
         title: "Selçuk University Computer Engineering '24",
         text: "Co-founder of Zorus — a venture built at the intersection of intelligent systems, productivity, and real-world impact.",
         tag: "EDUCATION & VENTURES",
@@ -21,7 +22,7 @@ const content = {
         bg: "var(--neo-pink)",
         textColor: "#fff",
         col: "neo-col-4",
-        icon: "⚡",
+        icon: <SparkIcon size={26} color="#fff" />,
         title: "The 15-Minute Rule",
         text: "I believe you can deeply connect with almost anyone in just 15 minutes of genuine listening and observation.",
         tag: "PHILOSOPHY",
@@ -31,7 +32,7 @@ const content = {
       {
         bg: "var(--neo-cyan)",
         col: "neo-col-4",
-        icon: "🧠",
+        icon: <BrainIcon size={26} />,
         title: "Psychology & Body Language",
         text: "Great engineers understand people, not just algorithms. Deeply fascinated by non-verbal communication.",
         tag: "PASSION",
@@ -40,7 +41,7 @@ const content = {
       {
         bg: "var(--neo-lime)",
         col: "neo-col-8",
-        icon: "🎸",
+        icon: <MusicIcon size={26} />,
         title: "Artist & Soloist",
         text: "Performed 3 times as a soloist. Guitar player, music enthusiast, and lover of deep, meaningful conversations.",
         tag: "CREATIVE SIDE",
@@ -62,7 +63,7 @@ const content = {
       {
         bg: "var(--neo-white)",
         col: "neo-col-8",
-        icon: "🎓",
+        icon: <AcademicIcon size={26} />,
         title: "Selçuk Üniversitesi Bilgisayar Mühendisliği '24",
         text: "Akıllı sistemler, verimlilik ve gerçek dünya etkisi üzerine kurulan Zorus girişiminin kurucu ortağı.",
         tag: "EĞİTİM & GİRİŞİM",
@@ -72,7 +73,7 @@ const content = {
         bg: "var(--neo-pink)",
         textColor: "#fff",
         col: "neo-col-4",
-        icon: "⚡",
+        icon: <SparkIcon size={26} color="#fff" />,
         title: "15 Dakika Kuralı",
         text: "Gerçek bir dinleme ve gözlemle, herkesle 15 dakikada derin bir bağ kurulabileceğine inanıyorum.",
         tag: "FELSEFE",
@@ -82,7 +83,7 @@ const content = {
       {
         bg: "var(--neo-cyan)",
         col: "neo-col-4",
-        icon: "🧠",
+        icon: <BrainIcon size={26} />,
         title: "Psikoloji & Beden Dili",
         text: "İyi mühendisler sadece algoritmaları değil, insanları da anlar. Beden diline ve iletişime tutkuluyum.",
         tag: "TUTKU",
@@ -91,7 +92,7 @@ const content = {
       {
         bg: "var(--neo-lime)",
         col: "neo-col-8",
-        icon: "🎸",
+        icon: <MusicIcon size={26} />,
         title: "Sanatçı & Solist",
         text: "Solist olarak 3 kez sahne aldım. Gitarist, müzik sevdalısı ve derin sohbetlerin tutkunuyum.",
         tag: "YARATICI YÖN",
@@ -134,7 +135,9 @@ export default function AboutSection({ lang }) {
             transition={{ type: "spring", stiffness: 300, damping: 24, delay: idx * 0.1 }}
           >
             <div>
-              <div className="neo-bento-icon">{card.icon}</div>
+              <div className="neo-bento-icon" style={{ display: "flex", alignItems: "center", marginBottom: "12px" }}>
+                {card.icon}
+              </div>
               <div
                 className="neo-badge"
                 style={{

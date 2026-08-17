@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, useSpring, useMotionValue } from "framer-motion";
+import { SparkIcon } from "../common/Icons";
 
 export default function NeoCursor() {
   const cursorX = useMotionValue(-100);
@@ -23,12 +24,12 @@ export default function NeoCursor() {
     const handleMouseUp = () => setIsClicked(false);
 
     const handleMouseOver = (e) => {
-      const target = e.target.closest("a, button, .neo-box-interactive, .floating-sticker, input, textarea");
+      const target = e.target.closest("a, button, .neo-box-interactive, .neo-sticker, input, textarea");
       if (target) {
         setIsHovered(true);
         if (target.tagName === "A" || target.tagName === "BUTTON") {
           setHoverText("CLICK");
-        } else if (target.classList.contains("floating-sticker")) {
+        } else if (target.classList.contains("neo-sticker")) {
           setHoverText("DRAG");
         } else {
           setHoverText("EXPLORE");
@@ -73,7 +74,7 @@ export default function NeoCursor() {
       >
         <motion.div
           animate={{
-            width: isHovered ? 80 : 36,
+            width: isHovered ? 84 : 36,
             height: isHovered ? 36 : 36,
             borderRadius: isHovered ? 12 : 50,
             scale: isClicked ? 0.8 : 1,
@@ -95,7 +96,7 @@ export default function NeoCursor() {
             userSelect: "none"
           }}
         >
-          {isHovered ? hoverText : "⚡"}
+          {isHovered ? hoverText : <SparkIcon size={16} color="#0D0D11" strokeWidth={3} />}
         </motion.div>
       </motion.div>
 

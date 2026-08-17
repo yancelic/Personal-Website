@@ -1,36 +1,37 @@
 import { motion } from "framer-motion";
 import RotatingText from "../ReactBits/RotatingText";
 import TextType from "../ReactBits/TextType";
+import { SparkIcon, AcademicIcon, MusicIcon, BrainIcon, RocketIcon, MailIcon } from "../common/Icons";
 
 const content = {
   en: {
     badge: "CS ENGINEER '24 // ENTREPRENEUR // ARTIST",
     subtitle: "Building high-impact software, habit ecosystems & creative ventures — driven by code, music, and the 15-minute methodology.",
-    cta1: "EXPLORE ZORUS 🚀",
-    cta2: "LET'S TALK ✉",
+    cta1: "EXPLORE ZORUS",
+    cta2: "LET'S TALK",
     statusTitle: "CURRENT STATUS",
     statusText: "Building Zorus & Exploring AI Agent Architectures",
     roles: ["COMPUTER ENGINEER", "ENTREPRENEUR", "CREATIVE ARTIST"],
     stickers: [
-      { text: "⚡ 15-MIN METHOD", color: "var(--neo-yellow)", rotate: "-4deg" },
-      { text: "🎯 SELÇUK CS '24", color: "var(--neo-pink)", colorText: "#fff", rotate: "3deg" },
-      { text: "🎸 MUSIC & GEAR", color: "var(--neo-cyan)", rotate: "-2deg" },
-      { text: "🧠 PSYCHOLOGY", color: "var(--neo-lime)", rotate: "5deg" },
+      { text: "15-MIN METHOD", icon: <SparkIcon size={14} />, color: "var(--neo-yellow)", rotate: "-4deg" },
+      { text: "SELÇUK CS '24", icon: <AcademicIcon size={14} />, color: "var(--neo-pink)", colorText: "#fff", rotate: "3deg" },
+      { text: "MUSIC & GEAR", icon: <MusicIcon size={14} />, color: "var(--neo-cyan)", rotate: "-2deg" },
+      { text: "PSYCHOLOGY", icon: <BrainIcon size={14} />, color: "var(--neo-lime)", rotate: "5deg" },
     ]
   },
   tr: {
     badge: "BİLGİSAYAR MÜHENDİSİ '24 // GİRİŞİMCİ // SANATÇI",
     subtitle: "Kodun, müziğin ve 15 dakikanın sessiz gücüyle; yüksek etki yaratan yazılımlar ve girişimler inşa etmek.",
-    cta1: "ZORUS'U KEŞFET 🚀",
-    cta2: "KONUŞALIM ✉",
+    cta1: "ZORUS'U KEŞFET",
+    cta2: "KONUŞALIM",
     statusTitle: "GÜNCEL DURUM",
     statusText: "Zorus Uygulamasını & Yapay Zeka Mimarilerini Geliştiriyor",
     roles: ["BİLGİSAYAR MÜHENDİSİ", "GİRİŞİMCİ", "YARATICI SANATÇI"],
     stickers: [
-      { text: "⚡ 15-DAKİKA METODU", color: "var(--neo-yellow)", rotate: "-4deg" },
-      { text: "🎯 SELÇUK BİLG '24", color: "var(--neo-pink)", colorText: "#fff", rotate: "3deg" },
-      { text: "🎸 MÜZİK & EKİPMAN", color: "var(--neo-cyan)", rotate: "-2deg" },
-      { text: "🧠 PSİKOLOJİ", color: "var(--neo-lime)", rotate: "5deg" },
+      { text: "15-DAKİKA METODU", icon: <SparkIcon size={14} />, color: "var(--neo-yellow)", rotate: "-4deg" },
+      { text: "SELÇUK BİLG '24", icon: <AcademicIcon size={14} />, color: "var(--neo-pink)", colorText: "#fff", rotate: "3deg" },
+      { text: "MÜZİK & EKİPMAN", icon: <MusicIcon size={14} />, color: "var(--neo-cyan)", rotate: "-2deg" },
+      { text: "PSİKOLOJİ", icon: <BrainIcon size={14} />, color: "var(--neo-lime)", rotate: "5deg" },
     ]
   },
 };
@@ -47,8 +48,8 @@ export default function HeroSection({ lang }) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.1 }}
       >
-        <div className="neo-badge neo-yellow" style={{ fontSize: "0.85rem", padding: "8px 16px" }}>
-          <span>🚀</span>
+        <div className="neo-badge neo-yellow" style={{ fontSize: "0.85rem", padding: "8px 16px", display: "inline-flex", alignItems: "center", gap: "8px" }}>
+          <SparkIcon size={16} />
           <span>{t.badge}</span>
         </div>
 
@@ -119,8 +120,10 @@ export default function HeroSection({ lang }) {
                 e.preventDefault();
                 document.getElementById("zorus")?.scrollIntoView({ behavior: "smooth" });
               }}
+              style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}
             >
-              {t.cta1}
+              <RocketIcon size={18} />
+              <span>{t.cta1}</span>
             </motion.a>
 
             <motion.a
@@ -132,8 +135,10 @@ export default function HeroSection({ lang }) {
                 e.preventDefault();
                 document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
               }}
+              style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}
             >
-              {t.cta2}
+              <MailIcon size={18} />
+              <span>{t.cta2}</span>
             </motion.a>
           </div>
         </motion.div>
@@ -161,8 +166,9 @@ export default function HeroSection({ lang }) {
             className="neo-box neo-sidebar-card"
             style={{ position: "relative", minHeight: "160px", background: "var(--neo-bg-alt)", overflow: "hidden" }}
           >
-            <span className="neo-label" style={{ fontSize: "0.75rem", marginBottom: "8px" }}>
-              ⚡ DRAG & EXPLORE TAGS:
+            <span className="neo-label" style={{ fontSize: "0.75rem", marginBottom: "8px", display: "flex", alignItems: "center", gap: "6px" }}>
+              <SparkIcon size={14} />
+              <span>DRAG & EXPLORE TAGS:</span>
             </span>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
               {t.stickers.map((stk, i) => (
@@ -176,11 +182,15 @@ export default function HeroSection({ lang }) {
                     color: stk.colorText || "var(--neo-black)",
                     transform: `rotate(${stk.rotate})`,
                     cursor: "grab",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "6px"
                   }}
                   whileHover={{ scale: 1.1, rotate: 0 }}
                   whileTap={{ cursor: "grabbing", scale: 0.95 }}
                 >
-                  {stk.text}
+                  {stk.icon}
+                  <span>{stk.text}</span>
                 </motion.div>
               ))}
             </div>

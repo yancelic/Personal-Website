@@ -42,6 +42,13 @@
   --font-syne:       'Syne', sans-serif;
 }
 
+/* Hide default cursor on desktop fine pointer devices */
+@media (pointer: fine) {
+  html, body, *, *::before, *::after {
+    cursor: none !important;
+  }
+}
+
 html {
   scroll-behavior: smooth;
   background-color: var(--neo-bg);
@@ -189,7 +196,43 @@ body {
   box-shadow: var(--neo-shadow-sm);
   border-radius: 6px;
   background-color: var(--neo-white);
+  color: var(--neo-black);
   white-space: nowrap;
+}
+
+.neo-badge.neo-yellow {
+  background-color: var(--neo-yellow) !important;
+  color: var(--neo-black) !important;
+}
+
+.neo-badge.neo-pink {
+  background-color: var(--neo-pink) !important;
+  color: #FFFFFF !important;
+}
+
+.neo-badge.neo-cyan {
+  background-color: var(--neo-cyan) !important;
+  color: var(--neo-black) !important;
+}
+
+.neo-badge.neo-lime {
+  background-color: var(--neo-lime) !important;
+  color: var(--neo-black) !important;
+}
+
+.neo-badge.neo-orange {
+  background-color: var(--neo-orange) !important;
+  color: #FFFFFF !important;
+}
+
+.neo-badge.neo-purple {
+  background-color: var(--neo-purple) !important;
+  color: #FFFFFF !important;
+}
+
+.neo-badge.neo-black {
+  background-color: var(--neo-black) !important;
+  color: #FFFFFF !important;
 }
 
 .neo-sticker {
@@ -247,6 +290,11 @@ body {
 @keyframes marqueeScroll {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
 .neo-marquee-item {

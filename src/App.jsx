@@ -8,6 +8,7 @@ import ExpertiseSection from "./components/sections/ExpertiseSection";
 import ZorusSection from "./components/sections/ZorusSection";
 import BeyondSection from "./components/sections/BeyondSection";
 import ContactSection from "./components/sections/ContactSection";
+import { SparkIcon, UserIcon, ToolsIcon, RocketIcon, MusicIcon, MailIcon } from "./components/common/Icons";
 
 const marqueeItems = {
   en: ["MACHINE LEARNING", "APP DEVELOPMENT", "GAME DEVELOPMENT", "PSYCHOLOGY", "MUSIC & GUITAR", "ZORUS VENTURE", "15-MINUTE METHOD", "UNREAL ENGINE", "REACT 19", "PYTHON"],
@@ -15,12 +16,12 @@ const marqueeItems = {
 };
 
 const dockItems = (lang) => [
-  { label: lang === "en" ? "Hero"      : "Giriş",    icon: "⚡", onClick: () => window.scrollTo({ top: 0, behavior: "smooth" }) },
-  { label: lang === "en" ? "About"     : "Hakkımda", icon: "👤", onClick: () => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" }) },
-  { label: lang === "en" ? "Expertise" : "Uzmanlık", icon: "🛠", onClick: () => document.getElementById("expertise")?.scrollIntoView({ behavior: "smooth" }) },
-  { label: "Zorus",                                   icon: "🚀", onClick: () => document.getElementById("zorus")?.scrollIntoView({ behavior: "smooth" }) },
-  { label: lang === "en" ? "Beyond"    : "Ötesi",    icon: "🎸", onClick: () => document.getElementById("beyond")?.scrollIntoView({ behavior: "smooth" }) },
-  { label: lang === "en" ? "Contact"   : "İletişim", icon: "✉", onClick: () => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }) },
+  { label: lang === "en" ? "Hero"      : "Giriş",    icon: <SparkIcon size={20} />,   onClick: () => window.scrollTo({ top: 0, behavior: "smooth" }) },
+  { label: lang === "en" ? "About"     : "Hakkımda", icon: <UserIcon size={20} />,    onClick: () => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" }) },
+  { label: lang === "en" ? "Expertise" : "Uzmanlık", icon: <ToolsIcon size={20} />,   onClick: () => document.getElementById("expertise")?.scrollIntoView({ behavior: "smooth" }) },
+  { label: "Zorus",                                   icon: <RocketIcon size={20} />,  onClick: () => document.getElementById("zorus")?.scrollIntoView({ behavior: "smooth" }) },
+  { label: lang === "en" ? "Beyond"    : "Ötesi",    icon: <MusicIcon size={20} />,   onClick: () => document.getElementById("beyond")?.scrollIntoView({ behavior: "smooth" }) },
+  { label: lang === "en" ? "Contact"   : "İletişim", icon: <MailIcon size={20} />,    onClick: () => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }) },
 ];
 
 function NeoMarquee({ lang, pinkMode = false }) {
@@ -31,7 +32,7 @@ function NeoMarquee({ lang, pinkMode = false }) {
       <div className="neo-marquee-track">
         {doubled.map((item, i) => (
           <span key={i} className="neo-marquee-item">
-            <span className="neo-marquee-star">★</span>
+            <span className="neo-marquee-star">✦</span>
             {item}
           </span>
         ))}
