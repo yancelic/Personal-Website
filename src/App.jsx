@@ -11,8 +11,8 @@ import ContactSection from "./components/sections/ContactSection";
 import { SparkIcon, UserIcon, ToolsIcon, RocketIcon, MusicIcon, MailIcon } from "./components/common/Icons";
 
 const marqueeItems = {
-  en: ["MACHINE LEARNING", "APP DEVELOPMENT", "GAME DEVELOPMENT", "PSYCHOLOGY", "SOLOIST & MUSIC", "ZORUS & HOPPOZORUS", "15-MINUTE THEORY", "UNREAL ENGINE", "REACT 19", "PYTHON"],
-  tr: ["MAKİNE ÖĞRENMESİ", "UYGULAMA GELİŞTİRME", "OYUN GELİŞTİRME", "PSİKOLOJİ", "SOLİST & MÜZİK", "ZORUS & HOPPOZORUS", "15 DAKİKA TEORİSİ", "UNREAL ENGINE", "REACT 19", "PYTHON"],
+  en: ["MACHINE LEARNING", "APP DEVELOPMENT", "GAME DEVELOPMENT", "PSYCHOLOGY", "SOLOIST & MUSIC", "ZORUS & HOPPOZORUS", "15-MINUTE THEORY", "UNREAL ENGINE", "REACT", "PYTHON"],
+  tr: ["MAKİNE ÖĞRENMESİ", "UYGULAMA GELİŞTİRME", "OYUN GELİŞTİRME", "PSİKOLOJİ", "SOLİST & MÜZİK", "ZORUS & HOPPOZORUS", "15 DAKİKA TEORİSİ", "UNREAL ENGINE", "REACT", "PYTHON"],
 };
 
 const dockItems = (lang) => [

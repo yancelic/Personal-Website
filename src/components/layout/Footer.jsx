@@ -40,8 +40,8 @@ export default function Footer({ lang }) {
           </p>
 
           <div style={{ display: "flex", gap: "10px" }}>
-            <span className="neo-badge neo-yellow" style={{ fontSize: "0.75rem" }}>REACT 19</span>
-            <span className="neo-badge neo-lime" style={{ fontSize: "0.75rem" }}>MOTION.DEV</span>
+            <span className="neo-badge neo-yellow" style={{ fontSize: "0.75rem" }}>REACT</span>
+            <span className="neo-badge neo-lime" style={{ fontSize: "0.75rem" }}>FRAMER MOTION</span>
             <span className="neo-badge neo-pink" style={{ fontSize: "0.75rem", color: "#fff" }}>NEO-BRUTALISM</span>
           </div>
         </div>
