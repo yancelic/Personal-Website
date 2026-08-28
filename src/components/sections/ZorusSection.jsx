@@ -4,36 +4,38 @@ import { SparkIcon, RocketIcon, BrainIcon } from "../common/Icons";
 
 const content = {
   en: {
-    sectionNum: "03 // FLAGSHIP VENTURE",
-    badge: "CO-FOUNDER & LEAD ENGINEER",
+    sectionNum: "03 // VENTURE",
+    badge: "CO-FOUNDER",
     title: "ZORUS",
-    tagline: "Intelligent systems built to augment human productivity without friction.",
-    desc: "Zorus is the startup I co-founded. We develop habit-building ecosystems, productivity tools, and intelligent software that seamlessly integrates into daily lives.",
+    sectionTitle: "THE VENTURE: ZORUS",
+    tagline: "An early-stage software company co-founded with a close friend. Currently building our first app, Hoppozorus.",
+    desc: "We haven't launched any apps yet — everything is fresh and in active development. Our full focus right now is building Hoppozorus with a clean architecture and a thoughtful user experience.",
     pillars: [
-      { num: "01", title: "INTELLIGENCE", desc: "AI & ML-powered habit tracking algorithms", bg: "var(--neo-yellow)" },
-      { num: "02", title: "EXPERIENCE", desc: "Fast & zero-friction user interfaces", bg: "var(--neo-cyan)" },
-      { num: "03", title: "REAL IMPACT", desc: "Measurable growth & behavior science", bg: "var(--neo-pink)", textColor: "#fff" }
+      { num: "01", title: "HOPPOZORUS", desc: "Our first app currently in active development", bg: "var(--neo-yellow)" },
+      { num: "02", title: "FRESH & EARLY", desc: "No launched apps yet — building the foundation right", bg: "var(--neo-cyan)" },
+      { num: "03", title: "TWO FOUNDERS", desc: "Two friends turning ideas into a real product", bg: "var(--neo-pink)", textColor: "#fff" }
     ],
-    cta: "EXPLORE VENTURE DETAILS",
-    modalTitle: "Zorus Venture Overview",
-    modalText: "Zorus is built on the philosophy that the best technology is invisible — it amplifies your capabilities while respecting your focus. Designed with precision UX and robust software architecture.",
-    closeModal: "CLOSE MODAL ✕"
+    cta: "ABOUT ZORUS",
+    modalTitle: "Zorus & Hoppozorus",
+    modalText: "Zorus is an early-stage startup I co-founded with my friend. We haven't released any apps yet — our current energy is 100% dedicated to building Hoppozorus. Rather than rushing a half-baked product out, we're focusing on creating a solid, enjoyable experience from day one.",
+    closeModal: "CLOSE ✕"
   },
   tr: {
-    sectionNum: "03 // AMİRAL GEMİSİ GİRİŞİM",
-    badge: "KURUCU ORTAK & LİDER MÜHENDİS",
+    sectionNum: "03 // GİRİŞİM",
+    badge: "KURUCU ORTAK",
     title: "ZORUS",
-    tagline: "Sürtünmesiz insan verimliliğini güçlendirmek için inşa edilen akıllı sistemler.",
-    desc: "Zorus, kurucu ortağı olduğum girişim. Alışkanlık kazanımı ekosistemleri, verimlilik araçları ve günlük hayata entegre olan akıllı yazılımlar geliştiriyoruz.",
+    sectionTitle: "GİRİŞİM: ZORUS",
+    tagline: "Arkadaşımla kurduğumuz yazılım şirketi. Şu an ilk ürünümüz olan Hoppozorus uygulamasını geliştiriyoruz.",
+    desc: "Henüz yayınlanmış bir uygulamamız yok, tamamen sıfırdan geliştirme aşamasındayız. Şu anki tüm odağımız ilk projemiz olan Hoppozorus'u sağlam bir altyapı ve sade bir deneyimle hayata geçirmek.",
     pillars: [
-      { num: "01", title: "ZEKA", desc: "YZ & MÖ destekli alışkanlık algoritmaları", bg: "var(--neo-yellow)" },
-      { num: "02", title: "DENEYİM", desc: "Zahmetsiz ve yüksek hızlı kullanıcı arayüzleri", bg: "var(--neo-cyan)" },
-      { num: "03", title: "GERÇEK ETKİ", desc: "Ölçülebilir gelişim & davranış bilimi", bg: "var(--neo-pink)", textColor: "#fff" }
+      { num: "01", title: "HOPPOZORUS", desc: "Geliştirmekte olduğumuz ilk uygulamamız", bg: "var(--neo-yellow)" },
+      { num: "02", title: "ERKEN AŞAMA", desc: "Henüz yayında ürün yok; mutfakta hazırlık sürüyor", bg: "var(--neo-cyan)" },
+      { num: "03", title: "İKİ KURUCU", desc: "İki arkadaşın sıfırdan bir şirket ve ürün inşa etme süreci", bg: "var(--neo-pink)", textColor: "#fff" }
     ],
-    cta: "GİRİŞİM DETAYLARINI KEŞFET",
-    modalTitle: "Zorus Girişim Özeti",
-    modalText: "Zorus, en iyi teknolojinin görünmez olduğu felsefesi üzerine kuruludur — odağınıza saygı duyarak yeteneklerinizi artırır. Hassas UX ve güçlü yazılım mimarisiyle tasarlanmıştır.",
-    closeModal: "MODALI KAPAT ✕"
+    cta: "ZORUS HAKKINDA",
+    modalTitle: "Zorus & Hoppozorus",
+    modalText: "Zorus, arkadaşımla birlikte kurduğumuz bir girişim. Şu anda tüm enerjimizi ilk projemiz olan Hoppozorus'a vermiş durumdayız. Henüz marketlerde yayınlanmış bir ürünümüz yok; aceleyle bir şeyler çıkarmak yerine hem arayüzü hem de altyapısı sağlam bir ürün ortaya koymaya odaklandık. Yolun başındayız ama süreç çok keyifli.",
+    closeModal: "KAPAT ✕"
   }
 };
 
@@ -46,7 +48,7 @@ export default function ZorusSection({ lang }) {
       {/* Section Header */}
       <div className="neo-section-header">
         <div className="neo-section-num">{t.sectionNum}</div>
-        <h2 className="neo-section-title">THE VENTURE: ZORUS</h2>
+        <h2 className="neo-section-title">{t.sectionTitle}</h2>
       </div>
 
       {/* Main Cyber Lime Spotlight Card */}
@@ -160,11 +162,11 @@ export default function ZorusSection({ lang }) {
               <div style={{ display: "flex", gap: "12px", marginBottom: "24px", flexWrap: "wrap" }}>
                 <div className="neo-badge neo-cyan" style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}>
                   <SparkIcon size={14} />
-                  <span>15-MIN ECOSYSTEM</span>
+                  <span>HOPPOZORUS</span>
                 </div>
                 <div className="neo-badge neo-lime" style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}>
-                  <BrainIcon size={14} />
-                  <span>HABIT LOOPS</span>
+                  <RocketIcon size={14} />
+                  <span>{lang === "en" ? "EARLY STAGE" : "ERKEN AŞAMA"}</span>
                 </div>
               </div>
 

@@ -3,9 +3,9 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const expertise = {
   en: {
-    sectionNum: "02 // TECH MATRIX",
-    title: "AREAS OF DEEP FOCUS",
-    subtitle: "High-level software engineering, artificial intelligence, and interactive real-time engines.",
+    sectionNum: "02 // TECHNICAL",
+    title: "WHAT I WORK ON",
+    subtitle: "Machine learning, app development, and game engines.",
     categories: ["ALL", "MACHINE LEARNING", "APP DEV", "GAME DEV"],
     items: [
       {
@@ -14,8 +14,8 @@ const expertise = {
         title: "Machine Learning & AI",
         cat: "MACHINE LEARNING",
         bg: "var(--neo-yellow)",
-        desc: "Building intelligent systems that learn from data. Focused on neural architectures, pattern recognition, and practical LLM/Agent integrations.",
-        level: "88%",
+        desc: "Python, PyTorch, TensorFlow, scikit-learn. I work on neural networks, experiment with LLM integrations, and currently going deeper into agent architectures — which is what Zorus partly runs on.",
+        label: "MAIN AREA",
         tags: ["Python", "PyTorch", "TensorFlow", "Data Science", "Scikit-Learn"]
       },
       {
@@ -24,8 +24,8 @@ const expertise = {
         title: "App & Web Development",
         cat: "APP DEV",
         bg: "var(--neo-cyan)",
-        desc: "Building clean, functional, high-performance applications from concept to production. Crafting friction-free user experiences.",
-        level: "94%",
+        desc: "React and React Native for web and mobile. I care a lot about interfaces feeling fast and actually comfortable to use — not just looking clean in a demo.",
+        label: "ACTIVELY USING",
         tags: ["React", "React Native", "Node.js", "Vite", "JavaScript", "REST APIs"]
       },
       {
@@ -35,16 +35,16 @@ const expertise = {
         cat: "GAME DEV",
         bg: "var(--neo-pink)",
         textColor: "#fff",
-        desc: "Crafting immersive interactive experiences. Exploring game mechanics, C++ performance, and digital playground psychology.",
-        level: "82%",
-        tags: ["Unreal Engine", "C++", "Game Design", "3D Math", "UX Physics"]
+        desc: "Unreal Engine and C++. I like how game development forces you to think about performance, physics, and how a space feels to move through. Still learning a lot here.",
+        label: "LEARNING",
+        tags: ["Unreal Engine", "C++", "Game Design", "3D Math"]
       }
     ]
   },
   tr: {
-    sectionNum: "02 // TEKNİK MATRİS",
-    title: "DERİN ODAK ALANLARI",
-    subtitle: "İleri düzey yazılım mühendisliği, yapay zeka ve gerçek zamanlı oyun motorları.",
+    sectionNum: "02 // TEKNİK",
+    title: "ÇALIŞTIĞIM ALANLAR",
+    subtitle: "Makine öğrenmesi, uygulama geliştirme ve oyun motorları.",
     categories: ["HEPSİ", "MAKİNE ÖĞRENMESİ", "UYGULAMA GELİŞTİRME", "OYUN GELİŞTİRME"],
     items: [
       {
@@ -53,8 +53,8 @@ const expertise = {
         title: "Makine Öğrenmesi & YZ",
         cat: "MAKİNE ÖĞRENMESİ",
         bg: "var(--neo-yellow)",
-        desc: "Veriden öğrenen zeka sistemleri inşa ediyorum. Sinir ağı mimarileri, örüntü tanıma ve pratik YZ ajan uygulamalarına odaklı.",
-        level: "88%",
+        desc: "Python, PyTorch, TensorFlow, scikit-learn kullanıyorum. Sinir ağlarıyla çalışıyor, LLM entegrasyonları deniyorum. Şu sıralar ajan mimarileri üzerine gidiyorum — Zorus'un bir kısmı da bu üzerine.",
+        label: "ANA ALANLARIM",
         tags: ["Python", "PyTorch", "TensorFlow", "Data Science", "Scikit-Learn"]
       },
       {
@@ -63,8 +63,8 @@ const expertise = {
         title: "Uygulama & Web Geliştirme",
         cat: "UYGULAMA GELİŞTİRME",
         bg: "var(--neo-cyan)",
-        desc: "Fikirden canlıya kadar temiz, yüksek performanslı uygulamalar geliştiriyorum. Sürtünmesiz kullanıcı deneyimleri tasarlıyorum.",
-        level: "94%",
+        desc: "Web ve mobil için React ve React Native. Arayüzlerin sadece iyi görünmesini değil, gerçekten rahat kullanılmasını önemsiyorum. Zorus'un frontend'i de burada.",
+        label: "AKTİF KULLANIM",
         tags: ["React", "React Native", "Node.js", "Vite", "JavaScript", "REST APIs"]
       },
       {
@@ -74,9 +74,9 @@ const expertise = {
         cat: "OYUN GELİŞTİRME",
         bg: "var(--neo-pink)",
         textColor: "#fff",
-        desc: "İnteraktif deneyimler ve dünyalar yaratıyorum. Oyun mekanikleri, C++ performansı ve dijital oyun psikolojisini keşfediyorum.",
-        level: "82%",
-        tags: ["Unreal Engine", "C++", "Game Design", "3D Math", "UX Physics"]
+        desc: "Unreal Engine ve C++. Oyun geliştirme performansı, fiziği ve bir uzayda hareket etmenin nasıl hissettirdiğini düşünmeye zorluyor. Burada hâlâ çok şey öğreniyorum.",
+        label: "ÖĞRENİYORUM",
+        tags: ["Unreal Engine", "C++", "Game Design", "3D Math"]
       }
     ]
   }
@@ -143,10 +143,10 @@ export default function ExpertiseSection({ lang }) {
                   className="neo-badge" 
                   style={{ background: "var(--neo-white)", color: "#000" }}
                 >
-                  //{item.num} {item.cat}
+                  //{item.num}
                 </span>
                 <span className="neo-badge" style={{ background: "var(--neo-black)", color: "var(--neo-yellow)" }}>
-                  {item.level} PROFICIENCY
+                  {item.label}
                 </span>
               </div>
 
@@ -157,17 +157,6 @@ export default function ExpertiseSection({ lang }) {
               <p style={{ opacity: 0.9, fontSize: "1rem", lineHeight: 1.5 }}>
                 {item.desc}
               </p>
-
-              {/* Progress Bar */}
-              <div className="neo-skill-bar-wrap">
-                <div 
-                  className="neo-skill-bar-fill"
-                  style={{ 
-                    width: item.level, 
-                    background: item.textColor ? "var(--neo-yellow)" : "var(--neo-pink)" 
-                  }} 
-                />
-              </div>
 
               {/* Tags */}
               <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginTop: "6px" }}>

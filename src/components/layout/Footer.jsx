@@ -10,7 +10,7 @@ export default function Footer({ lang }) {
               // YANKI MUHSIN KILIÇ
             </div>
             <h2 className="neo-footer-bigtext">
-              BUILD // CREATE // EVOLVE
+              CODE // MUSIC // 15 MIN
             </h2>
           </div>
 

@@ -10,32 +10,32 @@ const socials = [
 
 const content = {
   en: {
-    sectionNum: "05 // INITIATE CONTACT",
-    title: "LET'S BUILD SOMETHING REMARKABLE",
-    quote: "I'm always open to ambitious projects, startup ventures, and ideas that don't quite fit in a box.",
+    sectionNum: "05 // CONTACT",
+    title: "LET'S TALK",
+    quote: "Open to interesting projects, collaborations, and conversations that don't fit neatly into a form.",
     emailText: "myanki.work@gmail.com",
     copyBtn: "COPY EMAIL",
-    copiedText: "COPIED TO CLIPBOARD!",
+    copiedText: "COPIED!",
     formTitle: "DIRECT MESSAGE // HIT ME UP",
     nameLabel: "YOUR NAME",
     emailLabel: "YOUR EMAIL",
     msgLabel: "YOUR MESSAGE",
     submitBtn: "SEND MESSAGE",
-    submittedMsg: "MESSAGE SENT! THANK YOU!"
+    submittedMsg: "GOT IT — THANK YOU!"
   },
   tr: {
-    sectionNum: "05 // İLETİŞİME GEÇ",
-    title: "BİRLİKTE OLAĞANÜSTÜ BİR ŞEY İNŞA EDELİM",
-    quote: "Her zaman iddialı projelere, girişimlere ve bir kutuya tam sığmayan fikirlere açığım.",
+    sectionNum: "05 // İLETİŞİM",
+    title: "KONUŞALIM",
+    quote: "İlginç projelere, iş birliklerine ve forma tam sığmayan konuşmalara açığım.",
     emailText: "myanki.work@gmail.com",
     copyBtn: "E-POSTAYI KOPYALA",
-    copiedText: "PANOTE KOPYALANDI!",
-    formTitle: "DİREKT MESAJ // BANA ULAŞIN",
+    copiedText: "KOPYALANDI!",
+    formTitle: "DİREKT MESAJ // BANA YAZ",
     nameLabel: "ADINIZ",
     emailLabel: "E-POSTA ADRESİNİZ",
     msgLabel: "MESAJINIZ",
-    submitBtn: "MESAJI GÖNDER",
-    submittedMsg: "MESAJ GÖNDERİLDİ! TEŞEKKÜRLER!"
+    submitBtn: "GÖNDER",
+    submittedMsg: "ALDIM — TEŞEKKÜRLER!"
   }
 };
 

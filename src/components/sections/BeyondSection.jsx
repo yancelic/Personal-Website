@@ -345,59 +345,57 @@ function DumanCassettePlayer() {
 
 const cards = {
   en: {
-    sectionNum: "04 // HUMAN DIMENSION",
+    sectionNum: "04 // OUTSIDE THE CODE",
     title: "BEYOND CODE",
-    subtitle: "Music, human psychology, and the 15-minute connection philosophy.",
+    subtitle: "Music, body language, and the 15-minute theory.",
     items: [
       {
         bg: "var(--neo-yellow)",
-        tag: "MUSIC & GUITAR",
+        tag: "MUSIC & STAGE",
         title: "Soloist & Guitarist",
-        text: "3 solo performances on stage. Music taught me that great code, like great songs, requires rhythm, tension, and resolution.",
+        text: "3 stage performances. I play guitar and sing, listen to a lot of Duman. Music is where I step away from the screen and recharge.",
         visual: "duman"
       },
       {
         bg: "var(--neo-pink)",
         textColor: "#fff",
-        tag: "HUMAN PSYCHOLOGY",
-        title: "Reading the Unspoken",
-        text: "Passionate about body language, cognitive dynamics, and social signals. Understanding people makes better engineers.",
-        visual: "radar"
+        tag: "BODY LANGUAGE",
+        title: "Body Language & Signals",
+        text: "I've always found it fascinating how much people reveal through posture, subtle shifts, and facial expressions without saying a word. It's not about analyzing people, just paying genuine attention.",
       },
       {
         bg: "var(--neo-cyan)",
         tag: "PHILOSOPHY",
-        title: "The 15-Minute Rule",
-        text: "15 genuine minutes of listening and observation can reveal more than months of surface-level small talk.",
+        title: "The 15-Minute Theory",
+        text: "I believe a genuine 15-minute conversation reveals far more than months of distant observation. Listening with real curiosity rather than judgment is a mindset I bring to every problem I solve.",
         visual: "clock"
       }
     ]
   },
   tr: {
-    sectionNum: "04 // İNSAN BOYUTU",
+    sectionNum: "04 // KODUN DIŞINDA",
     title: "KODUN ÖTESİ",
-    subtitle: "Müzik, insan psikolojisi ve 15 dakikalık bağ kurma felsefesi.",
+    subtitle: "Müzik, beden dili ve 15 dakika teorisi.",
     items: [
       {
         bg: "var(--neo-yellow)",
-        tag: "MÜZİK & GİTAR",
+        tag: "MÜZİK & SAHNE",
         title: "Solist & Gitarist",
-        text: "Sahnede 3 solo performans. Müzik bana en iyi yazılımların tıpkı şarkılar gibi ritim ve çözüme ihtiyaç duyduğunu öğretti.",
+        text: "3 sahne performansı verdim. Gitar çalıyorum ve şarkı söylüyorum, bol Duman dinliyorum. Müziğin sakin tarafları bana her zaman iyi gelmiştir.",
         visual: "duman"
       },
       {
         bg: "var(--neo-pink)",
         textColor: "#fff",
-        tag: "İNSAN PSİKOLOJİSİ",
-        title: "Söylenmeyeni Okumak",
-        text: "Beden dili, bilişsel önyargılar ve sosyal sinyallere tutkuluyum. İnsanları anlamak daha iyi mühendisler yetiştirir.",
-        visual: "radar"
+        tag: "BEDEN DİLİ",
+        title: "Beden Dili & İletişim",
+        text: "İnsanların konuşurken söylemedikleri şeyleri vücut dili ve mimikleriyle nasıl dışa vurduğunu izlemek bana hep ilginç gelmiştir. Özel bir analiz çabası gibi değil; sadece insanları gözlemlemeyi ve konuşmanın arkasındaki gerçek tepkileri fark etmeyi seviyorum.",
       },
       {
         bg: "var(--neo-cyan)",
         tag: "FELSEFE",
-        title: "15 Dakika Kuralı",
-        text: "15 dakikalık samimi bir dinleme ve gözlem, aylarca süren yüzeysel sohbetten daha derin bir bağ kurabilir.",
+        title: "15 Dakika Teorisi",
+        text: "15 dakikalık samimi bir konuşmanın, aylarca uzaktan gözlem yapmaktan çok daha fazlasını ortaya çıkardığına inanıyorum. Yargılamadan, sadece merak ederek dinlemek hem insan ilişkilerinde hem de karşılaştığım her problemde en etkili yol.",
         visual: "clock"
       }
     ]
@@ -433,7 +431,7 @@ function RadarVisual() {
         <div style={{ width: "8px", height: "8px", background: "var(--neo-pink)", borderRadius: "50%" }} />
       </div>
       <span style={{ fontFamily: "var(--font-mono)", fontWeight: 800, fontSize: "0.85rem" }}>
-        SIGNAL DETECTED // 100%
+        GÖZLEM MODU // AKTİF
       </span>
     </div>
   );

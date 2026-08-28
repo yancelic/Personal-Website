@@ -730,8 +730,7 @@ body {
 .neo-modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(13, 13, 17, 0.75);
-  backdrop-filter: blur(4px);
+  background: rgba(13, 13, 17, 0.85);
   z-index: 1000;
   display: flex;
   align-items: center;

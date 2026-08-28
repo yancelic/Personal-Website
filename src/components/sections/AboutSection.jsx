@@ -5,16 +5,16 @@ import { AcademicIcon, SparkIcon, BrainIcon, MusicIcon } from "../common/Icons";
 
 const content = {
   en: {
-    sectionNum: "01 // BIO",
-    title: "ENGINEER BY TRAINING, EXPLORER BY NATURE",
-    subtitle: "Merging computer science, entrepreneurial vision, and human psychology.",
+    sectionNum: "01 // ABOUT",
+    title: "ENGINEER, ENTREPRENEUR, SOLOIST.",
+    subtitle: "CS student, Zorus co-founder, vocalist, psychology enthusiast.",
     cards: [
       {
         bg: "var(--neo-white)",
         col: "neo-col-8",
         icon: <AcademicIcon size={26} />,
-        title: "Selçuk University Computer Engineering '24",
-        text: "Co-founder of Zorus — a venture built at the intersection of intelligent systems, productivity, and real-world impact.",
+        title: "Selçuk University, Computer Engineering",
+        text: "I study CS at Selçuk University while building our startup Zorus with a close friend. Right now, our focus is entirely on developing our first application, Hoppozorus.",
         tag: "EDUCATION & VENTURES",
         tagColor: "var(--neo-yellow)"
       },
@@ -23,8 +23,8 @@ const content = {
         textColor: "#fff",
         col: "neo-col-4",
         icon: <SparkIcon size={26} color="#fff" />,
-        title: "The 15-Minute Rule",
-        text: "I believe you can deeply connect with almost anyone in just 15 minutes of genuine listening and observation.",
+        title: "The 15-Minute Theory",
+        text: "I believe a genuine 15-minute conversation reveals far more than months of surface-level observation. Listening with real curiosity rather than judgment is a mindset I bring to every problem I solve.",
         tag: "PHILOSOPHY",
         tagColor: "#000",
         tagText: "#fff"
@@ -33,39 +33,34 @@ const content = {
         bg: "var(--neo-cyan)",
         col: "neo-col-4",
         icon: <BrainIcon size={26} />,
-        title: "Psychology & Body Language",
-        text: "Great engineers understand people, not just algorithms. Deeply fascinated by non-verbal communication.",
-        tag: "PASSION",
-        tagColor: "var(--neo-yellow)"
+        title: "Body Language & Communication",
+        text: "I have always found it fascinating how much people reveal through their body language and facial expressions without saying a single word.",
       },
       {
         bg: "var(--neo-lime)",
         col: "neo-col-8",
         icon: <MusicIcon size={26} />,
-        title: "Artist & Soloist",
-        text: "Performed 3 times as a soloist. Guitar player, music enthusiast, and lover of deep, meaningful conversations.",
-        tag: "CREATIVE SIDE",
-        tagColor: "var(--neo-pink)",
-        tagText: "#fff"
+        title: "Soloist & Guitarist",
+        text: "3 stage performances so far. I play guitar and sing, listen to a lot of Duman. Music is where I step away from screens and recharge.",
       }
     ],
     stats: [
-      { num: "3",  sup: "×", label: "SOLO PERFORMANCES" },
+      { num: "3",  sup: "×", label: "STAGE PERFORMANCES" },
       { num: "1",  sup: "✦", label: "STARTUP CO-FOUNDED" },
       { num: "15", sup: "MIN", label: "TO CONNECT WITH PEOPLE" },
     ]
   },
   tr: {
-    sectionNum: "01 // BİYOGRAFİ",
-    title: "EĞİTİMLE MÜHENDİS, DOĞAYLA KAŞİF",
-    subtitle: "Bilgisayar bilimini, girişimci vizyonu ve insan psikolojisini bir araya getiriyorum.",
+    sectionNum: "01 // HAKKIMDA",
+    title: "MÜHENDİS, GİRİŞİMCİ, SOLİST.",
+    subtitle: "Bilgisayar mühendisliği öğrencisi, Zorus kurucu ortağı, solist, insan psikolojisi meraklısı.",
     cards: [
       {
         bg: "var(--neo-white)",
         col: "neo-col-8",
         icon: <AcademicIcon size={26} />,
-        title: "Selçuk Üniversitesi Bilgisayar Mühendisliği '24",
-        text: "Akıllı sistemler, verimlilik ve gerçek dünya etkisi üzerine kurulan Zorus girişiminin kurucu ortağı.",
+        title: "Selçuk Üniversitesi, Bilgisayar Mühendisliği",
+        text: "Selçuk Üniversitesi'nde Bilgisayar Mühendisliği okuyorum. Bir yandan da arkadaşımla kurduğumuz Zorus şirketi ve ilk ürünümüz Hoppozorus üzerinde çalışıyorum.",
         tag: "EĞİTİM & GİRİŞİM",
         tagColor: "var(--neo-yellow)"
       },
@@ -74,8 +69,8 @@ const content = {
         textColor: "#fff",
         col: "neo-col-4",
         icon: <SparkIcon size={26} color="#fff" />,
-        title: "15 Dakika Kuralı",
-        text: "Gerçek bir dinleme ve gözlemle, herkesle 15 dakikada derin bir bağ kurulabileceğine inanıyorum.",
+        title: "15 Dakika Teorisi",
+        text: "15 dakikalık samimi bir konuşmanın, aylarca uzaktan gözlem yapmaktan çok daha fazlasını ortaya çıkardığına inanıyorum. Yargılamadan, sadece merak ederek dinlemek hem insan ilişkilerinde hem de kod yazarken karşılaştığım sorunları çözmemi sağlıyor.",
         tag: "FELSEFE",
         tagColor: "#000",
         tagText: "#fff"
@@ -84,25 +79,20 @@ const content = {
         bg: "var(--neo-cyan)",
         col: "neo-col-4",
         icon: <BrainIcon size={26} />,
-        title: "Psikoloji & Beden Dili",
-        text: "İyi mühendisler sadece algoritmaları değil, insanları da anlar. Beden diline ve iletişime tutkuluyum.",
-        tag: "TUTKU",
-        tagColor: "var(--neo-yellow)"
+        title: "Beden Dili & İletişim",
+        text: "İnsanların söylemedikleri şeyleri vücut dili ve mimik hareketleriyle nasıl dışa vurduğunu gözlemlemek bana her zaman ilginç geliyor.",
       },
       {
         bg: "var(--neo-lime)",
         col: "neo-col-8",
         icon: <MusicIcon size={26} />,
-        title: "Sanatçı & Solist",
-        text: "Solist olarak 3 kez sahne aldım. Gitarist, müzik sevdalısı ve derin sohbetlerin tutkunuyum.",
-        tag: "YARATICI YÖN",
-        tagColor: "var(--neo-pink)",
-        tagText: "#fff"
+        title: "Solist & Gitarist",
+        text: "3 sahne performansı verdim. Gitar çalıyorum ve şarkı söylüyorum, bol Duman dinliyorum. Müzik benim için ekran başından uzaklaşıp nefes aldığım alan.",
       }
     ],
     stats: [
-      { num: "3",  sup: "×", label: "SOLO PERFORMANS" },
-      { num: "1",  sup: "✦", label: "KURULAN STARTUP" },
+      { num: "3",  sup: "×", label: "SAHNE PERFORMANSI" },
+      { num: "1",  sup: "✦", label: "KURULAN GİRİŞİM" },
       { num: "15", sup: "DK", label: "İNSANLARLA BAĞ KURMA" },
     ]
   }
@@ -138,16 +128,18 @@ export default function AboutSection({ lang }) {
               <div className="neo-bento-icon" style={{ display: "flex", alignItems: "center", marginBottom: "12px" }}>
                 {card.icon}
               </div>
-              <div
-                className="neo-badge"
-                style={{
-                  backgroundColor: card.tagColor,
-                  color: card.tagText || "var(--neo-black)",
-                  marginBottom: "14px"
-                }}
-              >
-                {card.tag}
-              </div>
+              {card.tag && (
+                <div
+                  className="neo-badge"
+                  style={{
+                    backgroundColor: card.tagColor,
+                    color: card.tagText || "var(--neo-black)",
+                    marginBottom: "14px"
+                  }}
+                >
+                  {card.tag}
+                </div>
+              )}
               <h3 style={{ fontSize: "1.4rem", fontWeight: 800, marginBottom: "8px" }}>
                 {card.title}
               </h3>
