@@ -24,3 +24,10 @@ dist-ssr
 *.sw?
 
 .vercel
+
+# Backups & Archives
+*.zip
+backup_*
+backup_*/
+export/
+

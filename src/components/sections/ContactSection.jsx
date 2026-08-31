@@ -3,39 +3,45 @@ import { motion, AnimatePresence } from "framer-motion";
 import { GithubIcon, LinkedinIcon, InstagramIcon, CopyIcon, SparkIcon, MailIcon } from "../common/Icons";
 
 const socials = [
-  { label: "GITHUB", href: "https://github.com/yancelic", icon: <GithubIcon size={18} color="#0D0D11" />, color: "var(--neo-yellow)" },
-  { label: "LINKEDIN", href: "https://www.linkedin.com/in/myankilic/", icon: <LinkedinIcon size={18} color="#0D0D11" />, color: "var(--neo-cyan)" },
-  { label: "INSTAGRAM", href: "https://instagram.com/yankeelic", icon: <InstagramIcon size={18} color="#fff" />, color: "var(--neo-pink)", textColor: "#fff" },
+  { label: "GitHub",    href: "https://github.com/yancelic",                   icon: <GithubIcon size={15} color="#000" /> },
+  { label: "LinkedIn",  href: "https://www.linkedin.com/in/myankilic/",         icon: <LinkedinIcon size={15} color="#000" /> },
+  { label: "Instagram", href: "https://instagram.com/yankeelic",                icon: <InstagramIcon size={15} color="#000" strokeWidth={2} /> },
 ];
 
 const content = {
   en: {
     sectionNum: "05 // CONTACT",
-    title: "LET'S TALK",
+    title: "Let's Talk",
     quote: "Open to interesting projects, collaborations, and conversations that don't fit neatly into a form.",
     emailText: "myanki.work@gmail.com",
-    copyBtn: "COPY EMAIL",
-    copiedText: "COPIED!",
-    formTitle: "DIRECT MESSAGE // HIT ME UP",
-    nameLabel: "YOUR NAME",
-    emailLabel: "YOUR EMAIL",
-    msgLabel: "YOUR MESSAGE",
-    submitBtn: "SEND MESSAGE",
-    submittedMsg: "GOT IT — THANK YOU!"
+    copyBtn: "Copy Email",
+    copiedText: "Copied!",
+    formTitle: "// DIRECT MESSAGE",
+    nameLabel: "Your Name",
+    emailLabel: "Your Email",
+    msgLabel: "Your Message",
+    submitBtn: "Send Message",
+    submittedMsg: "Got it — Thank you!",
+    directEmail: "// DIRECT EMAIL",
+    socialLabel: "// SOCIAL CHANNELS",
+    balloonMsg: "Email address copied to clipboard!",
   },
   tr: {
     sectionNum: "05 // İLETİŞİM",
-    title: "KONUŞALIM",
+    title: "Konuşalım",
     quote: "İlginç projelere, iş birliklerine ve forma tam sığmayan konuşmalara açığım.",
     emailText: "myanki.work@gmail.com",
-    copyBtn: "E-POSTAYI KOPYALA",
-    copiedText: "KOPYALANDI!",
-    formTitle: "DİREKT MESAJ // BANA YAZ",
-    nameLabel: "ADINIZ",
-    emailLabel: "E-POSTA ADRESİNİZ",
-    msgLabel: "MESAJINIZ",
-    submitBtn: "GÖNDER",
-    submittedMsg: "ALDIM — TEŞEKKÜRLER!"
+    copyBtn: "E-Postayı Kopyala",
+    copiedText: "Kopyalandı!",
+    formTitle: "// DİREKT MESAJ",
+    nameLabel: "Adınız",
+    emailLabel: "E-Posta Adresiniz",
+    msgLabel: "Mesajınız",
+    submitBtn: "Gönder",
+    submittedMsg: "Aldım — Teşekkürler!",
+    directEmail: "// DİREKT E-POSTA",
+    socialLabel: "// SOSYAL MEDYA",
+    balloonMsg: "E-posta adresi panoya kopyalandı!",
   }
 };
 
@@ -60,148 +66,181 @@ export default function ContactSection({ lang }) {
   };
 
   return (
-    <section id="contact" className="neo-section">
-      {/* Section Header */}
-      <div className="neo-section-header">
-        <div className="neo-section-num">{t.sectionNum}</div>
-        <h2 className="neo-section-title">{t.title}</h2>
+    <section id="contact" className="xp-section">
+      {/* Section header */}
+      <div className="xp-section-header">
+        <span className="xp-section-num">{t.sectionNum}</span>
+        <h2 className="xp-section-title">{t.title}</h2>
       </div>
 
-      <div className="neo-contact-wrap">
-        {/* Left Side: Email & Social Hub */}
+      <div className="xp-contact-grid">
+
+        {/* Left: Email & Socials — XP window panel */}
         <motion.div
-          className="neo-box"
-          style={{ padding: "32px", background: "var(--neo-yellow)", display: "flex", flexDirection: "column", justifyContent: "space-between", gap: "24px" }}
-          initial={{ opacity: 0, x: -30 }}
+          className="xp-window"
+          initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ type: "spring", stiffness: 300, damping: 25 }}
+          transition={{ duration: 0.32 }}
         >
-          <div>
-            <div className="neo-badge neo-black" style={{ marginBottom: "16px" }}>
-              // DIRECT EMAIL
+          {/* Window title bar */}
+          <div className="xp-titlebar">
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <span className="xp-titlebar-icon">✉</span>
+              <span className="xp-titlebar-text">Contact — {t.title}</span>
             </div>
-
-            <h3 style={{ fontFamily: "var(--font-syne)", fontSize: "2rem", fontWeight: 800, lineHeight: 1.1, marginBottom: "12px" }}>
-              {t.emailText}
-            </h3>
-
-            <p style={{ fontWeight: 600, fontSize: "1.05rem", opacity: 0.9, marginBottom: "24px", lineHeight: 1.5 }}>
-              {t.quote}
-            </p>
-
-            <motion.button
-              className="neo-btn neo-btn-pink"
-              onClick={handleCopy}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}
-            >
-              <CopyIcon size={18} color="#fff" />
-              <span>{copied ? t.copiedText : t.copyBtn}</span>
-            </motion.button>
+            <div className="xp-window-controls">
+              <div className="xp-wc-btn">_</div>
+              <div className="xp-wc-btn">□</div>
+              <div className="xp-wc-btn close-btn">✕</div>
+            </div>
           </div>
 
-          {/* Social Links */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-            <div className="neo-label" style={{ fontSize: "0.8rem", textTransform: "uppercase" }}>
-              // SOCIAL CHANNELS
-            </div>
-            {socials.map((s, i) => (
-              <motion.a
-                key={i}
-                href={s.href}
-                target="_blank"
-                rel="noreferrer"
-                className="neo-social-btn"
-                style={{ background: s.color, color: s.textColor || "var(--neo-black)", display: "flex", alignItems: "center", justifyContent: "space-between" }}
-                whileHover={{ x: 6 }}
+          <div className="xp-client-area" style={{ padding: "14px", display: "flex", flexDirection: "column", gap: "14px" }}>
+            {/* Email block */}
+            <div>
+              <div className="xp-badge" style={{ marginBottom: "8px", fontSize: "10px" }}>
+                {t.directEmail}
+              </div>
+              <div
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "13px",
+                  fontWeight: "bold",
+                  color: "#1B6FDE",
+                  marginBottom: "6px",
+                  wordBreak: "break-all",
+                }}
               >
-                <span style={{ display: "inline-flex", alignItems: "center", gap: "10px" }}>
-                  {s.icon}
-                  <span>{s.label}</span>
-                </span>
-                <span>↗</span>
-              </motion.a>
-            ))}
+                {t.emailText}
+              </div>
+              <p style={{ fontSize: "12px", color: "var(--xp-text-muted)", marginBottom: "10px", lineHeight: "1.5" }}>
+                {t.quote}
+              </p>
+              <button
+                className="xp-btn xp-btn-primary"
+                onClick={handleCopy}
+                style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}
+              >
+                <CopyIcon size={13} color="#fff" />
+                {copied ? t.copiedText : t.copyBtn}
+              </button>
+            </div>
+
+            <hr className="xp-rule" />
+
+            {/* Social links */}
+            <div>
+              <div className="xp-badge" style={{ marginBottom: "8px", fontSize: "10px" }}>
+                {t.socialLabel}
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+                {socials.map((s, i) => (
+                  <a
+                    key={i}
+                    href={s.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="xp-social-btn"
+                  >
+                    <span style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
+                      {s.icon}
+                      <span>{s.label}</span>
+                    </span>
+                    <span style={{ fontSize: "11px", color: "var(--xp-text-muted)" }}>↗</span>
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
         </motion.div>
 
-        {/* Right Side: Interactive Form */}
+        {/* Right: Contact form — XP dialog style */}
         <motion.form
-          className="neo-box"
-          style={{ padding: "32px", background: "var(--neo-white)", display: "flex", flexDirection: "column", gap: "20px" }}
+          className="xp-window"
           onSubmit={handleSubmit}
-          initial={{ opacity: 0, x: 30 }}
+          initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ type: "spring", stiffness: 300, damping: 25 }}
+          transition={{ duration: 0.32 }}
         >
-          <div className="neo-badge neo-cyan" style={{ alignSelf: "flex-start" }}>
-            {t.formTitle}
+          {/* Form title bar */}
+          <div className="xp-titlebar">
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <span className="xp-titlebar-icon">📝</span>
+              <span className="xp-titlebar-text">{t.formTitle}</span>
+            </div>
+            <div className="xp-window-controls">
+              <div className="xp-wc-btn">_</div>
+              <div className="xp-wc-btn">□</div>
+              <div className="xp-wc-btn close-btn">✕</div>
+            </div>
           </div>
 
-          <div className="neo-input-group">
-            <label className="neo-label">{t.nameLabel}</label>
-            <input
-              type="text"
-              required
-              className="neo-input"
-              value={form.name}
-              onChange={(e) => setForm({ ...form, name: e.target.value })}
-              placeholder="e.g. Alex Turing"
-            />
+          <div className="xp-client-area" style={{ padding: "14px", display: "flex", flexDirection: "column", gap: "12px" }}>
+            <div className="xp-input-group">
+              <label className="xp-label">{t.nameLabel}:</label>
+              <input
+                type="text"
+                required
+                className="xp-input"
+                value={form.name}
+                onChange={(e) => setForm({ ...form, name: e.target.value })}
+                placeholder="e.g. Alex Turing"
+              />
+            </div>
+
+            <div className="xp-input-group">
+              <label className="xp-label">{t.emailLabel}:</label>
+              <input
+                type="email"
+                required
+                className="xp-input"
+                value={form.email}
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                placeholder="e.g. alex@example.com"
+              />
+            </div>
+
+            <div className="xp-input-group">
+              <label className="xp-label">{t.msgLabel}:</label>
+              <textarea
+                required
+                rows={5}
+                className="xp-textarea"
+                value={form.message}
+                onChange={(e) => setForm({ ...form, message: e.target.value })}
+                placeholder="Tell me about your project or idea..."
+              />
+            </div>
           </div>
 
-          <div className="neo-input-group">
-            <label className="neo-label">{t.emailLabel}</label>
-            <input
-              type="email"
-              required
-              className="neo-input"
-              value={form.email}
-              onChange={(e) => setForm({ ...form, email: e.target.value })}
-              placeholder="e.g. alex@example.com"
-            />
+          {/* Dialog footer with submit */}
+          <div className="xp-dialog-footer">
+            <button
+              type="submit"
+              className="xp-btn xp-btn-primary"
+              style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}
+            >
+              <MailIcon size={13} color="#fff" />
+              {submitted ? t.submittedMsg : t.submitBtn}
+            </button>
           </div>
-
-          <div className="neo-input-group">
-            <label className="neo-label">{t.msgLabel}</label>
-            <textarea
-              required
-              rows={4}
-              className="neo-textarea"
-              value={form.message}
-              onChange={(e) => setForm({ ...form, message: e.target.value })}
-              placeholder="Tell me about your project or idea..."
-            />
-          </div>
-
-          <motion.button
-            type="submit"
-            className="neo-btn"
-            style={{ width: "100%", background: "var(--neo-lime)", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "8px" }}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.96 }}
-          >
-            <MailIcon size={18} />
-            <span>{submitted ? t.submittedMsg : t.submitBtn}</span>
-          </motion.button>
         </motion.form>
+
       </div>
 
-      {/* Copy Email Notification Toast */}
+      {/* XP Balloon notification */}
       <AnimatePresence>
         {copied && (
           <motion.div
-            className="neo-toast"
-            initial={{ opacity: 0, y: 50 }}
+            className="xp-balloon"
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 50 }}
-            style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}
+            exit={{ opacity: 0, y: 20 }}
           >
-            <SparkIcon size={16} />
-            <span>{t.copiedText}</span>
+            <span className="xp-balloon-icon">📋</span>
+            <span>{t.balloonMsg}</span>
           </motion.div>
         )}
       </AnimatePresence>

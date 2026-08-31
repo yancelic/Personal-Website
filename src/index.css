@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Tahoma&display=swap');
+
 /* ═══════════════════════════════════════════════════════════════════════════
-   NEO-BRUTALIST DESIGN SYSTEM - YANKI MUHSIN KILIÇ
-   High Contrast, Bold Borders, Dynamic Spring Motion & Vibrant Neo Colors
+   WINDOWS XP LUNA DESIGN SYSTEM — YANKI MUHSIN KILIÇ
+   Authentic XP bevels, Luna blue chrome, Tahoma typography, raised/sunken states
    ═══════════════════════════════════════════════════════════════════════════ */
 
 *, *::before, *::after {
@@ -10,727 +12,1068 @@
 }
 
 :root {
-  /* Neo Colors */
-  --neo-bg:          #FAF8F5;
-  --neo-bg-alt:      #F0ECE1;
-  --neo-black:       #0D0D11;
-  --neo-white:       #FFFFFF;
-  
-  --neo-yellow:      #FFE600;
-  --neo-pink:        #FF2E93;
-  --neo-lime:        #A3E635;
-  --neo-cyan:        #00E5FF;
-  --neo-orange:      #FF5722;
-  --neo-purple:      #A855F7;
-  
+  /* ── XP Luna Color Palette ── */
+  --xp-luna-blue-start:  #1C6FDE;
+  --xp-luna-blue-mid:    #3C8FF5;
+  --xp-luna-blue-end:    #0D55BE;
+  --xp-luna-titlebar:    linear-gradient(180deg, #4A9AF8 0%, #1B6FDE 8%, #1464D0 90%, #0D55BE 100%);
+  --xp-luna-titlebar-inactive: linear-gradient(180deg, #9DB8D2 0%, #7A96B0 40%, #6C8AA8 100%);
+
+  --xp-start-green:      #3C9B3C;
+  --xp-start-green-dark: #2A7A2A;
+
+  /* Silver / Luna panel colors */
+  --xp-silver:           #ECE9D8;
+  --xp-silver-dark:      #D4D0C8;
+  --xp-silver-darker:    #ACA899;
+  --xp-silver-mid:       #F0EFE4;
+  --xp-desktop-bg:       #236B37;
+
+  /* UI borders and bevels */
+  --xp-border-dark:      #808080;
+  --xp-border-darker:    #404040;
+  --xp-border-light:     #FFFFFF;
+  --xp-border-mid:       #ACA899;
+
   /* Text */
-  --neo-text:        #0D0D11;
-  --neo-text-muted:  #4B5563;
-  
-  /* Borders & Shadows */
-  --neo-border-width: 3.5px;
-  --neo-border:       3.5px solid #0D0D11;
-  --neo-border-sm:    2.5px solid #0D0D11;
-  --neo-shadow-sm:    3px 3px 0px #0D0D11;
-  --neo-shadow:       5px 5px 0px #0D0D11;
-  --neo-shadow-lg:    8px 8px 0px #0D0D11;
-  --neo-shadow-active:1px 1px 0px #0D0D11;
+  --xp-text:             #000000;
+  --xp-text-muted:       #444444;
+  --xp-text-white:       #FFFFFF;
+  --xp-text-blue:        #003399;
+  --xp-text-disabled:    #808080;
+  --xp-titlebar-text:    #FFFFFF;
+
+  /* Input/form */
+  --xp-input-bg:         #FFFFFF;
+  --xp-input-border:     #7F9DB9;
+
+  /* Link blue */
+  --xp-link:             #0000CC;
+  --xp-link-hover:       #CC0000;
+
+  /* Highlight / selection */
+  --xp-select-bg:        #316AC5;
+  --xp-select-text:      #FFFFFF;
+
+  /* Bevel measurements */
+  --xp-raised-border:    1px solid;
+  --xp-window-radius:    8px;
+  --xp-btn-radius:       4px;
 
   /* Typography */
-  --font-display:    'Space Grotesk', system-ui, -apple-system, sans-serif;
-  --font-mono:       'JetBrains Mono', monospace;
-  --font-syne:       'Syne', sans-serif;
+  --font-ui:     Tahoma, 'Trebuchet MS', Verdana, Arial, sans-serif;
+  --font-mono:   'Courier New', 'Lucida Console', monospace;
+  --font-heading: 'Trebuchet MS', Tahoma, Verdana, Arial, sans-serif;
 }
 
-/* Hide default cursor on desktop fine pointer devices */
-@media (pointer: fine) {
-  html, body, *, *::before, *::after {
-    cursor: none !important;
-  }
-}
+/* ─── RESET & BASE ─────────────────────────────────────────────────────────── */
 
 html {
   scroll-behavior: smooth;
-  background-color: var(--neo-bg);
-  color: var(--neo-text);
-  font-family: var(--font-display);
+  background-color: var(--xp-silver);
+  color: var(--xp-text);
+  font-family: var(--font-ui);
+  font-size: 13px;
 }
 
 body {
-  background-color: var(--neo-bg);
-  color: var(--neo-text);
-  font-family: var(--font-display);
-  font-size: 16px;
-  line-height: 1.6;
+  background-color: var(--xp-silver);
+  color: var(--xp-text);
+  font-family: var(--font-ui);
+  font-size: 13px;
+  line-height: 1.5;
   overflow-x: hidden;
-  /* Neo-brutalist dot matrix grid background */
-  background-image: radial-gradient(#0d0d11 1.2px, transparent 1.2px);
-  background-size: 24px 24px;
+  /* Subtle dot grid evoking XP desktop icon grid */
+  background-image: radial-gradient(rgba(0,0,0,0.06) 1px, transparent 1px);
+  background-size: 20px 20px;
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 12px;
+a {
+  color: var(--xp-link);
+  text-decoration: underline;
 }
+a:hover {
+  color: var(--xp-link-hover);
+}
+
+/* ─── XP SCROLLBAR ─────────────────────────────────────────────────────────── */
+
+::-webkit-scrollbar { width: 16px; }
 ::-webkit-scrollbar-track {
-  background: var(--neo-bg);
-  border-left: var(--neo-border);
+  background: var(--xp-silver);
+  border-left: 1px solid var(--xp-border-dark);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--neo-yellow);
-  border: var(--neo-border);
-  box-shadow: inset 2px 2px 0 #000;
+  background: linear-gradient(90deg, #D8D5C8 0%, #C0BDB0 50%, #B0ADA0 100%);
+  border: 1px solid var(--xp-border-dark);
+  border-radius: 0;
+  /* XP-style raised bevel on thumb */
+  box-shadow:
+    inset 1px 1px 0 #FFFFFF,
+    inset -1px -1px 0 #808080;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: var(--neo-pink);
-}
-
-/* ─── NEO-BRUTALIST UTILITIES & CARDS ────────────────────────────────────── */
-
-.neo-box {
-  background: var(--neo-white);
-  border: var(--neo-border);
-  box-shadow: var(--neo-shadow);
-  border-radius: 12px;
-  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease;
+::-webkit-scrollbar-button {
+  background: var(--xp-silver);
+  border: 1px solid var(--xp-border-dark);
+  height: 16px;
+  box-shadow: inset 1px 1px 0 #FFFFFF, inset -1px -1px 0 #808080;
 }
 
-.neo-box-interactive {
-  cursor: pointer;
-}
-.neo-box-interactive:hover {
-  transform: translate(-3px, -3px);
-  box-shadow: var(--neo-shadow-lg);
-}
-.neo-box-interactive:active {
-  transform: translate(3px, 3px);
-  box-shadow: var(--neo-shadow-active);
+/* ─── XP BEVEL UTILITIES ───────────────────────────────────────────────────── */
+
+/* Raised bevel — used for buttons, panels, window borders */
+.xp-raised {
+  border: 1px solid var(--xp-border-dark);
+  box-shadow:
+    inset 1px 1px 0 var(--xp-border-light),
+    inset -1px -1px 0 var(--xp-border-darker);
 }
 
-/* Color Card Variants */
-.neo-yellow { background-color: var(--neo-yellow); }
-.neo-pink   { background-color: var(--neo-pink); color: #fff; }
-.neo-lime   { background-color: var(--neo-lime); }
-.neo-cyan   { background-color: var(--neo-cyan); }
-.neo-orange { background-color: var(--neo-orange); color: #fff; }
-.neo-purple { background-color: var(--neo-purple); color: #fff; }
-.neo-black  { background-color: var(--neo-black); color: #fff; }
+/* Sunken bevel — used for inputs, pressed buttons, recessed areas */
+.xp-sunken {
+  border: 1px solid var(--xp-border-dark);
+  box-shadow:
+    inset -1px -1px 0 var(--xp-border-light),
+    inset 1px 1px 0 var(--xp-border-darker);
+}
 
-/* Neo Buttons */
-.neo-btn {
-  display: inline-flex;
+/* Flat sunken (for list areas, status bars) */
+.xp-flat-sunken {
+  border: 1px solid var(--xp-border-dark);
+  border-right-color: var(--xp-border-light);
+  border-bottom-color: var(--xp-border-light);
+}
+
+/* ─── XP WINDOW CHROME ─────────────────────────────────────────────────────── */
+
+.xp-window {
+  background: var(--xp-silver);
+  border: 1px solid var(--xp-border-dark);
+  border-radius: var(--xp-window-radius);
+  box-shadow:
+    inset 1px 1px 0 rgba(255,255,255,0.7),
+    2px 2px 6px rgba(0,0,0,0.35),
+    4px 4px 12px rgba(0,0,0,0.15);
+  overflow: hidden;
+}
+
+.xp-titlebar {
+  background: var(--xp-luna-titlebar);
+  padding: 4px 6px 4px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 28px;
+  user-select: none;
+  /* Inner highlight at top */
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.35);
+}
+
+.xp-titlebar-inactive {
+  background: var(--xp-luna-titlebar-inactive);
+}
+
+.xp-titlebar-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+  flex-shrink: 0;
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 12px 24px;
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 1rem;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: var(--neo-black);
-  background-color: var(--neo-yellow);
-  border: var(--neo-border);
-  box-shadow: var(--neo-shadow);
-  border-radius: 10px;
-  cursor: pointer;
+  color: #FFD700;
+  font-size: 13px;
+}
+
+.xp-titlebar-text {
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--xp-titlebar-text);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.xp-window-controls {
+  display: flex;
+  gap: 2px;
+  flex-shrink: 0;
+  margin-left: 8px;
+}
+
+.xp-wc-btn {
+  width: 21px;
+  height: 21px;
+  border: 1px solid rgba(0,0,0,0.4);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: bold;
+  font-family: var(--font-ui);
+  cursor: default;
+  color: #000;
+  background: linear-gradient(180deg, #E8E0D0 0%, #D0C8B8 100%);
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,0.8), inset -1px -1px 0 rgba(0,0,0,0.15);
+  transition: background 0.08s;
   user-select: none;
-  transition: transform 0.12s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.12s ease, background-color 0.2s ease;
 }
-
-.neo-btn:hover {
-  transform: translate(-3px, -3px);
-  box-shadow: var(--neo-shadow-lg);
-  background-color: #ffed38;
+.xp-wc-btn:hover {
+  background: linear-gradient(180deg, #F0E8D8 0%, #D8D0C0 100%);
 }
-
-.neo-btn:active {
-  transform: translate(3px, 3px);
-  box-shadow: var(--neo-shadow-active);
-}
-
-.neo-btn-pink {
-  background-color: var(--neo-pink);
+.xp-wc-btn.close-btn {
+  background: linear-gradient(180deg, #E05050 0%, #C03030 100%);
   color: #fff;
 }
-.neo-btn-pink:hover {
-  background-color: #ff479f;
+.xp-wc-btn.close-btn:hover {
+  background: linear-gradient(180deg, #F06060 0%, #D04040 100%);
 }
 
-.neo-btn-cyan {
-  background-color: var(--neo-cyan);
-  color: var(--neo-black);
-}
-.neo-btn-cyan:hover {
-  background-color: #33ebff;
+.xp-client-area {
+  padding: 8px;
+  background: var(--xp-silver);
 }
 
-.neo-btn-outline {
-  background-color: var(--neo-white);
-  color: var(--neo-black);
-}
-.neo-btn-outline:hover {
-  background-color: var(--neo-bg-alt);
+/* ─── XP GROUP BOX ─────────────────────────────────────────────────────────── */
+
+.xp-groupbox {
+  border: 1px solid var(--xp-border-dark);
+  border-radius: 4px;
+  padding: 12px 14px 14px;
+  position: relative;
+  background: var(--xp-silver);
+  box-shadow:
+    inset 1px 1px 0 var(--xp-border-light);
 }
 
-.neo-btn-black {
-  background-color: var(--neo-black);
-  color: var(--neo-yellow);
-}
-.neo-btn-black:hover {
-  background-color: #1a1a24;
-}
-
-/* Neo Badges & Stickers */
-.neo-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 12px;
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  border: var(--neo-border-sm);
-  box-shadow: var(--neo-shadow-sm);
-  border-radius: 6px;
-  background-color: var(--neo-white);
-  color: var(--neo-black);
+.xp-groupbox-label {
+  position: absolute;
+  top: -9px;
+  left: 10px;
+  background: var(--xp-silver);
+  padding: 0 6px;
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--xp-text);
   white-space: nowrap;
 }
 
-.neo-badge.neo-yellow {
-  background-color: var(--neo-yellow) !important;
-  color: var(--neo-black) !important;
+/* ─── XP BUTTONS ───────────────────────────────────────────────────────────── */
+
+.xp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 4px 16px;
+  min-width: 80px;
+  min-height: 26px;
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: normal;
+  color: var(--xp-text);
+  text-decoration: none;
+  background: linear-gradient(180deg, #F4F2EC 0%, #DDDAD0 60%, #D0CCC4 100%);
+  border: 1px solid var(--xp-border-dark);
+  border-radius: var(--xp-btn-radius);
+  box-shadow:
+    inset 1px 1px 0 rgba(255,255,255,0.9),
+    inset -1px -1px 0 rgba(0,0,0,0.12),
+    1px 1px 2px rgba(0,0,0,0.15);
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  transition:
+    background 0.08s ease,
+    box-shadow 0.08s ease;
+  outline: none;
 }
 
-.neo-badge.neo-pink {
-  background-color: var(--neo-pink) !important;
-  color: #FFFFFF !important;
+.xp-btn:hover {
+  background: linear-gradient(180deg, #F8F6F0 0%, #E8E4DC 60%, #DCD8D0 100%);
+  border-color: #316AC5;
+  box-shadow:
+    inset 1px 1px 0 rgba(255,255,255,0.9),
+    inset -1px -1px 0 rgba(0,0,0,0.08),
+    0 0 0 1px #316AC5,
+    1px 1px 2px rgba(0,0,0,0.15);
 }
 
-.neo-badge.neo-cyan {
-  background-color: var(--neo-cyan) !important;
-  color: var(--neo-black) !important;
+.xp-btn:active,
+.xp-btn.xp-btn-pressed {
+  background: linear-gradient(180deg, #D0CCC4 0%, #DDDAD0 100%);
+  box-shadow:
+    inset 1px 1px 2px rgba(0,0,0,0.25),
+    inset -1px -1px 0 rgba(255,255,255,0.3);
+  border-color: var(--xp-border-dark);
+  padding: 5px 15px 3px 17px; /* simulate press shift */
 }
 
-.neo-badge.neo-lime {
-  background-color: var(--neo-lime) !important;
-  color: var(--neo-black) !important;
+.xp-btn:focus {
+  border-color: #316AC5;
+  box-shadow:
+    inset 1px 1px 0 rgba(255,255,255,0.9),
+    inset -1px -1px 0 rgba(0,0,0,0.12),
+    0 0 0 1px #316AC5;
+  /* Dotted inner focus ring */
+  outline: 1px dotted #000;
+  outline-offset: 2px;
 }
 
-.neo-badge.neo-orange {
-  background-color: var(--neo-orange) !important;
-  color: #FFFFFF !important;
+/* Primary / default button (blue) */
+.xp-btn-primary {
+  background: linear-gradient(180deg, #4A9AF8 0%, #1B6FDE 15%, #1464D0 85%, #0D55BE 100%);
+  color: #FFFFFF;
+  border-color: #0B3D8C;
+  font-weight: bold;
+  box-shadow:
+    inset 1px 1px 0 rgba(255,255,255,0.3),
+    inset -1px -1px 0 rgba(0,0,0,0.2),
+    1px 1px 3px rgba(0,0,0,0.3);
+  text-shadow: 0 1px 1px rgba(0,0,0,0.4);
+}
+.xp-btn-primary:hover {
+  background: linear-gradient(180deg, #5AAAFF 0%, #2B7FEE 15%, #1B74E0 85%, #1D65CE 100%);
+  border-color: #0B3D8C;
+  box-shadow:
+    inset 1px 1px 0 rgba(255,255,255,0.3),
+    inset -1px -1px 0 rgba(0,0,0,0.2),
+    0 0 0 1px #316AC5,
+    1px 1px 3px rgba(0,0,0,0.3);
+  color: #FFFFFF;
+}
+.xp-btn-primary:active {
+  background: linear-gradient(180deg, #0D55BE 0%, #1464D0 100%);
+  color: #FFFFFF;
+  padding: 5px 15px 3px 17px;
+}
+.xp-btn-primary:focus {
+  outline: 1px dotted #FFFFFF;
+  outline-offset: 2px;
+  border-color: #0B3D8C;
 }
 
-.neo-badge.neo-purple {
-  background-color: var(--neo-purple) !important;
-  color: #FFFFFF !important;
+/* Green button (Start-inspired) */
+.xp-btn-green {
+  background: linear-gradient(180deg, #5BC55B 0%, #3C9B3C 40%, #2A7A2A 100%);
+  color: #FFFFFF;
+  border-color: #1A5A1A;
+  font-weight: bold;
+  box-shadow:
+    inset 1px 1px 0 rgba(255,255,255,0.3),
+    inset -1px -1px 0 rgba(0,0,0,0.2),
+    1px 1px 2px rgba(0,0,0,0.25);
+  text-shadow: 0 1px 1px rgba(0,0,0,0.35);
+}
+.xp-btn-green:hover {
+  background: linear-gradient(180deg, #6BD56B 0%, #4CAB4C 40%, #3A8A3A 100%);
+  color: #FFFFFF;
+  border-color: #1A5A1A;
+}
+.xp-btn-green:active {
+  background: linear-gradient(180deg, #2A7A2A 0%, #3C9B3C 100%);
+  color: #FFFFFF;
+  padding: 5px 15px 3px 17px;
 }
 
-.neo-badge.neo-black {
-  background-color: var(--neo-black) !important;
-  color: #FFFFFF !important;
+/* Toolbar-style small button */
+.xp-btn-toolbar {
+  min-width: 0;
+  padding: 2px 8px;
+  min-height: 22px;
+  font-size: 11px;
+  border-radius: 2px;
 }
 
-.neo-sticker {
-  display: inline-block;
-  padding: 6px 14px;
-  font-family: var(--font-mono);
-  font-weight: 800;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  border: var(--neo-border);
-  box-shadow: var(--neo-shadow-sm);
-  border-radius: 50px;
-  transform: rotate(-2deg);
-  transition: transform 0.2s ease;
+/* Flat button (looks normal, raised on hover) */
+.xp-btn-flat {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
 }
-.neo-sticker:hover {
-  transform: rotate(2deg) scale(1.05);
+.xp-btn-flat:hover {
+  background: linear-gradient(180deg, #F4F2EC 0%, #DDDAD0 100%);
+  border-color: var(--xp-border-dark);
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,0.9), inset -1px -1px 0 rgba(0,0,0,0.1);
 }
 
-/* ─── MARQUEE TICKER ──────────────────────────────────────────────────────── */
+/* Toolbar button group (segmented) */
+.xp-btn-group {
+  display: inline-flex;
+}
+.xp-btn-group .xp-btn {
+  border-radius: 0;
+  border-right-width: 0;
+}
+.xp-btn-group .xp-btn:first-child {
+  border-top-left-radius: var(--xp-btn-radius);
+  border-bottom-left-radius: var(--xp-btn-radius);
+}
+.xp-btn-group .xp-btn:last-child {
+  border-right-width: 1px;
+  border-top-right-radius: var(--xp-btn-radius);
+  border-bottom-right-radius: var(--xp-btn-radius);
+}
+.xp-btn-group .xp-btn.active {
+  background: linear-gradient(180deg, #D0CCC4 0%, #DDDAD0 100%);
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.2);
+  border-color: var(--xp-border-dark);
+  color: var(--xp-text);
+  font-weight: bold;
+}
 
-.neo-marquee-wrap {
+/* ─── XP TABS ───────────────────────────────────────────────────────────────── */
+
+.xp-tab-strip {
+  display: flex;
+  gap: 0;
+  margin-bottom: -1px;
+  position: relative;
+  z-index: 1;
+  flex-wrap: wrap;
+  gap: 2px;
+}
+
+.xp-tab {
+  padding: 4px 14px 6px;
+  font-family: var(--font-ui);
+  font-size: 12px;
+  border: 1px solid var(--xp-border-dark);
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
+  background: linear-gradient(180deg, #E8E4DC 0%, #D8D4CC 100%);
+  color: var(--xp-text);
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  transition: background 0.08s;
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,0.7);
+}
+
+.xp-tab:hover {
+  background: linear-gradient(180deg, #F0EDE4 0%, #E0DDD4 100%);
+}
+
+.xp-tab.active {
+  background: var(--xp-silver);
+  border-color: var(--xp-border-dark);
+  border-bottom-color: var(--xp-silver);
+  font-weight: bold;
+  padding-bottom: 7px;
+  top: 1px;
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,0.9);
+}
+
+.xp-tab-content {
+  border: 1px solid var(--xp-border-dark);
+  background: var(--xp-silver);
+  padding: 12px;
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,0.5);
+}
+
+/* ─── XP INPUTS ─────────────────────────────────────────────────────────────── */
+
+.xp-input,
+.xp-textarea {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  color: var(--xp-text);
+  background: var(--xp-input-bg);
+  border: 1px solid var(--xp-input-border);
+  border-top-color: var(--xp-border-darker);
+  border-left-color: var(--xp-border-darker);
+  border-radius: 2px;
+  padding: 3px 5px;
+  outline: none;
+  width: 100%;
+  transition: border-color 0.1s;
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.12);
+}
+.xp-input:focus,
+.xp-textarea:focus {
+  border-color: #316AC5;
+  box-shadow:
+    inset 1px 1px 2px rgba(0,0,0,0.12),
+    0 0 0 1px #316AC5;
+}
+.xp-textarea {
+  resize: vertical;
+  min-height: 80px;
+  line-height: 1.5;
+}
+
+.xp-label {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  color: var(--xp-text);
+  display: block;
+  margin-bottom: 3px;
+}
+
+.xp-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+/* ─── XP BADGE / TAG / STATUS ───────────────────────────────────────────────── */
+
+.xp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 1px 8px;
+  font-family: var(--font-ui);
+  font-size: 11px;
+  background: var(--xp-silver-dark);
+  color: var(--xp-text);
+  border: 1px solid var(--xp-border-dark);
+  border-radius: 2px;
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,0.7), inset -1px -1px 0 rgba(0,0,0,0.1);
+  white-space: nowrap;
+  user-select: none;
+}
+.xp-badge-blue {
+  background: linear-gradient(180deg, #4A9AF8 0%, #1B6FDE 100%);
+  color: #FFFFFF;
+  border-color: #0B3D8C;
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,0.25);
+}
+.xp-badge-green {
+  background: linear-gradient(180deg, #5BC55B 0%, #3C9B3C 100%);
+  color: #FFFFFF;
+  border-color: #1A5A1A;
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,0.25);
+}
+
+/* Pulse dot */
+.xp-pulse-dot {
+  width: 7px;
+  height: 7px;
+  background: #00BB00;
+  border-radius: 50%;
+  border: 1px solid #007700;
+  animation: xpPulseBlink 1.8s infinite ease-in-out;
+  flex-shrink: 0;
+}
+
+@keyframes xpPulseBlink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+
+/* ─── XP MARQUEE / TICKER ───────────────────────────────────────────────────── */
+
+.xp-ticker-wrap {
   width: 100%;
   overflow: hidden;
-  background: var(--neo-black);
-  color: var(--neo-yellow);
-  border-top: var(--neo-border);
-  border-bottom: var(--neo-border);
-  padding: 14px 0;
+  background: linear-gradient(180deg, #2A7FEE 0%, #1B6FDE 50%, #0D55BE 100%);
+  color: #FFFFFF;
+  border-top: 1px solid #0B3D8C;
+  border-bottom: 1px solid #0B3D8C;
+  padding: 5px 0;
   position: relative;
   user-select: none;
-  box-shadow: 0 4px 0 #000;
+  /* Sunken effect for the ticker bar */
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.15),
+    inset 0 -1px 0 rgba(0,0,0,0.25);
 }
 
-.neo-marquee-wrap.pink-mode {
-  background: var(--neo-pink);
-  color: #fff;
-}
-
-.neo-marquee-wrap.cyan-mode {
-  background: var(--neo-cyan);
-  color: var(--neo-black);
-}
-
-.neo-marquee-track {
+.xp-ticker-track {
   display: flex;
   width: max-content;
-  animation: marqueeScroll 22s linear infinite;
+  animation: xpTickerScroll 28s linear infinite;
 }
 
-.neo-marquee-wrap:hover .neo-marquee-track {
+.xp-ticker-wrap:hover .xp-ticker-track {
   animation-play-state: paused;
 }
 
-@keyframes marqueeScroll {
+@keyframes xpTickerScroll {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
 
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-
-.neo-marquee-item {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  font-family: var(--font-syne);
-  font-weight: 800;
-  font-size: 1.25rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 0 20px;
-}
-
-.neo-marquee-star {
-  display: inline-block;
-  font-size: 1.2rem;
-  color: var(--neo-pink);
-}
-
-/* ─── HEADER & NAVBAR ─────────────────────────────────────────────────────── */
-
-.neo-navbar {
-  position: sticky;
-  top: 16px;
-  z-index: 100;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 16px;
-}
-
-.neo-navbar-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 24px;
-  background: var(--neo-white);
-  border: var(--neo-border);
-  box-shadow: var(--neo-shadow-lg);
-  border-radius: 16px;
-}
-
-.neo-logo {
+.xp-ticker-item {
   display: flex;
   align-items: center;
   gap: 10px;
-  text-decoration: none;
-  color: var(--neo-black);
-  font-family: var(--font-syne);
-  font-weight: 800;
-  font-size: 1.3rem;
-  letter-spacing: -0.02em;
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0 16px;
+  color: #FFFFFF;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
 }
 
-.neo-logo-icon {
-  width: 38px;
-  height: 38px;
-  background: var(--neo-yellow);
-  border: var(--neo-border-sm);
-  box-shadow: 2px 2px 0 #000;
-  border-radius: 8px;
+.xp-ticker-sep {
+  color: rgba(255,255,255,0.5);
+  font-size: 10px;
+}
+
+/* ─── XP NAVBAR / TASKBAR ───────────────────────────────────────────────────── */
+
+.xp-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  background: linear-gradient(180deg, #2A7FEE 0%, #1B6FDE 30%, #1464D0 85%, #0D55BE 100%);
+  border-bottom: 1px solid #0B3D8C;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.25),
+    0 2px 6px rgba(0,0,0,0.3);
+}
+
+.xp-navbar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  height: 42px;
+}
+
+/* Start button area */
+.xp-start-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 14px 4px 10px;
+  background: linear-gradient(180deg, #5BC55B 0%, #3C9B3C 40%, #2A7A2A 100%);
+  border: 1px solid #1A5A1A;
+  border-radius: 0 16px 16px 0;
+  color: #FFFFFF;
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: bold;
+  cursor: default;
+  text-decoration: none;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+  box-shadow:
+    inset 1px 1px 0 rgba(255,255,255,0.35),
+    inset -1px -1px 0 rgba(0,0,0,0.2),
+    2px 0 4px rgba(0,0,0,0.2);
+  flex-shrink: 0;
+  margin-left: -12px;
+  height: 100%;
+  user-select: none;
+}
+.xp-start-btn:hover {
+  background: linear-gradient(180deg, #6BD56B 0%, #4CAB4C 40%, #3A8A3A 100%);
+  color: #FFFFFF;
+  text-decoration: none;
+}
+.xp-start-logo-circle {
+  width: 22px;
+  height: 22px;
+  background: radial-gradient(circle at 40% 35%, #FFFFFF 0%, #80C0FF 40%, #3080FF 100%);
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.4);
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 11px;
   font-weight: 900;
-  font-size: 1.1rem;
+  color: #003399;
+  flex-shrink: 0;
 }
 
-.neo-nav-links {
+/* Taskbar separator */
+.xp-taskbar-sep {
+  width: 1px;
+  height: 28px;
+  background: linear-gradient(180deg, transparent, rgba(255,255,255,0.3), transparent);
+  margin: 0 8px;
+  flex-shrink: 0;
+}
+
+/* Nav links in taskbar */
+.xp-nav-links {
   display: flex;
   align-items: center;
-  gap: 20px;
-  list-style: none;
-}
-
-.neo-nav-link {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 0.95rem;
-  color: var(--neo-black);
-  text-decoration: none;
-  padding: 6px 12px;
-  border-radius: 8px;
-  border: 2px solid transparent;
-  transition: all 0.15s ease;
-}
-
-.neo-nav-link:hover {
-  background: var(--neo-yellow);
-  border: var(--neo-border-sm);
-  box-shadow: 2px 2px 0 #000;
-}
-
-.neo-lang-switch {
-  display: flex;
-  align-items: center;
-  background: var(--neo-black);
-  padding: 3px;
-  border: var(--neo-border-sm);
-  border-radius: 10px;
   gap: 2px;
+  list-style: none;
+  flex: 1;
+  padding: 0 8px;
 }
 
-.neo-lang-btn {
-  border: none;
-  background: transparent;
-  color: #888;
-  font-family: var(--font-mono);
-  font-weight: 800;
-  font-size: 0.8rem;
-  padding: 6px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.15s ease;
+.xp-nav-link {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  color: rgba(255,255,255,0.9);
+  text-decoration: none;
+  padding: 3px 10px;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  transition: all 0.08s;
+  user-select: none;
+}
+.xp-nav-link:hover {
+  background: rgba(255,255,255,0.15);
+  border-color: rgba(255,255,255,0.25);
+  color: #FFFFFF;
+  text-decoration: none;
+}
+.xp-nav-link.active {
+  background: rgba(0,0,0,0.2);
+  border-color: rgba(0,0,0,0.3);
+  color: #FFFFFF;
+  font-weight: bold;
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.2);
 }
 
-.neo-lang-btn.active {
-  background: var(--neo-yellow);
-  color: var(--neo-black);
-  box-shadow: inset 0 0 0 1.5px #000;
-}
-
-/* Live Status Badge in Navbar */
-.neo-status-badge {
+/* System tray area */
+.xp-system-tray {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 14px;
-  background: var(--neo-lime);
-  border: var(--neo-border-sm);
-  box-shadow: 2px 2px 0 #000;
-  border-radius: 20px;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  font-weight: 800;
+  padding: 2px 8px;
+  background: rgba(0,0,0,0.15);
+  border: 1px solid rgba(0,0,0,0.25);
+  border-radius: 3px;
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,0.1);
+  height: 26px;
+  flex-shrink: 0;
+}
+.xp-tray-time {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  color: #FFFFFF;
+  font-weight: bold;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
 }
 
-.neo-pulse-dot {
-  width: 8px;
-  height: 8px;
-  background-color: var(--neo-black);
-  border-radius: 50%;
-  animation: pulseBlink 1.5s infinite ease-in-out;
-}
-
-@keyframes pulseBlink {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.4); opacity: 0.4; }
-}
-
-/* ─── HERO SECTION ────────────────────────────────────────────────────────── */
-
-.neo-hero {
-  max-width: 1200px;
-  margin: 40px auto 60px;
-  padding: 0 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-
-.neo-hero-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-
-.neo-hero-title-wrap {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-.neo-hero-name {
-  font-family: var(--font-syne);
-  font-weight: 800;
-  font-size: clamp(3rem, 9vw, 6.8rem);
-  line-height: 0.95;
-  letter-spacing: -0.04em;
-  text-transform: uppercase;
-  color: var(--neo-black);
-}
-
-.neo-hero-name.highlight-yellow {
-  background: var(--neo-yellow);
-  display: inline-block;
-  padding: 0 12px;
-  border: var(--neo-border);
-  box-shadow: var(--neo-shadow-lg);
-  border-radius: 12px;
-  transform: rotate(-1deg);
-  width: fit-content;
-  margin-top: 6px;
-}
-
-.neo-hero-name.outline-text {
-  color: transparent;
-  -webkit-text-stroke: 3.5px var(--neo-black);
-}
-
-.neo-hero-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 24px;
-}
-
-@media (max-width: 900px) {
-  .neo-hero-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.neo-hero-card-main {
-  padding: 32px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 24px;
-}
-
-.neo-hero-subtitle {
-  font-size: 1.35rem;
-  font-weight: 600;
-  color: var(--neo-black);
-  max-width: 650px;
-  line-height: 1.5;
-}
-
-.neo-hero-cta-group {
+/* Language switcher in taskbar */
+.xp-lang-switch {
   display: flex;
   align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
+  gap: 2px;
+  margin-left: 8px;
+  flex-shrink: 0;
 }
-
-.neo-hero-sidebar {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.neo-sidebar-card {
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-/* Interactive Floating Stickers */
-.floating-sticker {
-  position: absolute;
-  z-index: 10;
-  cursor: grab;
+.xp-lang-btn {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: bold;
+  padding: 2px 8px;
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.8);
+  border-radius: 2px;
+  transition: all 0.08s;
   user-select: none;
 }
-.floating-sticker:active { cursor: grabbing; }
+.xp-lang-btn:hover {
+  background: rgba(255,255,255,0.2);
+  color: #FFFFFF;
+}
+.xp-lang-btn.active {
+  background: rgba(0,0,0,0.25);
+  color: #FFFFFF;
+  border-color: rgba(0,0,0,0.3);
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.2);
+}
 
-/* ─── ABOUT SECTION ───────────────────────────────────────────────────────── */
+/* ─── XP SECTIONS ───────────────────────────────────────────────────────────── */
 
-.neo-section {
+.xp-section {
   max-width: 1200px;
-  margin: 80px auto;
+  margin: 28px auto;
   padding: 0 16px;
 }
 
-.neo-section-header {
+.xp-section-header {
   display: flex;
   align-items: center;
-  gap: 16px;
-  margin-bottom: 40px;
-}
-
-.neo-section-num {
-  font-family: var(--font-mono);
-  font-weight: 800;
-  font-size: 1.1rem;
-  background: var(--neo-black);
-  color: var(--neo-yellow);
-  padding: 6px 12px;
-  border-radius: 8px;
-  box-shadow: 3px 3px 0 var(--neo-pink);
-}
-
-.neo-section-title {
-  font-family: var(--font-syne);
-  font-weight: 800;
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  text-transform: uppercase;
-  letter-spacing: -0.03em;
-}
-
-/* Bento Grid System */
-.neo-bento-grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 24px;
-}
-
-.neo-col-12 { grid-column: span 12; }
-.neo-col-8  { grid-column: span 8; }
-.neo-col-6  { grid-column: span 6; }
-.neo-col-4  { grid-column: span 4; }
-
-@media (max-width: 900px) {
-  .neo-col-8, .neo-col-6, .neo-col-4 {
-    grid-column: span 12;
-  }
-}
-
-.neo-bento-card {
-  padding: 28px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 220px;
-  position: relative;
-  overflow: hidden;
-}
-
-.neo-bento-icon {
-  font-size: 2.2rem;
-  width: 52px;
-  height: 52px;
-  background: var(--neo-yellow);
-  border: var(--neo-border-sm);
-  box-shadow: 3px 3px 0 #000;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  gap: 10px;
   margin-bottom: 16px;
 }
 
-/* ─── EXPERTISE / SKILLS ─────────────────────────────────────────────────── */
+.xp-section-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  background: linear-gradient(180deg, #4A9AF8 0%, #1B6FDE 100%);
+  color: #FFFFFF;
+  padding: 2px 8px;
+  border-radius: 2px;
+  border: 1px solid #0B3D8C;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+  white-space: nowrap;
+}
 
-.neo-skills-matrix {
+.xp-section-title {
+  font-family: var(--font-heading);
+  font-weight: bold;
+  font-size: clamp(1.3rem, 3vw, 2rem);
+  color: var(--xp-text);
+  letter-spacing: -0.01em;
+}
+
+/* Etched horizontal rule */
+.xp-rule {
+  border: none;
+  border-top: 1px solid var(--xp-border-dark);
+  border-bottom: 1px solid var(--xp-border-light);
+  margin: 16px 0;
+}
+
+/* ─── XP PANEL GRID ─────────────────────────────────────────────────────────── */
+
+.xp-bento-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 10px;
 }
 
-.neo-skill-card {
-  padding: 22px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.neo-skill-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.neo-skill-title {
-  font-size: 1.15rem;
-  font-weight: 800;
-}
-
-.neo-skill-bar-wrap {
-  width: 100%;
-  height: 16px;
-  background: var(--neo-bg-alt);
-  border: var(--neo-border-sm);
-  border-radius: 8px;
-  overflow: hidden;
-  padding: 2px;
-}
-
-.neo-skill-bar-fill {
-  height: 100%;
-  background: var(--neo-pink);
-  border-radius: 4px;
-  transition: width 1s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-/* Filter Buttons */
-.neo-filter-group {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-bottom: 30px;
-}
-
-/* ─── ZORUS SPOTLIGHT SECTION ────────────────────────────────────────────── */
-
-.neo-zorus-hero {
-  background: var(--neo-lime);
-  border: var(--neo-border);
-  box-shadow: var(--neo-shadow-lg);
-  border-radius: 20px;
-  padding: 40px;
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 36px;
-  align-items: center;
-}
+.xp-col-12 { grid-column: span 12; }
+.xp-col-8  { grid-column: span 8; }
+.xp-col-6  { grid-column: span 6; }
+.xp-col-4  { grid-column: span 4; }
 
 @media (max-width: 900px) {
-  .neo-zorus-hero {
-    grid-template-columns: 1fr;
-    padding: 24px;
-  }
+  .xp-col-8, .xp-col-6, .xp-col-4 { grid-column: span 12; }
 }
 
-.neo-zorus-badge {
-  background: var(--neo-black);
-  color: var(--neo-lime);
-  font-family: var(--font-mono);
-  font-weight: 800;
-  font-size: 0.9rem;
-  padding: 6px 14px;
-  border-radius: 8px;
-  display: inline-block;
-  margin-bottom: 12px;
-  box-shadow: 3px 3px 0 var(--neo-pink);
+/* XP panel — raised bevel content box */
+.xp-panel {
+  background: var(--xp-silver);
+  border: 1px solid var(--xp-border-dark);
+  box-shadow:
+    inset 1px 1px 0 rgba(255,255,255,0.8),
+    inset -1px -1px 0 rgba(0,0,0,0.07),
+    2px 2px 4px rgba(0,0,0,0.12);
+  padding: 14px;
 }
 
-.neo-zorus-preview-box {
-  background: var(--neo-white);
-  border: var(--neo-border);
-  box-shadow: var(--neo-shadow);
-  border-radius: 14px;
-  padding: 24px;
+/* XP panel — blue accent top border (like XP "Tasks" sidebar) */
+.xp-panel-blue-header {
+  background: linear-gradient(180deg, #D5E5F8 0%, #C5D8F0 100%);
+  border-bottom: 1px solid #7F9DB9;
+  margin: -14px -14px 12px;
+  padding: 8px 12px;
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: bold;
+  color: #003399;
+}
+
+/* ─── XP HERO ───────────────────────────────────────────────────────────────── */
+
+.xp-hero {
+  max-width: 1200px;
+  margin: 20px auto 24px;
+  padding: 0 16px;
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-/* Modal / Drawer */
-.neo-modal-overlay {
+.xp-hero-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.xp-hero-name-block {
+  padding: 16px 20px;
+}
+
+.xp-hero-name {
+  font-family: var(--font-heading);
+  font-weight: bold;
+  font-size: clamp(2.2rem, 6vw, 4.5rem);
+  color: var(--xp-text);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.xp-hero-name-accent {
+  color: #1B6FDE;
+}
+
+.xp-hero-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 10px;
+}
+
+@media (max-width: 900px) {
+  .xp-hero-grid { grid-template-columns: 1fr; }
+}
+
+.xp-hero-subtitle {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  color: var(--xp-text);
+  line-height: 1.6;
+  max-width: 600px;
+}
+
+.xp-hero-cta-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+/* ─── XP STATUS / ABOUT SIDEBAR ─────────────────────────────────────────────── */
+
+.xp-status-box {
+  background: #EBF4E8;
+  border: 1px solid #7AB87A;
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,0.7);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.xp-status-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: bold;
+  color: #006600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.xp-status-text {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  color: var(--xp-text);
+  line-height: 1.4;
+}
+
+/* ─── XP STAT ROWS ──────────────────────────────────────────────────────────── */
+
+.xp-stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+
+@media (max-width: 600px) {
+  .xp-stat-row { grid-template-columns: 1fr; }
+}
+
+.xp-stat-cell {
+  background: var(--xp-silver);
+  border: 1px solid var(--xp-border-dark);
+  box-shadow:
+    inset 1px 1px 0 rgba(255,255,255,0.8),
+    inset -1px -1px 0 rgba(0,0,0,0.06),
+    1px 1px 3px rgba(0,0,0,0.1);
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.xp-stat-number {
+  font-family: var(--font-heading);
+  font-weight: bold;
+  font-size: 2.4rem;
+  color: #1B6FDE;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.xp-stat-sup {
+  font-size: 1rem;
+  color: #3C9B3C;
+  vertical-align: super;
+  margin-left: 2px;
+}
+
+.xp-stat-label {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: bold;
+  color: var(--xp-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.3;
+}
+
+/* ─── XP SKILL PANEL ─────────────────────────────────────────────────────────── */
+
+.xp-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 10px;
+}
+
+.xp-skill-panel {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.xp-skill-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.xp-skill-title {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--xp-text);
+}
+
+.xp-skill-desc {
+  font-size: 12px;
+  color: var(--xp-text-muted);
+  line-height: 1.5;
+}
+
+.xp-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.xp-tag {
+  display: inline-block;
+  padding: 1px 7px;
+  font-size: 10px;
+  font-weight: bold;
+  background: var(--xp-silver-dark);
+  color: var(--xp-text);
+  border: 1px solid var(--xp-border-dark);
+  border-radius: 2px;
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,0.6);
+  user-select: none;
+}
+
+/* ─── XP MODAL / DIALOG ─────────────────────────────────────────────────────── */
+
+.xp-modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(13, 13, 17, 0.85);
+  background: rgba(0,0,0,0.55);
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -738,167 +1081,532 @@ body {
   padding: 20px;
 }
 
-.neo-modal-content {
-  background: var(--neo-white);
-  border: var(--neo-border);
-  box-shadow: var(--neo-shadow-lg);
-  border-radius: 20px;
-  max-width: 650px;
+.xp-dialog {
+  background: var(--xp-silver);
+  border: 1px solid var(--xp-border-dark);
+  border-radius: 8px;
+  max-width: 500px;
   width: 100%;
-  padding: 32px;
-  position: relative;
+  box-shadow:
+    inset 1px 1px 0 rgba(255,255,255,0.5),
+    4px 4px 12px rgba(0,0,0,0.5),
+    8px 8px 24px rgba(0,0,0,0.2);
+  overflow: hidden;
 }
 
-/* ─── BEYOND & PASSIONS ───────────────────────────────────────────────────── */
-
-.neo-cassette-player {
-  background: var(--neo-yellow);
-  border: var(--neo-border);
-  box-shadow: var(--neo-shadow);
-  border-radius: 16px;
-  padding: 28px;
+.xp-dialog-body {
+  padding: 16px 20px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 14px;
 }
 
-.neo-cassette-reels {
+.xp-dialog-text {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  color: var(--xp-text);
+  line-height: 1.6;
+}
+
+.xp-dialog-footer {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background: var(--neo-black);
-  padding: 20px;
-  border: var(--neo-border-sm);
-  border-radius: 12px;
+  justify-content: flex-end;
+  gap: 6px;
+  padding: 10px 16px;
+  background: linear-gradient(180deg, var(--xp-silver) 0%, var(--xp-silver-dark) 100%);
+  border-top: 1px solid var(--xp-border-dark);
 }
 
-.neo-reel {
-  width: 50px;
-  height: 50px;
-  border: 4px solid var(--neo-white);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+/* ─── XP ZORUS SECTION ───────────────────────────────────────────────────────── */
 
-.neo-reel-spin {
-  animation: reelSpin 2s linear infinite;
-}
-
-@keyframes reelSpin {
-  to { transform: rotate(360deg); }
-}
-
-/* ─── CONTACT SECTION ─────────────────────────────────────────────────────── */
-
-.neo-contact-wrap {
+.xp-zorus-wrap {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 36px;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 10px;
+  align-items: start;
 }
 
 @media (max-width: 900px) {
-  .neo-contact-wrap {
-    grid-template-columns: 1fr;
-  }
+  .xp-zorus-wrap { grid-template-columns: 1fr; }
 }
 
-.neo-input-group {
+.xp-zorus-left {
+  padding: 16px;
+}
+
+.xp-zorus-title {
+  font-family: var(--font-heading);
+  font-weight: bold;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: #1B6FDE;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.xp-zorus-tagline {
+  font-size: 13px;
+  font-weight: bold;
+  color: var(--xp-text);
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.xp-zorus-desc {
+  font-size: 12px;
+  color: var(--xp-text-muted);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+/* XP List items (Zorus pillars) */
+.xp-list {
   display: flex;
   flex-direction: column;
+  gap: 6px;
+}
+
+.xp-list-item {
+  background: var(--xp-silver-mid);
+  border: 1px solid var(--xp-border-dark);
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,0.7), 1px 1px 2px rgba(0,0,0,0.1);
+  padding: 8px 10px;
+  display: flex;
+  align-items: flex-start;
   gap: 8px;
+  cursor: default;
+  transition: background 0.08s;
+}
+.xp-list-item:hover {
+  background: #D5E5F8;
+  border-color: #7F9DB9;
+}
+.xp-list-item.selected {
+  background: var(--xp-select-bg);
+  color: var(--xp-select-text);
+  border-color: #316AC5;
 }
 
-.neo-label {
+.xp-list-num {
   font-family: var(--font-mono);
-  font-weight: 800;
-  font-size: 0.9rem;
-  text-transform: uppercase;
+  font-size: 10px;
+  font-weight: bold;
+  background: #1B6FDE;
+  color: #fff;
+  padding: 1px 5px;
+  border-radius: 2px;
+  flex-shrink: 0;
+  margin-top: 1px;
 }
 
-.neo-input, .neo-textarea {
-  font-family: var(--font-display);
-  font-size: 1.05rem;
-  font-weight: 600;
-  padding: 14px 18px;
-  background: var(--neo-white);
-  border: var(--neo-border);
-  box-shadow: var(--neo-shadow-sm);
-  border-radius: 10px;
-  outline: none;
-  transition: all 0.15s ease;
+.xp-list-title {
+  font-size: 12px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 2px;
 }
 
-.neo-input:focus, .neo-textarea:focus {
-  transform: translate(-2px, -2px);
-  box-shadow: var(--neo-shadow);
-  background: #fff;
-  border-color: var(--neo-pink);
+.xp-list-desc {
+  font-size: 11px;
+  opacity: 0.85;
+  line-height: 1.4;
+  display: block;
 }
 
-.neo-social-btn {
+/* ─── XP CONTACT / FORM SECTION ─────────────────────────────────────────────── */
+
+.xp-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+@media (max-width: 900px) {
+  .xp-contact-grid { grid-template-columns: 1fr; }
+}
+
+/* Social buttons */
+.xp-social-btn {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 24px;
-  background: var(--neo-white);
-  border: var(--neo-border);
-  box-shadow: var(--neo-shadow-sm);
-  border-radius: 12px;
+  padding: 6px 10px;
+  background: linear-gradient(180deg, #F4F2EC 0%, #DDDAD0 100%);
+  border: 1px solid var(--xp-border-dark);
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,0.9), inset -1px -1px 0 rgba(0,0,0,0.1), 1px 1px 2px rgba(0,0,0,0.1);
   text-decoration: none;
-  color: var(--neo-black);
-  font-weight: 800;
-  font-size: 1.1rem;
-  transition: all 0.15s ease;
+  color: var(--xp-text);
+  font-size: 12px;
+  font-weight: bold;
+  font-family: var(--font-ui);
+  transition: all 0.08s;
+  cursor: pointer;
+}
+.xp-social-btn:hover {
+  background: #D5E5F8;
+  border-color: #316AC5;
+  box-shadow:
+    inset 1px 1px 0 rgba(255,255,255,0.9),
+    0 0 0 1px #316AC5,
+    1px 1px 2px rgba(0,0,0,0.15);
+  text-decoration: none;
+  color: var(--xp-text);
 }
 
-.neo-social-btn:hover {
-  transform: translate(-3px, -3px);
-  box-shadow: var(--neo-shadow);
-  background: var(--neo-yellow);
-}
-
-/* Toast notification */
-.neo-toast {
+/* Toast / balloon notification */
+.xp-balloon {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
+  bottom: 50px;
+  right: 20px;
   z-index: 2000;
-  background: var(--neo-lime);
-  color: var(--neo-black);
-  border: var(--neo-border);
-  box-shadow: var(--neo-shadow-lg);
-  padding: 14px 24px;
-  border-radius: 12px;
+  background: #FFFDE8;
+  border: 1px solid var(--xp-border-dark);
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-family: var(--font-ui);
+  font-size: 12px;
+  color: var(--xp-text);
+  box-shadow: 3px 3px 8px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 280px;
+}
+.xp-balloon-icon {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+/* ─── XP CASSETTE / MEDIA PLAYER ────────────────────────────────────────────── */
+
+.xp-media-player {
+  background: linear-gradient(180deg, #E4E0D8 0%, #C8C4BC 100%);
+  border: 1px solid var(--xp-border-dark);
+  box-shadow:
+    inset 1px 1px 0 rgba(255,255,255,0.8),
+    inset -1px -1px 0 rgba(0,0,0,0.15),
+    2px 2px 6px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.xp-player-header {
+  background: linear-gradient(180deg, #4A9AF8 0%, #1B6FDE 100%);
+  padding: 3px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: bold;
+  color: #FFFFFF;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+  user-select: none;
+}
+
+.xp-player-screen {
+  background: #000;
+  margin: 6px;
+  padding: 6px 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 64px;
+}
+
+.xp-player-art {
+  width: 52px;
+  height: 52px;
+  border: 1px solid #333;
+  flex-shrink: 0;
+  background: #111;
+  overflow: hidden;
+}
+.xp-player-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.xp-player-info {
+  flex: 1;
+  min-width: 0;
+}
+.xp-player-track {
   font-family: var(--font-mono);
-  font-weight: 800;
-  font-size: 0.95rem;
+  font-size: 12px;
+  font-weight: bold;
+  color: #00FF00;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.xp-player-album {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: #AAA;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.xp-player-year {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: #666;
 }
 
-/* Footer */
-.neo-footer {
-  background: var(--neo-black);
-  color: var(--neo-white);
-  border-top: var(--neo-border);
-  padding: 60px 16px 30px;
-  margin-top: 100px;
+.xp-player-eq {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 20px;
+  flex-shrink: 0;
+}
+.xp-eq-bar {
+  width: 3px;
+  background: #00CC00;
+  border-radius: 0;
+  transition: height 0.15s ease;
+}
+.xp-eq-bar.paused {
+  height: 2px !important;
+  background: #005500;
 }
 
-.neo-footer-inner {
+.xp-player-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 8px;
+  background: linear-gradient(180deg, #D8D4CC 0%, #C4C0B8 100%);
+  border-top: 1px solid var(--xp-border-dark);
+}
+
+.xp-player-btns {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.xp-player-btn {
+  width: 26px;
+  height: 22px;
+  background: linear-gradient(180deg, #F0EDE4 0%, #D8D4CC 100%);
+  border: 1px solid var(--xp-border-dark);
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,0.8), inset -1px -1px 0 rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 2px;
+  color: var(--xp-text);
+  transition: all 0.08s;
+  font-size: 10px;
+}
+.xp-player-btn:hover {
+  background: linear-gradient(180deg, #F8F5EC 0%, #E4E0D8 100%);
+  border-color: #316AC5;
+}
+.xp-player-btn:active {
+  background: linear-gradient(180deg, #C4C0B8 0%, #D8D4CC 100%);
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.2);
+}
+.xp-player-btn-play {
+  width: 36px;
+  background: linear-gradient(180deg, #5BC55B 0%, #3C9B3C 100%);
+  border-color: #1A5A1A;
+  color: #FFFFFF;
+}
+.xp-player-btn-play:hover {
+  background: linear-gradient(180deg, #6BD56B 0%, #4CAB4C 100%);
+  border-color: #1A5A1A;
+}
+
+.xp-player-counter {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--xp-text-muted);
+  padding: 0 4px;
+}
+
+/* ─── XP FOOTER ─────────────────────────────────────────────────────────────── */
+
+.xp-footer {
+  background: linear-gradient(180deg, #2A7FEE 0%, #1B6FDE 30%, #0D55BE 100%);
+  border-top: 1px solid #0B3D8C;
+  padding: 24px 16px 12px;
+  margin-top: 40px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+.xp-footer-inner {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 16px;
 }
 
-.neo-footer-bigtext {
-  font-family: var(--font-syne);
-  font-weight: 800;
-  font-size: clamp(2.5rem, 8vw, 6.5rem);
+.xp-footer-title {
+  font-family: var(--font-heading);
+  font-weight: bold;
+  font-size: clamp(1.4rem, 4vw, 2.5rem);
+  color: #FFFFFF;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+
+.xp-footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  padding-top: 10px;
+}
+
+.xp-footer-copy {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  color: rgba(255,255,255,0.75);
+}
+
+.xp-footer-tags {
+  display: flex;
+  gap: 4px;
+}
+
+.xp-footer-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  font-size: 10px;
+  font-weight: bold;
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.85);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 2px;
+  font-family: var(--font-ui);
+}
+
+/* ─── XP BEYOND SECTION ─────────────────────────────────────────────────────── */
+
+.xp-beyond-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+@media (max-width: 900px) {
+  .xp-beyond-grid { grid-template-columns: 1fr; }
+}
+
+.xp-beyond-panel {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.xp-panel-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: bold;
   text-transform: uppercase;
-  color: var(--neo-yellow);
-  line-height: 0.95;
-  letter-spacing: -0.04em;
+  letter-spacing: 0.04em;
+  color: var(--xp-text-muted);
+  border-bottom: 1px solid var(--xp-border-mid);
+  padding-bottom: 6px;
+  margin-bottom: 2px;
+}
+
+.xp-beyond-title {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--xp-text);
+}
+
+.xp-beyond-text {
+  font-size: 12px;
+  color: var(--xp-text-muted);
+  line-height: 1.55;
+}
+
+/* Clock / 15-min visual */
+.xp-clock-widget {
+  background: #000;
+  border: 1px solid #444;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+.xp-clock-num {
+  font-family: var(--font-mono);
+  font-size: 1.6rem;
+  color: #00FF00;
+  font-weight: bold;
+  line-height: 1;
+}
+.xp-clock-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: #00AA00;
+  line-height: 1.3;
+}
+
+/* Radar / observation mode widget */
+.xp-radar-widget {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--xp-silver-mid);
+  border: 1px solid var(--xp-border-dark);
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,0.6);
+  padding: 5px 10px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--xp-text-muted);
+  margin-top: 4px;
+}
+
+/* ─── XP ROTATING TEXT ──────────────────────────────────────────────────────── */
+/* Keep existing RotatingText component but style as XP */
+.xp-rotating-text {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+/* ─── RESPONSIVE ADJUSTMENTS ────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .xp-navbar-inner {
+    padding: 0 8px;
+    gap: 4px;
+  }
+  .xp-nav-links {
+    display: none;
+  }
+  .xp-hero-name {
+    font-size: clamp(1.8rem, 10vw, 3rem);
+  }
+  .xp-section {
+    margin: 16px auto;
+  }
+}
+
+/* ─── UTILITY: HIDE CURSOR OVERRIDE (remove neo-brutalist cursor hiding) ─────── */
+/* We want the normal system cursor in XP style */
+html, body, *, *::before, *::after {
+  /* cursor: auto; — let default system cursor show */
 }

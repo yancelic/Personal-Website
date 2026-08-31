@@ -1,50 +1,39 @@
-import { motion } from "framer-motion";
-
 export default function Footer({ lang }) {
   return (
-    <footer className="neo-footer">
-      <div className="neo-footer-inner">
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: "20px" }}>
+    <footer className="xp-footer">
+      <div className="xp-footer-inner">
+
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: "16px" }}>
           <div>
-            <div className="neo-badge neo-pink" style={{ marginBottom: "16px" }}>
-              // YANKI MUHSIN KILIÇ
+            <div className="xp-badge xp-badge-blue" style={{ marginBottom: "10px" }}>
+              YANKI MUHSIN KILIÇ
             </div>
-            <h2 className="neo-footer-bigtext">
+            <h2 className="xp-footer-title">
               CODE // MUSIC // 15 MIN
             </h2>
           </div>
 
-          <motion.button
-            className="neo-btn neo-btn-cyan"
+          <button
+            className="xp-btn xp-btn-primary"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            whileHover={{ scale: 1.08 }}
-            whileTap={{ scale: 0.92 }}
+            style={{ alignSelf: "flex-end" }}
           >
-            BACK TO TOP ↑
-          </motion.button>
+            ↑ {lang === "en" ? "Back to Top" : "Yukarı Çık"}
+          </button>
         </div>
 
-        <div 
-          style={{ 
-            display: "flex", 
-            justify: "space-between", 
-            alignItems: "center", 
-            flexWrap: "wrap", 
-            gap: "16px",
-            borderTop: "2px solid #333",
-            paddingTop: "24px" 
-          }}
-        >
-          <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.85rem", opacity: 0.8 }}>
-            © {new Date().getFullYear()} YANKI MUHSIN KILIÇ. {lang === "en" ? "ALL RIGHTS RESERVED." : "TÜM HAKLARI SAKLIDIR."}
+        <div className="xp-footer-bottom">
+          <p className="xp-footer-copy">
+            © {new Date().getFullYear()} YANKI MUHSIN KILIÇ.{" "}
+            {lang === "en" ? "All rights reserved." : "Tüm hakları saklıdır."}
           </p>
-
-          <div style={{ display: "flex", gap: "10px" }}>
-            <span className="neo-badge neo-yellow" style={{ fontSize: "0.75rem" }}>REACT</span>
-            <span className="neo-badge neo-lime" style={{ fontSize: "0.75rem" }}>FRAMER MOTION</span>
-            <span className="neo-badge neo-pink" style={{ fontSize: "0.75rem", color: "#fff" }}>NEO-BRUTALISM</span>
+          <div className="xp-footer-tags">
+            <span className="xp-footer-tag">React</span>
+            <span className="xp-footer-tag">Framer Motion</span>
+            <span className="xp-footer-tag">Vite</span>
           </div>
         </div>
+
       </div>
     </footer>
   );

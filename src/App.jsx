@@ -1,13 +1,14 @@
 import { useState } from "react";
-import NeoCursor from "./components/ReactBits/NeoCursor";
 import Dock from "./components/ReactBits/Dock";
 import Footer from "./components/layout/Footer";
+import Navbar from "./components/layout/Navbar";
 import HeroSection from "./components/sections/HeroSection";
 import AboutSection from "./components/sections/AboutSection";
 import ExpertiseSection from "./components/sections/ExpertiseSection";
 import ZorusSection from "./components/sections/ZorusSection";
 import BeyondSection from "./components/sections/BeyondSection";
 import ContactSection from "./components/sections/ContactSection";
+import Companion from "./components/character/Companion";
 import { SparkIcon, UserIcon, ToolsIcon, RocketIcon, MusicIcon, MailIcon } from "./components/common/Icons";
 
 const marqueeItems = {
@@ -24,15 +25,15 @@ const dockItems = (lang) => [
   { label: lang === "en" ? "Contact"   : "İletişim", icon: <MailIcon size={20} />,    onClick: () => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }) },
 ];
 
-function NeoMarquee({ lang, pinkMode = false }) {
+function XPTicker({ lang }) {
   const items = marqueeItems[lang];
   const doubled = [...items, ...items, ...items];
   return (
-    <div className={`neo-marquee-wrap ${pinkMode ? "pink-mode" : ""}`}>
-      <div className="neo-marquee-track">
+    <div className="xp-ticker-wrap">
+      <div className="xp-ticker-track">
         {doubled.map((item, i) => (
-          <span key={i} className="neo-marquee-item">
-            <span className="neo-marquee-star">✦</span>
+          <span key={i} className="xp-ticker-item">
+            <span className="xp-ticker-sep">◆</span>
             {item}
           </span>
         ))}
@@ -46,13 +47,13 @@ export default function App() {
 
   return (
     <>
-      <NeoCursor />
+      <Navbar lang={lang} setLang={setLang} />
 
-      <main style={{ paddingTop: "20px" }}>
+      <main>
         <HeroSection lang={lang} />
-        <NeoMarquee lang={lang} />
+        <XPTicker lang={lang} />
         <AboutSection lang={lang} />
-        <NeoMarquee lang={lang} pinkMode={true} />
+        <XPTicker lang={lang} />
         <ExpertiseSection lang={lang} />
         <ZorusSection lang={lang} />
         <BeyondSection lang={lang} />
@@ -60,7 +61,11 @@ export default function App() {
       </main>
 
       <Footer lang={lang} />
-      <Dock items={dockItems(lang)} lang={lang} setLang={setLang} />
+      <Companion lang={lang} />
+      {/* Dock is hidden visually but kept for scroll functionality */}
+      <div style={{ display: "none" }}>
+        <Dock items={dockItems(lang)} lang={lang} setLang={setLang} />
+      </div>
     </>
   );
 }

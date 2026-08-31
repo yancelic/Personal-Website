@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const expertise = {
   en: {
     sectionNum: "02 // TECHNICAL",
-    title: "WHAT I WORK ON",
+    title: "What I Work On",
     subtitle: "Machine learning, app development, and game engines.",
     categories: ["ALL", "MACHINE LEARNING", "APP DEV", "GAME DEV"],
     items: [
@@ -13,9 +13,9 @@ const expertise = {
         num: "01",
         title: "Machine Learning & AI",
         cat: "MACHINE LEARNING",
-        bg: "var(--neo-yellow)",
-        desc: "Python, PyTorch, TensorFlow, scikit-learn. I work on neural networks, experiment with LLM integrations, and currently going deeper into agent architectures — which is what Zorus partly runs on.",
+        accentBorder: "#1B6FDE",
         label: "MAIN AREA",
+        desc: "Python, PyTorch, TensorFlow, scikit-learn. I work on neural networks, experiment with LLM integrations, and currently going deeper into agent architectures — which is what Zorus partly runs on.",
         tags: ["Python", "PyTorch", "TensorFlow", "Data Science", "Scikit-Learn"]
       },
       {
@@ -23,9 +23,9 @@ const expertise = {
         num: "02",
         title: "App & Web Development",
         cat: "APP DEV",
-        bg: "var(--neo-cyan)",
-        desc: "React and React Native for web and mobile. I care a lot about interfaces feeling fast and actually comfortable to use — not just looking clean in a demo.",
+        accentBorder: "#2A7A2A",
         label: "ACTIVELY USING",
+        desc: "React and React Native for web and mobile. I care a lot about interfaces feeling fast and actually comfortable to use — not just looking clean in a demo.",
         tags: ["React", "React Native", "Node.js", "Vite", "JavaScript", "REST APIs"]
       },
       {
@@ -33,17 +33,16 @@ const expertise = {
         num: "03",
         title: "Game Dev & Realtime Engines",
         cat: "GAME DEV",
-        bg: "var(--neo-pink)",
-        textColor: "#fff",
-        desc: "Unreal Engine and C++. I like how game development forces you to think about performance, physics, and how a space feels to move through. Still learning a lot here.",
+        accentBorder: "#8B3A8B",
         label: "LEARNING",
+        desc: "Unreal Engine and C++. I like how game development forces you to think about performance, physics, and how a space feels to move through. Still learning a lot here.",
         tags: ["Unreal Engine", "C++", "Game Design", "3D Math"]
       }
     ]
   },
   tr: {
     sectionNum: "02 // TEKNİK",
-    title: "ÇALIŞTIĞIM ALANLAR",
+    title: "Çalıştığım Alanlar",
     subtitle: "Makine öğrenmesi, uygulama geliştirme ve oyun motorları.",
     categories: ["HEPSİ", "MAKİNE ÖĞRENMESİ", "UYGULAMA GELİŞTİRME", "OYUN GELİŞTİRME"],
     items: [
@@ -52,9 +51,9 @@ const expertise = {
         num: "01",
         title: "Makine Öğrenmesi & YZ",
         cat: "MAKİNE ÖĞRENMESİ",
-        bg: "var(--neo-yellow)",
-        desc: "Python, PyTorch, TensorFlow, scikit-learn kullanıyorum. Sinir ağlarıyla çalışıyor, LLM entegrasyonları deniyorum. Şu sıralar ajan mimarileri üzerine gidiyorum — Zorus'un bir kısmı da bu üzerine.",
+        accentBorder: "#1B6FDE",
         label: "ANA ALANLARIM",
+        desc: "Python, PyTorch, TensorFlow, scikit-learn kullanıyorum. Sinir ağlarıyla çalışıyor, LLM entegrasyonları deniyorum. Şu sıralar ajan mimarileri üzerine gidiyorum — Zorus'un bir kısmı da bu üzerine.",
         tags: ["Python", "PyTorch", "TensorFlow", "Data Science", "Scikit-Learn"]
       },
       {
@@ -62,9 +61,9 @@ const expertise = {
         num: "02",
         title: "Uygulama & Web Geliştirme",
         cat: "UYGULAMA GELİŞTİRME",
-        bg: "var(--neo-cyan)",
-        desc: "Web ve mobil için React ve React Native. Arayüzlerin sadece iyi görünmesini değil, gerçekten rahat kullanılmasını önemsiyorum. Zorus'un frontend'i de burada.",
+        accentBorder: "#2A7A2A",
         label: "AKTİF KULLANIM",
+        desc: "Web ve mobil için React ve React Native. Arayüzlerin sadece iyi görünmesini değil, gerçekten rahat kullanılmasını önemsiyorum. Zorus'un frontend'i de burada.",
         tags: ["React", "React Native", "Node.js", "Vite", "JavaScript", "REST APIs"]
       },
       {
@@ -72,10 +71,9 @@ const expertise = {
         num: "03",
         title: "Oyun Geliştirme & Motorlar",
         cat: "OYUN GELİŞTİRME",
-        bg: "var(--neo-pink)",
-        textColor: "#fff",
-        desc: "Unreal Engine ve C++. Oyun geliştirme performansı, fiziği ve bir uzayda hareket etmenin nasıl hissettirdiğini düşünmeye zorluyor. Burada hâlâ çok şey öğreniyorum.",
+        accentBorder: "#8B3A8B",
         label: "ÖĞRENİYORUM",
+        desc: "Unreal Engine ve C++. Oyun geliştirme performansı, fiziği ve bir uzayda hareket etmenin nasıl hissettirdiğini düşünmeye zorluyor. Burada hâlâ çok şey öğreniyorum.",
         tags: ["Unreal Engine", "C++", "Game Design", "3D Math"]
       }
     ]
@@ -95,89 +93,77 @@ export default function ExpertiseSection({ lang }) {
   });
 
   return (
-    <section id="expertise" className="neo-section">
-      {/* Section Header */}
-      <div className="neo-section-header">
-        <div className="neo-section-num">{t.sectionNum}</div>
-        <h2 className="neo-section-title">{t.title}</h2>
+    <section id="expertise" className="xp-section">
+      {/* Section header */}
+      <div className="xp-section-header">
+        <span className="xp-section-num">{t.sectionNum}</span>
+        <h2 className="xp-section-title">{t.title}</h2>
       </div>
 
-      {/* Category Filter Buttons */}
-      <div className="neo-filter-group">
-        {t.categories.map((cat) => {
-          const isActive = selectedCat === cat;
-          return (
-            <motion.button
-              key={cat}
-              onClick={() => setSelectedCat(cat)}
-              className={`neo-btn ${isActive ? "neo-btn-pink" : "neo-btn-outline"}`}
-              style={{ fontSize: "0.85rem", padding: "8px 18px" }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {cat}
-            </motion.button>
-          );
-        })}
-      </div>
-
-      {/* Skills Grid */}
-      <div className="neo-skills-matrix">
-        <AnimatePresence mode="popLayout">
-          {filteredItems.map((item) => (
-            <motion.div
-              key={item.id}
-              layout
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: -20 }}
-              transition={{ type: "spring", stiffness: 350, damping: 25 }}
-              className="neo-box neo-box-interactive neo-skill-card"
-              style={{
-                backgroundColor: item.bg,
-                color: item.textColor || "var(--neo-black)"
-              }}
-            >
-              <div className="neo-skill-header">
-                <span 
-                  className="neo-badge" 
-                  style={{ background: "var(--neo-white)", color: "#000" }}
+      {/* XP Tab strip for category filter */}
+      <div style={{ marginBottom: "0" }}>
+        <div className="xp-tab-strip">
+          {t.categories.map((cat) => {
+            const isActive = selectedCat === cat;
+            return (
+              <button
+                key={cat}
+                className={`xp-tab${isActive ? " active" : ""}`}
+                onClick={() => setSelectedCat(cat)}
+              >
+                {cat}
+              </button>
+            );
+          })}
+        </div>
+        <div className="xp-tab-content">
+          {/* Skills grid */}
+          <div className="xp-skills-grid">
+            <AnimatePresence mode="popLayout">
+              {filteredItems.map((item) => (
+                <motion.div
+                  key={item.id}
+                  layout
+                  initial={{ opacity: 0, scale: 0.96, y: 12 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.96, y: -12 }}
+                  transition={{ duration: 0.22 }}
+                  className="xp-panel xp-skill-panel"
+                  style={{
+                    borderTop: `3px solid ${item.accentBorder}`,
+                  }}
                 >
-                  //{item.num}
-                </span>
-                <span className="neo-badge" style={{ background: "var(--neo-black)", color: "var(--neo-yellow)" }}>
-                  {item.label}
-                </span>
-              </div>
+                  <div className="xp-skill-header-row">
+                    <span className="xp-badge" style={{ fontFamily: "var(--font-mono)", fontSize: "10px" }}>
+                      //{item.num}
+                    </span>
+                    <span
+                      className="xp-badge"
+                      style={{
+                        background: item.accentBorder,
+                        color: "#fff",
+                        borderColor: item.accentBorder,
+                        fontSize: "10px",
+                      }}
+                    >
+                      {item.label}
+                    </span>
+                  </div>
 
-              <h3 className="neo-skill-title" style={{ fontSize: "1.5rem", fontWeight: 800 }}>
-                {item.title}
-              </h3>
+                  <h3 className="xp-skill-title">{item.title}</h3>
 
-              <p style={{ opacity: 0.9, fontSize: "1rem", lineHeight: 1.5 }}>
-                {item.desc}
-              </p>
+                  <p className="xp-skill-desc">{item.desc}</p>
 
-              {/* Tags */}
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginTop: "6px" }}>
-                {item.tags.map((tag) => (
-                  <span 
-                    key={tag} 
-                    className="neo-badge" 
-                    style={{ 
-                      fontSize: "0.75rem", 
-                      padding: "3px 8px",
-                      background: "var(--neo-white)",
-                      color: "#000"
-                    }}
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </AnimatePresence>
+                  <div className="xp-tag-list">
+                    {item.tags.map((tag) => (
+                      <span key={tag} className="xp-tag">{tag}</span>
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </div>
+        </div>
       </div>
     </section>
   );

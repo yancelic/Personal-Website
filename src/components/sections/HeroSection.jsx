@@ -7,32 +7,36 @@ const content = {
   en: {
     badge: "CS STUDENT @ SELÇUK // CO-FOUNDER @ ZORUS",
     subtitle: "I build apps, work on AI, make music, and think way too much about how people communicate.",
-    cta1: "EXPLORE ZORUS",
-    cta2: "LET'S TALK",
+    cta1: "Explore Zorus",
+    cta2: "Let's Talk",
     statusTitle: "RIGHT NOW",
     statusText: "Working on Zorus (Hoppozorus) & diving deeper into AI",
     roles: ["CS STUDENT", "CO-FOUNDER @ ZORUS", "SOLOIST & GUITARIST"],
     stickers: [
-      { text: "15-MIN THEORY", icon: <SparkIcon size={14} />, color: "var(--neo-yellow)", rotate: "-4deg" },
-      { text: "SELÇUK CS", icon: <AcademicIcon size={14} />, color: "var(--neo-pink)", colorText: "#fff", rotate: "3deg" },
-      { text: "MUSIC & GEAR", icon: <MusicIcon size={14} />, color: "var(--neo-cyan)", rotate: "-2deg" },
-      { text: "PSYCHOLOGY", icon: <BrainIcon size={14} />, color: "var(--neo-lime)", rotate: "5deg" },
-    ]
+      { text: "15-MIN THEORY", icon: <SparkIcon size={13} />, rotate: "-3deg" },
+      { text: "SELÇUK CS",     icon: <AcademicIcon size={13} />, rotate: "2deg" },
+      { text: "MUSIC & GEAR",  icon: <MusicIcon size={13} />, rotate: "-2deg" },
+      { text: "PSYCHOLOGY",   icon: <BrainIcon size={13} />, rotate: "3deg" },
+    ],
+    windowTitle: "Yankı Muhsin Kılıç — Personal Portfolio",
+    aboutTag: "// ABOUT ME",
   },
   tr: {
     badge: "BİLGİSAYAR MÜHENDİSLİĞİ // ZORUS KURUCU ORTAĞI",
     subtitle: "Uygulama geliştiriyorum, yapay zeka üzerine çalışıyorum, müzik yapıyorum. Bir de insanların nasıl iletişim kurduğunu gereğinden fazla düşünüyorum.",
-    cta1: "ZORUS'U KEŞFET",
-    cta2: "KONUŞALIM",
+    cta1: "Zorus'u Keşfet",
+    cta2: "Konuşalım",
     statusTitle: "ŞU AN",
     statusText: "Zorus (Hoppozorus) üzerinde çalışıyorum, yapay zeka tarafında ilerliyorum",
     roles: ["BİLGİSAYAR MÜHENDİSLİĞİ ÖĞRENCİSİ", "ZORUS KURUCU ORTAĞI", "SOLİST & GİTARİST"],
     stickers: [
-      { text: "15 DAKİKA TEORİSİ", icon: <SparkIcon size={14} />, color: "var(--neo-yellow)", rotate: "-4deg" },
-      { text: "SELÇUK BİLG", icon: <AcademicIcon size={14} />, color: "var(--neo-pink)", colorText: "#fff", rotate: "3deg" },
-      { text: "MÜZİK & EKİPMAN", icon: <MusicIcon size={14} />, color: "var(--neo-cyan)", rotate: "-2deg" },
-      { text: "PSİKOLOJİ", icon: <BrainIcon size={14} />, color: "var(--neo-lime)", rotate: "5deg" },
-    ]
+      { text: "15 DAKİKA TEORİSİ", icon: <SparkIcon size={13} />, rotate: "-3deg" },
+      { text: "SELÇUK BİLG",       icon: <AcademicIcon size={13} />, rotate: "2deg" },
+      { text: "MÜZİK & EKİPMAN",  icon: <MusicIcon size={13} />, rotate: "-2deg" },
+      { text: "PSİKOLOJİ",         icon: <BrainIcon size={13} />, rotate: "3deg" },
+    ],
+    windowTitle: "Yankı Muhsin Kılıç — Kişisel Portföy",
+    aboutTag: "// HAKKIMDA",
   },
 };
 
@@ -40,163 +44,151 @@ export default function HeroSection({ lang }) {
   const t = content[lang];
 
   return (
-    <section id="hero" className="neo-hero">
-      {/* Top Badge & Sticker Bar */}
-      <motion.div
-        className="neo-hero-top"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.1 }}
-      >
-        <div className="neo-badge neo-yellow" style={{ fontSize: "0.85rem", padding: "8px 16px", display: "inline-flex", alignItems: "center", gap: "8px" }}>
-          <SparkIcon size={16} />
-          <span>{t.badge}</span>
-        </div>
+    <section id="hero" className="xp-hero">
 
-        {/* Rotating Roles Badge */}
-        <div className="neo-badge neo-pink" style={{ fontSize: "0.85rem", padding: "8px 16px" }}>
+      {/* Top info row — badge + rotating roles */}
+      <motion.div
+        className="xp-hero-badge-row"
+        initial={{ opacity: 0, y: -12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, delay: 0.05 }}
+      >
+        <span className="xp-badge xp-badge-blue">
+          <SparkIcon size={12} color="#fff" />
+          {t.badge}
+        </span>
+        <span className="xp-badge" style={{ fontWeight: "bold" }}>
           <RotatingText texts={t.roles} interval={3000} />
-        </div>
+        </span>
       </motion.div>
 
-      {/* Main Name & Title Block */}
-      <div className="neo-hero-title-wrap">
-        <motion.h1
-          className="neo-hero-name highlight-yellow"
-          initial={{ opacity: 0, scale: 0.9, rotate: -3 }}
-          animate={{ opacity: 1, scale: 1, rotate: -1 }}
-          transition={{ type: "spring", stiffness: 350, damping: 22, delay: 0.2 }}
-        >
-          YANKI
-        </motion.h1>
+      {/* Main window — XP chrome with title bar */}
+      <motion.div
+        className="xp-window"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.45, delay: 0.15 }}
+      >
+        {/* XP Title Bar */}
+        <div className="xp-titlebar">
+          <div style={{ display: "flex", alignItems: "center", gap: "0" }}>
+            <span className="xp-titlebar-icon">⊞</span>
+            <span className="xp-titlebar-text">{t.windowTitle}</span>
+          </div>
+          <div className="xp-window-controls">
+            <div className="xp-wc-btn" title="Minimize">_</div>
+            <div className="xp-wc-btn" title="Maximize">□</div>
+            <div className="xp-wc-btn close-btn" title="Close">✕</div>
+          </div>
+        </div>
 
-        <motion.h1
-          className="neo-hero-name"
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ type: "spring", stiffness: 300, damping: 25, delay: 0.35 }}
-        >
-          MUHSIN
-        </motion.h1>
+        {/* Client area */}
+        <div className="xp-client-area" style={{ padding: "16px" }}>
 
-        <motion.h1
-          className="neo-hero-name outline-text"
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ type: "spring", stiffness: 300, damping: 25, delay: 0.5 }}
-        >
-          KILIÇ
-        </motion.h1>
-      </div>
-
-      {/* Hero Grid - Cards & Interactive Elements */}
-      <div className="neo-hero-grid">
-        {/* Main Subtitle & CTA Card */}
-        <motion.div
-          className="neo-box neo-hero-card-main"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ type: "spring", stiffness: 280, damping: 24, delay: 0.6 }}
-        >
-          <div>
-            <div 
-              className="neo-badge neo-cyan" 
-              style={{ marginBottom: "16px", display: "inline-flex" }}
+          {/* Name block */}
+          <div className="xp-hero-name-block" style={{ padding: "12px 0 16px" }}>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4, delay: 0.25 }}
             >
-              // ABOUT ME
-            </div>
-            <p className="neo-hero-subtitle">
-              <TextType text={t.subtitle} speed={22} />
-            </p>
+              <div className="xp-hero-name">
+                <span className="xp-hero-name-accent">YANKI </span>MUHSIN
+              </div>
+              <div className="xp-hero-name" style={{ color: "#555", WebkitTextStroke: "1.5px #333", WebkitTextFillColor: "transparent" }}>
+                KILIÇ
+              </div>
+            </motion.div>
           </div>
 
-          <div className="neo-hero-cta-group">
-            <motion.a
-              href="#zorus"
-              className="neo-btn"
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={(e) => {
-                e.preventDefault();
-                document.getElementById("zorus")?.scrollIntoView({ behavior: "smooth" });
-              }}
-              style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}
-            >
-              <RocketIcon size={18} />
-              <span>{t.cta1}</span>
-            </motion.a>
+          <hr className="xp-rule" />
 
-            <motion.a
-              href="#contact"
-              className="neo-btn neo-btn-pink"
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={(e) => {
-                e.preventDefault();
-                document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-              }}
-              style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}
-            >
-              <MailIcon size={18} />
-              <span>{t.cta2}</span>
-            </motion.a>
-          </div>
-        </motion.div>
+          {/* Grid: subtitle + sidebar */}
+          <div className="xp-hero-grid">
 
-        {/* Sidebar Status & Interactive Drag Stickers Card */}
-        <motion.div
-          className="neo-hero-sidebar"
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ type: "spring", stiffness: 280, damping: 24, delay: 0.75 }}
-        >
-          {/* Status Box */}
-          <div className="neo-box neo-sidebar-card neo-lime">
-            <div style={{ display: "flex", alignItems: "center", justifyBetween: "space-between", gap: "8px" }}>
-              <span className="neo-pulse-dot" style={{ background: "#000" }} />
-              <span className="neo-label" style={{ color: "#000" }}>{t.statusTitle}</span>
-            </div>
-            <p style={{ fontWeight: 800, fontSize: "1.05rem", lineHeight: 1.4 }}>
-              {t.statusText}
-            </p>
-          </div>
-
-          {/* Draggable Interactive Stickers */}
-          <div 
-            className="neo-box neo-sidebar-card"
-            style={{ position: "relative", minHeight: "160px", background: "var(--neo-bg-alt)", overflow: "hidden" }}
-          >
-            <span className="neo-label" style={{ fontSize: "0.75rem", marginBottom: "8px", display: "flex", alignItems: "center", gap: "6px" }}>
-              <SparkIcon size={14} />
-              <span>SÜRÜKLE & KEŞFET</span>
-            </span>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
-              {t.stickers.map((stk, i) => (
-                <motion.div
-                  key={i}
-                  drag
-                  dragConstraints={{ left: -10, right: 10, top: -10, bottom: 10 }}
-                  className="neo-sticker"
-                  style={{
-                    backgroundColor: stk.color,
-                    color: stk.colorText || "var(--neo-black)",
-                    transform: `rotate(${stk.rotate})`,
-                    cursor: "grab",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "6px"
+            {/* Left: subtitle + CTAs */}
+            <div style={{ display: "flex", flexDirection: "column", gap: "14px", padding: "8px 0" }}>
+              <div className="xp-badge" style={{ alignSelf: "flex-start", fontSize: "10px" }}>
+                {t.aboutTag}
+              </div>
+              <p className="xp-hero-subtitle">
+                <TextType text={t.subtitle} speed={22} />
+              </p>
+              <div className="xp-hero-cta-group">
+                <a
+                  href="#zorus"
+                  className="xp-btn xp-btn-primary"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById("zorus")?.scrollIntoView({ behavior: "smooth" });
                   }}
-                  whileHover={{ scale: 1.1, rotate: 0 }}
-                  whileTap={{ cursor: "grabbing", scale: 0.95 }}
+                  style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}
                 >
-                  {stk.icon}
-                  <span>{stk.text}</span>
-                </motion.div>
-              ))}
+                  <RocketIcon size={14} color="#fff" />
+                  {t.cta1}
+                </a>
+                <a
+                  href="#contact"
+                  className="xp-btn"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                  style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}
+                >
+                  <MailIcon size={14} />
+                  {t.cta2}
+                </a>
+              </div>
+            </div>
+
+            {/* Right sidebar: status + stickers */}
+            <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+
+              {/* Status box */}
+              <div className="xp-status-box">
+                <div className="xp-status-label">
+                  <span className="xp-pulse-dot" />
+                  {t.statusTitle}
+                </div>
+                <p className="xp-status-text">{t.statusText}</p>
+              </div>
+
+              {/* Draggable stickers box */}
+              <div
+                className="xp-groupbox"
+                style={{ position: "relative", minHeight: "120px", overflow: "hidden" }}
+              >
+                <span className="xp-groupbox-label">Tags</span>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", paddingTop: "4px" }}>
+                  {t.stickers.map((stk, i) => (
+                    <motion.div
+                      key={i}
+                      drag
+                      dragConstraints={{ left: -8, right: 8, top: -8, bottom: 8 }}
+                      className="xp-badge"
+                      style={{
+                        cursor: "grab",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "4px",
+                        transform: `rotate(${stk.rotate})`,
+                        userSelect: "none",
+                      }}
+                      whileTap={{ cursor: "grabbing", scale: 0.97 }}
+                      whileHover={{ scale: 1.05, rotate: "0deg" }}
+                    >
+                      {stk.icon}
+                      <span style={{ fontSize: "10px", fontWeight: "bold" }}>{stk.text}</span>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+
             </div>
           </div>
-        </motion.div>
-      </div>
+        </div>
+      </motion.div>
     </section>
   );
 }
