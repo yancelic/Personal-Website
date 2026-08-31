@@ -62,8 +62,8 @@ export default function Navbar({ lang, setLang }) {
           className="xp-start-btn"
           onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
         >
-          <div className="xp-start-logo-circle">Y</div>
-          <span>MUHSIN</span>
+          <div className="xp-start-logo-circle">Z</div>
+          <span>Yankı</span>
         </a>
 
         {/* Taskbar separator */}
