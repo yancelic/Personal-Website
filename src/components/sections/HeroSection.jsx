@@ -18,7 +18,7 @@ const content = {
       { text: "MUSIC & GEAR",  icon: <MusicIcon size={13} />, rotate: "-2deg" },
       { text: "PSYCHOLOGY",   icon: <BrainIcon size={13} />, rotate: "3deg" },
     ],
-    windowTitle: "Yankı Muhsin Kılıç — Personal Portfolio",
+    windowTitle: "Yankı Muhsin Kılıç",
     aboutTag: "// ABOUT ME",
   },
   tr: {
@@ -35,7 +35,7 @@ const content = {
       { text: "MÜZİK & EKİPMAN",  icon: <MusicIcon size={13} />, rotate: "-2deg" },
       { text: "PSİKOLOJİ",         icon: <BrainIcon size={13} />, rotate: "3deg" },
     ],
-    windowTitle: "Yankı Muhsin Kılıç — Kişisel Portföy",
+    windowTitle: "Yankı Muhsin Kılıç",
     aboutTag: "// HAKKIMDA",
   },
 };
