@@ -20,6 +20,9 @@ const content = {
     nameLabel: "Your Name",
     emailLabel: "Your Email",
     msgLabel: "Your Message",
+    namePlaceholder: "Your Name",
+    emailPlaceholder: "yourname@example.com",
+    msgPlaceholder: "Tell me about your project or idea...",
     submitBtn: "Send Message",
     submittedMsg: "Got it — Thank you!",
     directEmail: "// DIRECT EMAIL",
@@ -37,6 +40,9 @@ const content = {
     nameLabel: "Adınız",
     emailLabel: "E-Posta Adresiniz",
     msgLabel: "Mesajınız",
+    namePlaceholder: "Adınız Soyadınız",
+    emailPlaceholder: "adiniz@ornek.com",
+    msgPlaceholder: "Projenizden veya fikrinizden bahsedin...",
     submitBtn: "Gönder",
     submittedMsg: "Aldım — Teşekkürler!",
     directEmail: "// DİREKT E-POSTA",
@@ -186,7 +192,7 @@ export default function ContactSection({ lang }) {
                 className="xp-input"
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
-                placeholder="e.g. Alex Turing"
+                placeholder={t.namePlaceholder}
               />
             </div>
 
@@ -198,7 +204,7 @@ export default function ContactSection({ lang }) {
                 className="xp-input"
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
-                placeholder="e.g. alex@example.com"
+                placeholder={t.emailPlaceholder}
               />
             </div>
 
@@ -210,7 +216,7 @@ export default function ContactSection({ lang }) {
                 className="xp-textarea"
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
-                placeholder="Tell me about your project or idea..."
+                placeholder={t.msgPlaceholder}
               />
             </div>
           </div>

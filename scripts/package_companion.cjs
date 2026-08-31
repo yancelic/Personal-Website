@@ -8,7 +8,7 @@ const spritesDir = path.join(exportDir, 'public', 'character');
 // Ensure directories exist
 fs.mkdirSync(spritesDir, { recursive: true });
 
-// Required sprite list
+// All sprites used by current Companion
 const requiredSprites = [
   'norm_down_2.png',
   'walk_clean_0.png',
@@ -17,6 +17,11 @@ const requiredSprites = [
   'walk_clean_3.png',
   'walk_clean_4.png',
   'walk_clean_5.png',
+  'climb_clean_0.png',
+  'climb_clean_1.png',
+  'climb_clean_2.png',
+  'climb_clean_3.png',
+  'climb_clean_4.png',
   'toddler_horiz_0.png',
   'toddler_horiz_1.png',
   'toddler_horiz_chill.png',
@@ -50,12 +55,14 @@ fs.copyFileSync(path.join(srcComp, 'Companion.css'), path.join(exportDir, 'Compa
 fs.copyFileSync(path.join(srcComp, 'audioSynth.js'), path.join(exportDir, 'audioSynth.js'));
 
 // Also copy original master sprite sheet character.png for reference
-fs.copyFileSync(path.join(rootDir, 'character.png'), path.join(exportDir, 'character_master.png'));
+if (fs.existsSync(path.join(rootDir, 'character.png'))) {
+  fs.copyFileSync(path.join(rootDir, 'character.png'), path.join(exportDir, 'character_master.png'));
+}
 
 // Create a comprehensive README.md with integration instructions for React, Next.js, Vite, and Vanilla JS
-const readmeContent = `# 🌸 Anime Companion Mascot Component
+const readmeContent = `# 🌸 Anime Companion Mascot Component (v2.0 Full Edition)
 
-An interactive, responsive, animated pixel-art mascot companion ready to drop into any website or React application.
+An interactive, responsive, physics-driven pixel-art mascot companion ready to drop into any website or React application.
 
 ---
 
@@ -63,13 +70,14 @@ An interactive, responsive, animated pixel-art mascot companion ready to drop in
 
 \`\`\`
 companion-mascot/
-├── Companion.jsx          # React Component
-├── Companion.css          # Styling, keyframes, and pixel-art filters
-├── audioSynth.js          # Zero-dependency Web Audio API sound generator
-├── character_master.png   # Original 1536x1024 sprite sheet
+├── Companion.jsx          # React Component (locomotion, climbing, gravity, physics)
+├── Companion.css          # Styling, keyframes, 3D shadows, badges
+├── audioSynth.js          # Zero-dependency Web Audio API chiptune audio generator
+├── character_master.png   # Original 1536x1024 master sprite sheet
 ├── public/
-│   └── character/         # All 18 pre-rendered crisp pixel sprites
-│       ├── walk_clean_0.png ... walk_clean_5.png
+│   └── character/         # All 23 pre-rendered crisp pixel sprites
+│       ├── walk_clean_0.png ... walk_clean_5.png   (6-frame side walk)
+│       ├── climb_clean_0.png ... climb_clean_4.png (5-frame wall climb)
 │       ├── toddler_horiz_0.png, toddler_horiz_1.png, toddler_horiz_chill.png
 │       ├── sit.png, cheer.png, sleep.png, shy.png, run.png
 │       └── heart_large.png, heart_small.png, sparkle_large.png
@@ -78,11 +86,11 @@ companion-mascot/
 
 ---
 
-## 🚀 Quick Setup
+## 🚀 Quick Setup (3 Easy Steps)
 
 ### 1. Copy the Sprites
 Copy the \`public/character/\` folder to your project's public static assets directory:
-- **Vite / Create React App**: \`/public/character/\`
+- **Vite / React**: \`/public/character/\`
 - **Next.js**: \`/public/character/\`
 - **Astro / SvelteKit / Nuxt**: \`/public/character/\`
 
@@ -109,16 +117,18 @@ export default function App() {
 
 ## ✨ Features & Interactions
 
-- **🚶 Smooth Locomotion**: 6-frame pixel-art walk cycle + Michael Jackson moonwalk.
+- **🚶 6-Frame Crisp Pixel Walk**: Silky smooth locomotion + Michael Jackson moonwalk.
+- **🧗 Real Wall Climbing**: Scales cards, windows, and obstacles with 5-frame climbing sprites and vaults onto roofs/ledges!
+- **⬇️ Scroll Gravity Physics**: Stands on UI components. If you scroll and the platform moves away, gravity makes her drop through the air and land on the next surface below!
 - **👶 Back-Grab Horizontal Carry**:
   - **Annoyed / Squirming 💢**: Rapid kicking boots, tantrum emote, dynamic physics inertia.
   - **Chill / Relaxed ✈️**: Horizontal limp carry, free taxi dialogue.
-- **🎈 60 FPS Spring-Inertia Physics**: Swings naturally with momentum as you move your mouse.
+- **🎈 60 FPS Spring-Inertia Physics**: Swings naturally with real momentum as you drag her across the screen.
 - **🎵 Chiptune Audio Synth**: Zero external sound files — 100% Web Audio API synthesized sound effects.
-- **🌙 Smart AI**: Idle wandering, coffee breaks, naps after 35s of inactivity, wake-up on click.
-- **🌐 Bilingual**: English and Turkish dialogues included.
-- **🖱️ Right-Click Context Menu**: Say Hi, Walk, Moonwalk, Sit, Cheer, Sleep, Mute SFX, or Hide Mascot.
+- **🌙 Smart Autonomous AI**: Idle wandering, coffee breaks, naps after 35s of inactivity, wake-up on click.
+- **🌐 Bilingual Support**: Full English and Turkish dialogues included.
+- **🖱️ Right-Click Quick Menu**: Say Hi, Walk, Moonwalk, Sit, Cheer, Sleep, Mute SFX, or Hide Mascot.
 `;
 
 fs.writeFileSync(path.join(exportDir, 'README.md'), readmeContent);
-console.log('Export package created at: export/companion-mascot');
+console.log('Export package updated at: export/companion-mascot');

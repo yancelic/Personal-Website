@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import DecryptedText from "../ReactBits/DecryptedText";
 import { AcademicIcon, SparkIcon, BrainIcon, MusicIcon } from "../common/Icons";
+import CbonsaiTerminal from "../common/CbonsaiTerminal";
 
 const content = {
   en: {
@@ -105,7 +106,7 @@ export default function AboutSection({ lang }) {
       </div>
 
       {/* Bento-style XP panels */}
-      <div className="xp-bento-grid" style={{ marginBottom: "10px" }}>
+      <div className="xp-bento-grid" style={{ marginBottom: "16px" }}>
         {t.cards.map((card, idx) => (
           <motion.div
             key={idx}
@@ -136,6 +137,11 @@ export default function AboutSection({ lang }) {
             </p>
           </motion.div>
         ))}
+      </div>
+
+      {/* Windows XP Command Prompt — cbonsai.exe (Sakura Bonsai) */}
+      <div style={{ marginBottom: "16px" }}>
+        <CbonsaiTerminal lang={lang} />
       </div>
 
       {/* Stats row */}
