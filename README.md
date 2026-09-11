@@ -1,16 +1,109 @@
-# React + Vite
+<div align="center">
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Yankı Muhsin Kılıç — Personal Portfolio
 
-Currently, two official plugins are available:
+**A neo-brutalist, Windows XP–inspired personal portfolio built with React 19 & Vite**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-myankilic.netlify.app-blue?style=for-the-badge&logo=netlify)](https://myankilic.netlify.app)
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react)](https://react.dev)
+[![Vite](https://img.shields.io/badge/Vite-8-646CFF?style=for-the-badge&logo=vite)](https://vitejs.dev)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](./LICENSE)
 
-## React Compiler
+![Portfolio Preview](./public/preview.png)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+</div>
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ✨ Features
+
+- 🖥️ **Windows XP Neo-Brutalist UI** — Authentic XP chrome (title bars, window controls, group boxes) reimagined as a modern portfolio
+- 🤖 **Interactive Companion Mascot** — Animated chibi character that reacts to scroll position and user actions
+- 🌿 **cbonsai Terminal** — Live ASCII bonsai tree animation inside the About section
+- 🎵 **Vinyl Record Player** — Interactive music player in the Beyond section (Duman tribute)
+- 🌐 **EN / TR Bilingual** — Full English & Turkish language toggle
+- 🎞️ **Smooth Animations** — Framer Motion + GSAP powered transitions and interactions
+- 📜 **Lenis Smooth Scroll** — Buttery smooth scrolling experience
+- 📱 **Responsive** — Works across desktop and mobile viewports
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Framework | React 19 |
+| Build Tool | Vite 8 |
+| Animations | Framer Motion 12, GSAP 3 |
+| Scroll | Lenis |
+| Deployment | Netlify |
+| Styling | Pure CSS (custom neo-brutalist design system) |
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+├── components/
+│   ├── ReactBits/       # Reusable animated primitives (RotatingText, TextType, Dock…)
+│   ├── character/       # Interactive companion mascot
+│   ├── common/          # Shared icons & utilities
+│   ├── layout/          # Navbar & Footer
+│   └── sections/        # Page sections
+│       ├── HeroSection.jsx
+│       ├── AboutSection.jsx
+│       ├── ExpertiseSection.jsx
+│       ├── ZorusSection.jsx
+│       ├── BeyondSection.jsx
+│       └── ContactSection.jsx
+├── assets/              # Static assets
+├── App.jsx
+├── index.css            # Global styles & design tokens
+└── main.jsx
+```
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js ≥ 18
+- npm ≥ 9
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/yancelic/Personal-Website.git
+cd Personal-Website
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+```
+
+### Build for Production
+
+```bash
+npm run build
+# Output is in the /dist folder
+```
+
+---
+
+## 📬 Contact
+
+- 🌐 **Website:** [myankilic.netlify.app](https://myankilic.netlify.app)
+- 💼 **GitHub:** [@yancelic](https://github.com/yancelic)
+
+---
+
+<div align="center">
+
+Made with ☕ and way too much thinking about communication — **Yankı Muhsin Kılıç**
+
+</div>
