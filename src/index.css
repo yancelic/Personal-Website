@@ -261,6 +261,8 @@ a:hover {
   font-weight: bold;
   color: var(--xp-text);
   white-space: nowrap;
+  z-index: 2;
+  line-height: 14px;
 }
 
 /* ─── XP BUTTONS ───────────────────────────────────────────────────────────── */

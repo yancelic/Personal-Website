@@ -157,10 +157,10 @@ export default function HeroSection({ lang }) {
               {/* Draggable stickers box */}
               <div
                 className="xp-groupbox"
-                style={{ position: "relative", minHeight: "120px", overflow: "hidden" }}
+                style={{ position: "relative", minHeight: "120px", marginTop: "6px" }}
               >
                 <span className="xp-groupbox-label">Tags</span>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", paddingTop: "4px" }}>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", paddingTop: "6px" }}>
                   {t.stickers.map((stk, i) => (
                     <motion.div
                       key={i}
