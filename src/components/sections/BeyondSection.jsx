@@ -138,15 +138,6 @@ function ClockWidget() {
   );
 }
 
-function RadarWidget() {
-  return (
-    <div className="xp-radar-widget">
-      <span className="xp-pulse-dot" />
-      GÖZLEM MODU // AKTİF
-    </div>
-  );
-}
-
 const cards = {
   en: {
     sectionNum: "04 // OUTSIDE THE CODE",
@@ -161,8 +152,7 @@ const cards = {
       {
         tag: "BODY LANGUAGE",
         title: "Body Language & Signals",
-        text: "I've always found it fascinating how much people reveal through posture, subtle shifts, and facial expressions without saying a word. It's not about analyzing people, just paying genuine attention.",
-        visual: "radar"
+        text: "I've always found it fascinating how much people reveal through posture, subtle shifts, and facial expressions without saying a word. It's not about analyzing people, just paying genuine attention."
       },
       {
         tag: "PHILOSOPHY",
@@ -185,8 +175,7 @@ const cards = {
       {
         tag: "BEDEN DİLİ",
         title: "Beden Dili & İletişim",
-        text: "İnsanların konuşurken söylemedikleri şeyleri vücut dili ve mimikleriyle nasıl dışa vurduğunu izlemek bana hep ilginç gelmiştir. Özel bir analiz çabası gibi değil; sadece insanları gözlemlemeyi seviyorum.",
-        visual: "radar"
+        text: "İnsanların konuşurken söylemedikleri şeyleri vücut dili ve mimikleriyle nasıl dışa vurduğunu izlemek bana hep ilginç gelmiştir. Özel bir analiz çabası gibi değil; sadece insanları gözlemlemeyi seviyorum."
       },
       {
         tag: "FELSEFE",
@@ -223,7 +212,6 @@ export default function BeyondSection({ lang }) {
             <p className="xp-beyond-text">{item.text}</p>
 
             {item.visual === "duman" && <XPMediaPlayer />}
-            {item.visual === "radar" && <RadarWidget />}
             {item.visual === "clock" && <ClockWidget />}
           </motion.div>
         ))}
